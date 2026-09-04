@@ -1,0 +1,2151 @@
+{
+  "properties": {
+    "grpc": {
+      "$defs": {
+        "Duration": {
+          "properties": {
+            "nanos": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "secs": {
+              "format": "uint64",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "secs",
+            "nanos"
+          ],
+          "type": "object"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "summer-grpc Config",
+      "properties": {
+        "accept_http1": {
+          "default": false,
+          "description": "Allow this server to accept http1 requests.\n\nAccepting http1 requests is only useful when developing `grpc-web`\nenabled services. If this setting is set to `true` but services are\nnot correctly configured to handle grpc-web requests, your server may\nreturn confusing (but correct) protocol errors.\n\nDefault is `false`.",
+          "type": "boolean"
+        },
+        "binding": {
+          "default": "0.0.0.0",
+          "format": "ip",
+          "type": "string"
+        },
+        "concurrency_limit_per_connection": {
+          "description": "Set the concurrency limit applied to on requests inbound per connection.",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "graceful": {
+          "default": false,
+          "type": "boolean"
+        },
+        "http2_adaptive_window": {
+          "description": "Sets whether to use an adaptive flow control. Defaults to false.\nEnabling this will override the limits set in http2_initial_stream_window_size and\nhttp2_initial_connection_window_size.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "http2_keepalive_interval": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Set whether HTTP2 Ping frames are enabled on accepted connections.\n\nIf `None` is specified, HTTP2 keepalive is disabled, otherwise the duration\nspecified will be the time interval between HTTP2 Ping frames.\nThe timeout for receiving an acknowledgement of the keepalive ping\ncan be set with [`Server::http2_keepalive_timeout`].\n\nDefault is no HTTP2 keepalive (`None`)"
+        },
+        "http2_keepalive_timeout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Sets a timeout for receiving an acknowledgement of the keepalive ping.\n\nIf the ping is not acknowledged within the timeout, the connection will be closed.\nDoes nothing if http2_keep_alive_interval is disabled.\n\nDefault is 20 seconds."
+        },
+        "http2_max_header_list_size": {
+          "description": "Sets the max size of received header frames.\n\nThis will default to whatever the default in hyper is. As of v1.4.1, it is 16 KiB.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "http2_max_pending_accept_reset_streams": {
+          "description": "Configures the maximum number of pending reset streams allowed before a GOAWAY will be sent.\n\nThis will default to whatever the default in h2 is. As of v0.3.17, it is 20.\n\nSee <https://github.com/hyperium/hyper/issues/2877> for more information.",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "initial_connection_window_size": {
+          "description": "Sets the max connection-level flow control for HTTP2",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "initial_stream_window_size": {
+          "description": "Sets the [`SETTINGS_INITIAL_WINDOW_SIZE`][spec] option for HTTP2\nstream-level flow control.\n\nDefault is 65,535\n\n[spec]: https://httpwg.org/specs/rfc9113.html#InitialWindowSize",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max_concurrent_streams": {
+          "description": "Sets the [`SETTINGS_MAX_CONCURRENT_STREAMS`][spec] option for HTTP2\nconnections.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max_connection_age": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Sets the maximum time option in milliseconds that a connection may exist\n\nDefault is no limit (`None`)."
+        },
+        "max_frame_size": {
+          "description": "Sets the maximum frame size to use for HTTP2.\n\nPassing `None` will do nothing.\n\nIf not set, will default from underlying transport.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "port": {
+          "default": 9090,
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "tcp_keepalive": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Set whether TCP keepalive messages are enabled on accepted connections.\n\nIf `None` is specified, keepalive is disabled, otherwise the duration\nspecified will be the time to remain idle before sending TCP keepalive\nprobes.\n\nDefault is no keepalive (`None`)"
+        },
+        "tcp_nodelay": {
+          "default": false,
+          "description": "Set the value of `TCP_NODELAY` option for accepted connections. Enabled by default.",
+          "type": "boolean"
+        },
+        "timeout": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Duration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Set a timeout on for all request handlers."
+        }
+      },
+      "title": "GrpcConfig",
+      "type": "object"
+    },
+    "logger": {
+      "$defs": {
+        "Format": {
+          "enum": [
+            "compact",
+            "pretty",
+            "json"
+          ],
+          "type": "string"
+        },
+        "LogLevel": {
+          "oneOf": [
+            {
+              "const": "off",
+              "description": "The \"off\" level.",
+              "type": "string"
+            },
+            {
+              "const": "trace",
+              "description": "The \"trace\" level.",
+              "type": "string"
+            },
+            {
+              "const": "debug",
+              "description": "The \"debug\" level.",
+              "type": "string"
+            },
+            {
+              "const": "info",
+              "description": "The \"info\" level.",
+              "type": "string"
+            },
+            {
+              "const": "warn",
+              "description": "The \"warn\" level.",
+              "type": "string"
+            },
+            {
+              "const": "error",
+              "description": "The \"error\" level.",
+              "type": "string"
+            }
+          ]
+        },
+        "LoggerFileAppender": {
+          "properties": {
+            "dir": {
+              "default": "./logs",
+              "type": "string"
+            },
+            "enable": {
+              "type": "boolean"
+            },
+            "filename_prefix": {
+              "default": "app",
+              "type": "string"
+            },
+            "filename_suffix": {
+              "default": "log",
+              "type": "string"
+            },
+            "format": {
+              "$ref": "#/$defs/Format"
+            },
+            "max_log_files": {
+              "default": 365,
+              "format": "uint",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "non_blocking": {
+              "default": true,
+              "type": "boolean"
+            },
+            "rotation": {
+              "$ref": "#/$defs/Rotation"
+            }
+          },
+          "required": [
+            "enable"
+          ],
+          "type": "object"
+        },
+        "Rotation": {
+          "enum": [
+            "minutely",
+            "hourly",
+            "daily",
+            "never"
+          ],
+          "type": "string"
+        },
+        "TimeStyle": {
+          "description": "https://docs.rs/tracing-subscriber/latest/tracing_subscriber/fmt/time/index.html",
+          "oneOf": [
+            {
+              "enum": [
+                "none"
+              ],
+              "type": "string"
+            },
+            {
+              "const": "system",
+              "description": "Retrieve and print the current wall-clock time.",
+              "type": "string"
+            },
+            {
+              "const": "uptime",
+              "description": "Retrieve and print the relative elapsed wall-clock time since an epoch.",
+              "type": "string"
+            },
+            {
+              "const": "local",
+              "description": "Formats local times and UTC times with FormatTime implementations that use the chrono crate.",
+              "type": "string"
+            },
+            {
+              "const": "utc",
+              "description": "Formats the current UTC time using a formatter from the chrono crate.",
+              "type": "string"
+            }
+          ]
+        },
+        "WithFields": {
+          "enum": [
+            "file",
+            "line_number",
+            "thread_id",
+            "thread_name",
+            "internal_errors"
+          ],
+          "type": "string"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "enable": {
+          "default": true,
+          "type": "boolean"
+        },
+        "file": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LoggerFileAppender"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Set this if you want to write log to file"
+        },
+        "format": {
+          "$ref": "#/$defs/Format",
+          "description": "Set the logger format.\n\n* options: `compact` | `pretty` | `json`"
+        },
+        "level": {
+          "$ref": "#/$defs/LogLevel",
+          "description": "Set the logger level.\n\n* options: `trace` | `debug` | `info` | `warn` | `error`"
+        },
+        "override_filter": {
+          "description": "Override our custom tracing filter.\n\nSet this to your own filter if you want to see traces from internal\nlibraries. See more [here](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/struct.EnvFilter.html#directives)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "pretty_backtrace": {
+          "default": false,
+          "description": "Enable nice display of backtraces, in development this should be on.\nTurn it off in performance sensitive production deployments.",
+          "type": "boolean"
+        },
+        "time_pattern": {
+          "type": "string"
+        },
+        "time_style": {
+          "$ref": "#/$defs/TimeStyle",
+          "description": "Formatters for event timestamps."
+        },
+        "with_fields": {
+          "items": {
+            "$ref": "#/$defs/WithFields"
+          },
+          "type": "array"
+        }
+      },
+      "title": "LoggerConfig",
+      "type": "object"
+    },
+    "mail": {
+      "$defs": {
+        "MailerAuth": {
+          "description": "Authentication details for the mailer",
+          "properties": {
+            "password": {
+              "description": "Password",
+              "type": "string"
+            },
+            "user": {
+              "description": "User",
+              "type": "string"
+            }
+          },
+          "required": [
+            "user",
+            "password"
+          ],
+          "type": "object"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "SMTP mailer configuration structure.",
+      "properties": {
+        "auth": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MailerAuth"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Auth SMTP server"
+        },
+        "host": {
+          "description": "SMTP host. for example: localhost, smtp.gmail.com etc.",
+          "type": "string"
+        },
+        "port": {
+          "description": "SMTP port",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "secure": {
+          "default": false,
+          "description": "Enable TLS",
+          "type": "boolean"
+        },
+        "stub": {
+          "default": false,
+          "description": "Use stub transport. This transport logs messages and always returns the given response.\nIt can be useful for testing purposes.",
+          "type": "boolean"
+        },
+        "test_connection": {
+          "default": false,
+          "description": "Tests the SMTP connection",
+          "type": "boolean"
+        },
+        "uri": {
+          "description": "Creates a `AsyncSmtpTransportBuilder` from a [connection URL](https://docs.rs/lettre/latest/lettre/transport/smtp/struct.AsyncSmtpTransport.html#method.from_url)",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "title": "MailerConfig",
+      "type": "object"
+    },
+    "nacos": {
+      "$defs": {
+        "NacosBootstrapConfig": {
+          "description": "One-shot config fetch at plugin initialization.",
+          "properties": {
+            "data_id": {
+              "type": "string"
+            },
+            "group": {
+              "default": "DEFAULT_GROUP",
+              "type": "string"
+            }
+          },
+          "required": [
+            "data_id"
+          ],
+          "type": "object"
+        },
+        "NacosRegistrationConfig": {
+          "description": "Service instance registration settings.",
+          "properties": {
+            "cluster": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "group": {
+              "default": "DEFAULT_GROUP",
+              "type": "string"
+            },
+            "ip": {
+              "description": "Instance IP. When omitted, uses the address from [`summer::event::ServerStartedEvent`] or local IP.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "metadata": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "default": {},
+              "description": "Extra instance metadata. A `protocol` key here overrides the value from [`ServerStartedEvent`].",
+              "type": "object"
+            },
+            "port": {
+              "description": "Instance port. When omitted, uses the port from each [`summer::event::ServerStartedEvent`]\n(recommended when both HTTP and gRPC register under the same service name).",
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "service_name": {
+              "type": "string"
+            },
+            "weight": {
+              "default": 0.0,
+              "format": "double",
+              "type": "number"
+            }
+          },
+          "required": [
+            "service_name"
+          ],
+          "type": "object"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "Nacos / [r-nacos](https://github.com/nacos-group/r-nacos) client configuration.",
+      "properties": {
+        "app_name": {
+          "description": "Application name reported to Nacos.",
+          "type": "string"
+        },
+        "bootstrap": {
+          "description": "Remote TOML configs to pull from Nacos on [`ConfigEvent`] and merge into the registry\n(later entries override earlier ones).\n\nTOML: use `[[nacos.bootstrap]]` for multiple entries, or `[nacos.bootstrap]` for one.",
+          "items": {
+            "$ref": "#/$defs/NacosBootstrapConfig"
+          },
+          "type": "array"
+        },
+        "enable_auth": {
+          "default": false,
+          "description": "Enable HTTP auth plugin (required when r-nacos `RNACOS_ENABLE_OPEN_API_AUTH=true`).",
+          "type": "boolean"
+        },
+        "enable_config": {
+          "default": true,
+          "description": "Create a config center client.",
+          "type": "boolean"
+        },
+        "enable_naming": {
+          "default": false,
+          "description": "Create a naming (service discovery) client.",
+          "type": "boolean"
+        },
+        "namespace": {
+          "default": "",
+          "description": "Namespace id. Use empty string for the public namespace.",
+          "type": "string"
+        },
+        "password": {
+          "description": "Auth password.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registration": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NacosRegistrationConfig"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Register this instance to Nacos when a server starts ([`summer::event::ServerStartedEvent`])."
+        },
+        "server_addr": {
+          "default": "127.0.0.1:8848",
+          "description": "Nacos server address, e.g. `127.0.0.1:8848`.",
+          "type": "string"
+        },
+        "username": {
+          "description": "Auth username.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "app_name"
+      ],
+      "title": "NacosConfig",
+      "type": "object"
+    },
+    "opentelemetry": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "enable": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "title": "OpenTelemetryConfig",
+      "type": "object"
+    },
+    "postgres": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "connect": {
+          "description": "The URI for connecting to the postgres. For example:\n* postgresql: `postgres://root:12341234@localhost:5432/myapp_development`\n\nPlease refer to [tokio_postgres::Config] for details.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "connect"
+      ],
+      "title": "PgConfig",
+      "type": "object"
+    },
+    "redis": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "connection_timeout": {
+          "description": "Each connection attempt to the server will time out after `connection_timeout`.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "exponent_base": {
+          "description": "The resulting duration is calculated by taking the base to the `n`-th power,\nwhere `n` denotes the number of past attempts.",
+          "format": "float",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_delay": {
+          "description": "Apply a maximum delay between connection attempts. The delay between attempts won't be longer than max_delay milliseconds.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "number_of_retries": {
+          "description": "number_of_retries times, with an exponentially increasing delay",
+          "format": "uint",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "response_timeout": {
+          "description": "The new connection will time out operations after `response_timeout` has passed.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "uri": {
+          "description": "The URI for connecting to the Redis server. For example:\n<redis://127.0.0.1/>",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "title": "RedisConfig",
+      "type": "object"
+    },
+    "sea-orm": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "acquire_timeout": {
+          "description": "Set the timeout for acquiring a connection",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "connect_timeout": {
+          "description": "Set the timeout duration when acquiring a connection",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "enable_logging": {
+          "default": false,
+          "description": "Enable `SQLx` statement logging",
+          "type": "boolean"
+        },
+        "idle_timeout": {
+          "description": "Set a maximum idle duration for individual connections.\nAny connection that remains in the idle queue longer than this will be closed.\nFor usage-based database server billing, this can be a cost saver.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max_connections": {
+          "default": 10,
+          "description": "Maximum number of connections for a pool",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "min_connections": {
+          "default": 1,
+          "description": "Minimum number of connections for a pool",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "uri": {
+          "description": "The URI for connecting to the database. For example:\n* Postgres: `postgres://root:12341234@localhost:5432/myapp_development`\n* Sqlite: `sqlite://db.sqlite?mode=rwc`",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "title": "SeaOrmConfig",
+      "type": "object"
+    },
+    "sea-orm-web": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "default_page_size": {
+          "default": 20,
+          "description": "Default page size.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_page_size": {
+          "default": 2000,
+          "description": "Configures the maximum page size to be accepted.\nThis allows to put an upper boundary of the page size to prevent potential attacks trying to issue an OOM.\nDefaults to 2000.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "one_indexed": {
+          "default": false,
+          "description": "Configures whether to expose and assume 1-based page number indexes in the request parameters.\nDefaults to false, meaning a page number of 0 in the request equals the first page.\nIf this is set to true, a page number of 1 in the request will be considered the first page.",
+          "type": "boolean"
+        }
+      },
+      "title": "SeaOrmWebConfig",
+      "type": "object"
+    },
+    "socket_io": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "SocketIO configuration",
+      "properties": {
+        "default_namespace": {
+          "default": "/",
+          "type": "string"
+        }
+      },
+      "title": "SocketIOConfig",
+      "type": "object"
+    },
+    "sqlx": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "acquire_timeout": {
+          "description": "Set the timeout for acquiring a connection",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "connect_timeout": {
+          "description": "Set the timeout duration when acquiring a connection",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "idle_timeout": {
+          "description": "Set a maximum idle duration for individual connections.\nAny connection that remains in the idle queue longer than this will be closed.\nFor usage-based database server billing, this can be a cost saver.",
+          "format": "uint64",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "max_connections": {
+          "default": 10,
+          "description": "Maximum number of connections for a pool",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "min_connections": {
+          "default": 1,
+          "description": "Minimum number of connections for a pool",
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "uri": {
+          "description": "The URI for connecting to the database. For example:\n* Postgres: `postgres://root:12341234@localhost:5432/myapp_development`\n* Sqlite: `sqlite://db.sqlite?mode=rwc`",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "title": "SqlxConfig",
+      "type": "object"
+    },
+    "stream": {
+      "$defs": {
+        "AutoCommit": {
+          "description": "The auto ack / commit mechanism.",
+          "oneOf": [
+            {
+              "const": "Immediate",
+              "description": "`XREAD` with `NOACK`. This acknowledges messages as soon as they are fetched.\nIn the event of service restart, this will likely result in messages being skipped.",
+              "type": "string"
+            },
+            {
+              "const": "Delayed",
+              "description": "Auto ack and commit, but only after `auto_commit_delay` has passed since messages are read.\n\nThis is the default option, because users don't have to do anything extra. This also mimicks Kafka clients.",
+              "type": "string"
+            },
+            {
+              "const": "Rolling",
+              "description": "Do not auto ack, but continually commit acked messages to the server as new messages are read.\nThe consumer will not commit more often than `auto_commit_interval`.\nYou have to call [`RedisConsumer::ack`](crate::RedisConsumer::ack) manually.\n\nThis is the recommended option for achieving 'at-least-once' semantics.",
+              "type": "string"
+            },
+            {
+              "const": "Disabled",
+              "description": "Never auto ack or commit.\nYou have to call [`RedisConsumer::ack`](crate::RedisConsumer::ack) and [`RedisConsumer::commit`](crate::RedisConsumer::commit) manually.",
+              "type": "string"
+            }
+          ]
+        },
+        "AutoOffsetReset": {
+          "oneOf": [
+            {
+              "const": "Earliest",
+              "description": "Automatically reset the offset to the earliest offset.",
+              "type": "string"
+            },
+            {
+              "const": "Latest",
+              "description": "Automatically reset the offset to the latest offset.",
+              "type": "string"
+            },
+            {
+              "const": "NoReset",
+              "description": "Throw exception to the consumer if no previous offset is found for the consumer's group.",
+              "type": "string"
+            }
+          ]
+        },
+        "AutoStreamReset": {
+          "description": "Where to start streaming from if there is no priori state.",
+          "oneOf": [
+            {
+              "const": "Earliest",
+              "description": "Use `0` as ID, which is the earliest message.",
+              "type": "string"
+            },
+            {
+              "const": "Latest",
+              "description": "Use `$` as ID, which is the latest message.",
+              "type": "string"
+            }
+          ]
+        },
+        "AutoStreamReset2": {
+          "enum": [
+            "Earliest",
+            "Latest"
+          ],
+          "type": "string"
+        },
+        "CompressionType": {
+          "enum": [
+            "None",
+            "Gzip",
+            "Snappy",
+            "Lz4",
+            "Zstd"
+          ],
+          "type": "string"
+        },
+        "ConnectOptions": {
+          "properties": {
+            "custom_options": {
+              "default": [],
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "sasl_options": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SaslOptions"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "security_protocol": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/SecurityProtocol"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "timeout": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "ConnectOptions2": {
+          "properties": {
+            "db": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "disable_hostname_verification": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "enable_cluster": {
+              "default": false,
+              "type": "boolean"
+            },
+            "password": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "timeout": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "username": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "db"
+          ],
+          "type": "object"
+        },
+        "ConnectOptions3": {
+          "properties": {
+            "loopback": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "loopback"
+          ],
+          "type": "object"
+        },
+        "ConnectOptions4": {
+          "properties": {
+            "beacon_interval": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "create_file": {
+              "$ref": "#/$defs/CreateFileOption"
+            },
+            "end_with_eos": {
+              "default": false,
+              "type": "boolean"
+            },
+            "file_size_limit": {
+              "format": "uint64",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "prefetch_message": {
+              "format": "uint",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "create_file"
+          ],
+          "type": "object"
+        },
+        "ConsumerMode": {
+          "oneOf": [
+            {
+              "const": "RealTime",
+              "description": "This is the 'vanilla' stream consumer. It does not auto-commit, and thus only consumes messages from now on.",
+              "type": "string"
+            },
+            {
+              "const": "Resumable",
+              "description": "When the process restarts, it will resume the stream from the previous committed sequence.",
+              "type": "string"
+            },
+            {
+              "const": "LoadBalanced",
+              "description": "You should assign a consumer group manually. The load-balancing mechanism is implementation-specific.",
+              "type": "string"
+            }
+          ]
+        },
+        "ConsumerOptions": {
+          "properties": {
+            "auto_commit_interval": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "auto_offset_reset": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/AutoOffsetReset"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "custom_options": {
+              "default": [],
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "enable_auto_commit": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "enable_auto_offset_store": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "group_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mode": {
+              "$ref": "#/$defs/ConsumerMode"
+            },
+            "session_timeout": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "mode"
+          ],
+          "type": "object"
+        },
+        "ConsumerOptions2": {
+          "properties": {
+            "auto_claim_idle": {
+              "$ref": "#/$defs/Duration"
+            },
+            "auto_claim_interval": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "auto_commit": {
+              "$ref": "#/$defs/AutoCommit"
+            },
+            "auto_commit_delay": {
+              "$ref": "#/$defs/Duration"
+            },
+            "auto_commit_interval": {
+              "$ref": "#/$defs/Duration"
+            },
+            "auto_stream_reset": {
+              "$ref": "#/$defs/AutoStreamReset"
+            },
+            "batch_size": {
+              "format": "uint",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "consumer_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "consumer_timeout": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "group_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mkstream": {
+              "type": "boolean"
+            },
+            "mode": {
+              "$ref": "#/$defs/ConsumerMode"
+            },
+            "shard_ownership": {
+              "$ref": "#/$defs/ShardOwnership"
+            }
+          },
+          "required": [
+            "mode",
+            "auto_stream_reset",
+            "auto_commit",
+            "auto_commit_delay",
+            "auto_commit_interval",
+            "auto_claim_idle",
+            "batch_size",
+            "shard_ownership",
+            "mkstream"
+          ],
+          "type": "object"
+        },
+        "ConsumerOptions3": {
+          "properties": {
+            "group_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mode": {
+              "$ref": "#/$defs/ConsumerMode"
+            }
+          },
+          "required": [
+            "mode"
+          ],
+          "type": "object"
+        },
+        "ConsumerOptions4": {
+          "properties": {
+            "auto_stream_reset": {
+              "$ref": "#/$defs/AutoStreamReset2"
+            },
+            "group_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "live_streaming": {
+              "type": "boolean"
+            },
+            "mode": {
+              "$ref": "#/$defs/ConsumerMode"
+            }
+          },
+          "required": [
+            "mode",
+            "auto_stream_reset",
+            "live_streaming"
+          ],
+          "type": "object"
+        },
+        "CreateFileOption": {
+          "oneOf": [
+            {
+              "enum": [
+                "CreateIfNotExists"
+              ],
+              "type": "string"
+            },
+            {
+              "const": "Never",
+              "description": "File must already exists",
+              "type": "string"
+            },
+            {
+              "const": "Always",
+              "description": "Fail if the file already exists",
+              "type": "string"
+            }
+          ]
+        },
+        "Duration": {
+          "properties": {
+            "nanos": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "secs": {
+              "format": "uint64",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "secs",
+            "nanos"
+          ],
+          "type": "object"
+        },
+        "FileOptions": {
+          "properties": {
+            "connect": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConnectOptions4"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "consumer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConsumerOptions4"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "producer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ProducerOptions4"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "KafkaOptions": {
+          "properties": {
+            "connect": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConnectOptions"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "consumer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConsumerOptions"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "producer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ProducerOptions"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "ProducerOptions": {
+          "properties": {
+            "compression_type": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CompressionType"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "custom_options": {
+              "default": [],
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "transaction_timeout": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Duration"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "ProducerOptions2": {
+          "properties": {
+            "num_shards": {
+              "default": 16,
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "sharder_algo": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Sharder"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "ProducerOptions3": {
+          "type": "object"
+        },
+        "ProducerOptions4": {
+          "type": "object"
+        },
+        "RedisOptions": {
+          "properties": {
+            "connect": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConnectOptions2"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "consumer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConsumerOptions2"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "producer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ProducerOptions2"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "SaslMechanism": {
+          "enum": [
+            "Plain",
+            "Gssapi",
+            "ScramSha256",
+            "ScramSha512",
+            "Oauthbearer"
+          ],
+          "type": "string"
+        },
+        "SaslOptions": {
+          "properties": {
+            "mechanism": {
+              "$ref": "#/$defs/SaslMechanism"
+            },
+            "password": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "username": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "mechanism"
+          ],
+          "type": "object"
+        },
+        "SecurityProtocol": {
+          "enum": [
+            "Plaintext",
+            "Ssl",
+            "SaslPlaintext",
+            "SaslSsl"
+          ],
+          "type": "string"
+        },
+        "ShardOwnership": {
+          "description": "The shard ownership model.",
+          "oneOf": [
+            {
+              "const": "Shared",
+              "description": "Consumers in the same group share the same shard",
+              "type": "string"
+            },
+            {
+              "const": "Owned",
+              "description": "Consumers claim ownership of a shard\n\n> This feature is still WIP",
+              "type": "string"
+            }
+          ]
+        },
+        "Sharder": {
+          "enum": [
+            "RoundRobin",
+            "PseudoRandom"
+          ],
+          "type": "string"
+        },
+        "StdioOptions": {
+          "properties": {
+            "connect": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConnectOptions3"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "consumer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ConsumerOptions3"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "producer": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/ProducerOptions3"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "type": "object"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "file": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FileOptions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kafka": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/KafkaOptions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "redis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RedisOptions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stdio": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/StdioOptions"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uri": {
+          "description": "[streamer server uri][config]\n\n[config]: https://docs.rs/sea-streamer-types/latest/sea_streamer_types/struct.StreamerUri.html",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "title": "StreamConfig",
+      "type": "object"
+    },
+    "web": {
+      "$defs": {
+        "Contact": {
+          "additionalProperties": true,
+          "description": "Contact information for the exposed API.",
+          "properties": {
+            "email": {
+              "description": "The email address of the contact person/organization.\nThis MUST be in the format of an email address.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "description": "The identifying name of the contact person/organization.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "url": {
+              "description": "The URL pointing to the contact information.\nThis MUST be in the format of a URL.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "CorsMiddleware": {
+          "description": "CORS middleware configuration",
+          "properties": {
+            "allow_headers": {
+              "description": "Allow headers",
+              "items": {
+                "type": "string"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            },
+            "allow_methods": {
+              "description": "Allow methods",
+              "items": {
+                "type": "string"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            },
+            "allow_origins": {
+              "description": "Allow origins",
+              "items": {
+                "type": "string"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            },
+            "enable": {
+              "description": "toggle enable",
+              "type": "boolean"
+            },
+            "max_age": {
+              "description": "Max age",
+              "format": "uint64",
+              "minimum": 0,
+              "type": [
+                "integer",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "enable"
+          ],
+          "type": "object"
+        },
+        "EnableMiddleware": {
+          "description": "A generic middleware configuration that can be enabled or\ndisabled.",
+          "properties": {
+            "enable": {
+              "description": "toggle enable",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "enable"
+          ],
+          "type": "object"
+        },
+        "Info": {
+          "additionalProperties": true,
+          "description": "The object provides metadata about the API.\nThe metadata MAY be used by the clients if needed,\nand MAY be presented in editing or documentation generation tools for\nconvenience.",
+          "properties": {
+            "contact": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Contact"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The contact information for the exposed API."
+            },
+            "description": {
+              "description": "A description of the API.\nCommonMark syntax MAY be used for rich text representation.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "license": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/License"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The license information for the exposed API."
+            },
+            "summary": {
+              "description": "A short summary of the API.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "termsOfService": {
+              "description": "A URL to the Terms of Service for the API.\nThis MUST be in the format of a URL.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "title": {
+              "description": "REQUIRED. The title of the application.",
+              "type": "string"
+            },
+            "version": {
+              "description": "REQUIRED. The version of the OpenAPI document (which is distinct from\nthe OpenAPI Specification version or the API implementation version).",
+              "type": "string"
+            }
+          },
+          "required": [
+            "title",
+            "version"
+          ],
+          "type": "object"
+        },
+        "License": {
+          "additionalProperties": true,
+          "description": "License information for the exposed API.",
+          "properties": {
+            "identifier": {
+              "description": "An [SPDX](https://spdx.org/spdx-specification-21-web-version#h.jxpfx0ykyb60) license expression for the API. The `identifier` field is mutually exclusive of the `url` field.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "description": "REQUIRED. The license name used for the API.",
+              "type": "string"
+            },
+            "url": {
+              "description": "A URL to the license used for the API. This MUST be in the form of a\nURL. The `url` field is mutually exclusive of the `identifier` field.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "type": "object"
+        },
+        "LimitPayloadMiddleware": {
+          "description": "Limit payload size middleware configuration",
+          "properties": {
+            "body_limit": {
+              "description": "Body limit. for example: 5mb",
+              "type": "string"
+            },
+            "enable": {
+              "description": "toggle enable",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "enable",
+            "body_limit"
+          ],
+          "type": "object"
+        },
+        "LogLevel": {
+          "oneOf": [
+            {
+              "const": "trace",
+              "description": "The \"trace\" level.",
+              "type": "string"
+            },
+            {
+              "const": "debug",
+              "description": "The \"debug\" level.",
+              "type": "string"
+            },
+            {
+              "const": "info",
+              "description": "The \"info\" level.",
+              "type": "string"
+            },
+            {
+              "const": "warn",
+              "description": "The \"warn\" level.",
+              "type": "string"
+            },
+            {
+              "const": "error",
+              "description": "The \"error\" level.",
+              "type": "string"
+            }
+          ]
+        },
+        "Middlewares": {
+          "description": "Server middleware configuration structure.",
+          "properties": {
+            "catch_panic": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/EnableMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "catch any code panic and log the error."
+            },
+            "compression": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/EnableMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Middleware that enable compression for the response."
+            },
+            "cors": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/CorsMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Setting cors configuration"
+            },
+            "limit_payload": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/LimitPayloadMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Middleware that limit the payload request."
+            },
+            "logger": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TraceLoggerMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Middleware that improve the tracing logger and adding trace id for each\nrequest."
+            },
+            "static": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/StaticAssetsMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Serving static assets"
+            },
+            "timeout_request": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/TimeoutRequestMiddleware"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Setting a global timeout for the requests"
+            }
+          },
+          "type": "object"
+        },
+        "OpenApiConfig": {
+          "properties": {
+            "doc_prefix": {
+              "default": "/docs",
+              "type": "string"
+            },
+            "info": {
+              "$ref": "#/$defs/Info",
+              "default": {
+                "title": "",
+                "version": ""
+              }
+            }
+          },
+          "type": "object"
+        },
+        "StaticAssetsMiddleware": {
+          "description": "Static asset middleware configuration",
+          "properties": {
+            "enable": {
+              "description": "toggle enable",
+              "type": "boolean"
+            },
+            "fallback": {
+              "default": "index.html",
+              "description": "Fallback page for a case when no asset exists (404). Useful for SPA\n(single page app) where routes are virtual.",
+              "type": "string"
+            },
+            "must_exist": {
+              "default": false,
+              "description": "Check that assets must exist on disk",
+              "type": "boolean"
+            },
+            "path": {
+              "default": "static",
+              "description": "Path for the assets",
+              "type": "string"
+            },
+            "precompressed": {
+              "default": false,
+              "description": "Enable `precompressed_gzip`",
+              "type": "boolean"
+            },
+            "uri": {
+              "default": "/static",
+              "description": "Uri for the assets",
+              "type": "string"
+            }
+          },
+          "required": [
+            "enable"
+          ],
+          "type": "object"
+        },
+        "TimeoutRequestMiddleware": {
+          "description": "Timeout middleware configuration",
+          "properties": {
+            "enable": {
+              "description": "toggle enable",
+              "type": "boolean"
+            },
+            "timeout": {
+              "description": "Timeout request in milliseconds",
+              "format": "uint64",
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "enable",
+            "timeout"
+          ],
+          "type": "object"
+        },
+        "TraceLoggerMiddleware": {
+          "description": "CORS middleware configuration",
+          "properties": {
+            "enable": {
+              "description": "toggle enable",
+              "type": "boolean"
+            },
+            "level": {
+              "$ref": "#/$defs/LogLevel"
+            }
+          },
+          "required": [
+            "enable",
+            "level"
+          ],
+          "type": "object"
+        }
+      },
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "summer-web Config",
+      "properties": {
+        "binding": {
+          "default": "0.0.0.0",
+          "format": "ip",
+          "type": "string"
+        },
+        "connect_info": {
+          "default": false,
+          "type": "boolean"
+        },
+        "global_prefix": {
+          "default": "",
+          "type": "string"
+        },
+        "graceful": {
+          "default": true,
+          "type": "boolean"
+        },
+        "middlewares": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Middlewares"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "openapi": {
+          "$ref": "#/$defs/OpenApiConfig",
+          "description": "Omitted in TOML when all fields use their defaults (common in tests where\n`summer-web/openapi` is pulled in transitively, e.g. via `summer-macros`)."
+        },
+        "port": {
+          "default": 8080,
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "title": "WebConfig",
+      "type": "object"
+    },
+    "xxl-job": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "description": "Configuration for the xxl-job / ratch-job executor.\n\nThe TOML section name is `[xxl-job]`. Field names use snake_case in TOML\n(consistent with other summer plugins).",
+      "properties": {
+        "access_token": {
+          "description": "Access token shared between admin and executor. Optional.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "admin_addresses": {
+          "description": "Address of xxl-job-admin (or ratch-job admin), e.g.\n`http://127.0.0.1:8080/xxl-job-admin`.",
+          "type": "string"
+        },
+        "app_name": {
+          "description": "Executor app name registered in admin (`xxl.job.executor.appname`).",
+          "type": "string"
+        },
+        "headers": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "default": {},
+          "description": "Extra HTTP headers attached to every request to admin (e.g. for\ngateway authentication).",
+          "type": "object"
+        },
+        "ip": {
+          "description": "IP advertised to admin. When omitted the SDK auto-detects the local IP.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "log_path": {
+          "default": "logs/xxl-job",
+          "description": "Local directory used for xxl-job online log viewing.",
+          "type": "string"
+        },
+        "log_retention_days": {
+          "description": "Number of days to retain executor logs on disk.",
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "port": {
+          "description": "Port of the embedded executor HTTP server. When omitted the SDK picks\na default port.",
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "ssl_danger_accept_invalid_certs": {
+          "default": false,
+          "description": "Skip TLS certificate validation when admin uses HTTPS. Dangerous, off\nby default.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "admin_addresses",
+        "app_name"
+      ],
+      "title": "XxlJobConfig",
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

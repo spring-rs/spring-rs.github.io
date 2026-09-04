@@ -1,0 +1,426 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 rel=preload type=font/woff2><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 rel=preload type=font/woff2><link href=https://summer-rs.github.io/main.css rel=stylesheet><meta content="index, follow" name=robots><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=googlebot><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=bingbot><meta content=9BE3AFA1A1AE6AF5B38F990F208A4EE1 name=msvalidate.01><title>summer-web Plugin | summer-rs</title><meta content="How to use the summer-web plugin" name=description><link href=https://summer-rs.github.io/docs/plugins/summer-web/ rel=canonical><script type=application/ld+json>
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://summer-rs.github.io/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://summer-rs.github.io/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Plugins",
+            "item": "https://summer-rs.github.io/docs/plugins/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Summer Web",
+            "item": "https://summer-rs.github.io/docs/plugins/summer-web/"
+          },
+        
+      
+    
+  }
+</script><script>var _hmt=_hmt||[];(()=>{let c=`script`;var a=document.createElement(c);a.src=`https://hm.baidu.com/hm.js?2fd7792d4246d07ebbd9db04334ac94d`;var b=document.getElementsByTagName(c)[0];b.parentNode.insertBefore(a,b)})()</script><script>((a,b,c,d,e,f,g)=>{a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};f=b.createElement(d);f.async=1;f.src=`https://www.clarity.ms/tag/`+ e;g=b.getElementsByTagName(d)[0];g.parentNode.insertBefore(f,g)})(window,document,`clarity`,`script`,`nl0r1el6gp`)</script><meta content=#fff name=theme-color><meta content=#2b5797 name=msapplication-TileColor><link href=https://summer-rs.github.io/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://summer-rs.github.io/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://summer-rs.github.io/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link color=#5bbad5 href=https://summer-rs.github.io/safari-pinned-tab.svg rel=mask-icon><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" id=menu-btn type=checkbox><label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 me-auto" href=https://summer-rs.github.io>summer-rs</a><button aria-label="Toggle mode" class="btn btn-link order-2 order-md-4" id=mode type=button><span class=toggle-dark><svg class="feather feather-moon" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span> <span class=toggle-light><svg class="feather feather-sun" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><circle cx=12 cy=12 r=5></circle><line x1=12 x2=12 y1=1 y2=3></line><line x1=12 x2=12 y1=21 y2=23></line><line x1=4.22 x2=5.64 y1=4.22 y2=5.64></line><line x1=18.36 x2=19.78 y1=18.36 y2=19.78></line><line x1=1 x2=3 y1=12 y2=12></line><line x1=21 x2=23 y1=12 y2=12></line><line x1=4.22 x2=5.64 y1=19.78 y2=18.36></line><line x1=18.36 x2=19.78 y1=5.64 y2=4.22></line></svg></span></button><ul class="navbar-nav fork-me order-3 order-md-5"><li class="nav-item dropdown"><a class=nav-link href=#> <svg viewbox="0 0 1024 1024" fill=currentColor height=20 version=1.1 width=20 xmlns=http://www.w3.org/2000/svg><path d="M549.12 643.2l-108.373333-107.093333 1.28-1.28c74.24-82.773333 127.146667-177.92 158.293333-278.613334H725.333333V170.666667H426.666667V85.333333h-85.333334v85.333334H42.666667v84.906666h476.586666A673.834667 673.834667 0 0 1 384 484.266667a672.853333 672.853333 0 0 1-98.56-142.933334h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56L110.293333 750.293333 170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-86.826667zM789.333333 426.666667h-85.333333l-192 512h85.333333l48-128h202.666667L896 938.666667h85.333333l-192-512z m-112 298.666666L746.666667 540.373333 816 725.333333h-138.666667z"></path></svg> </a> <div class=dropdown-menu><a class=dropdown-item href=https://summer-rs.github.io/zh/docs/plugins/summer-web/>中文</a></div><li class=nav-item><a class=nav-link href=https://github.com/summer-rs/summer-rs><svg class="feather feather-github" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item docs active"><a class=nav-link href=https://summer-rs.github.io/docs/getting-started/introduction/>Docs</a><li class=nav-item><a class=nav-link href=https://summer-rs.github.io/blog/>Blog</a></ul><div class="break order-6 d-md-none"></div><form class="navbar-form flex-grow-1 order-7 order-md-3"><input aria-label="Search docs..." class="form-control is-search" placeholder="Search docs..." autocomplete=off id=userinput type=search><div class="shadow bg-white rounded" id=suggestions></div></form></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav aria-label="Main navigation" class=docs-links><h3>Getting Started</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/introduction/>Introduction</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/quick-start/>Quick Start</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/di/>Dependency inject</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/config/>Load Configuration</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/component/>Component Macro</a></ul><h3>Plugins</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-pubsub/>summer-pubsub Plugin</a><li><a class="docs-link active" href=https://summer-rs.github.io/docs/plugins/summer-web/>summer-web Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-sqlx/>summer-sqlx Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-postgres/>summer-postgres Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-sea-orm/>summer-sea-orm Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-redis/>summer-redis Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-nacos/>summer-nacos Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-job/>summer-job Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-xxl-job/>summer-xxl-job Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-apalis/>summer-apalis Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-sa-token/>summer-sa-token Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-stream/>summer-stream Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-mail/>summer-mail Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-resilience/>summer-resilience Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-opendal/>summer-opendal Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-logger/>logger Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-opentelemetry/>opentelemetry Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-grpc/>summer-grpc Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/plugin-by-self/>Writing your own plugins</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/contribute-plugins/>Community contributed plugins</a></ul><h3>Help</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/docs/help/auto-reload/>Auto-Reloading Development Server</a><li><a class=docs-link href=https://summer-rs.github.io/docs/help/faq/>FAQ</a></ul></nav></div><nav aria-label="Secondary navigation" class="docs-toc d-none d-xl-block col-xl-3"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><ul><li class=ml-4><a href=#dependencies>Dependencies</a><li class=ml-4><a href=#configuration-items>Configuration items</a><li class=ml-4><a href=#api-interface>API interface</a><li class=ml-4><a href=#attribute-macro>Attribute macro</a><li class=ml-4><a href=#extract-the-component-registered-by-the-plugin>Extract the Component registered by the plugin</a><li class=ml-4><a href=#read-configuration>Read configuration</a><li class=ml-4><a href=#use-extractor-in-middleware>Use Extractor in Middleware</a></ul><li><a href=#socketio-support>SocketIO support</a><li><a href=#openapi-support>OpenAPI support</a></li><ul><li class=ml-4><a href=#simplified-error-handling-with-automatic-problem-details>Simplified Error Handling with Automatic Problem Details</a><li class=ml-4><a href=#advanced-problem-details-with-custom-attributes>Advanced Problem Details with Custom Attributes</a></ul></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>summer-web Plugin</h1><p class=lead>summer-web is based on <a href=https://github.com/tokio-rs/axum target=_blank>axum</a><p><a href=https://crates.io/crates/summer-web><img alt=crates.io src=https://img.shields.io/crates/v/summer-web.svg></a> <a href=https://docs.rs/summer-web><img alt=Documentation src=https://docs.rs/summer-web/badge.svg></a><p><a href=https://github.com/tokio-rs/axum>Axum</a> is one of the best web frameworks in the Rust community. It is a sub-project based on <a href=https://github.com/hyperium/hyper>hyper</a> maintained by Tokio. Axum provides web routing, declarative HTTP request parsing, HTTP response serialization, and can be combined with the middleware in the <a href=https://github.com/tower-rs>tower</a> ecosystem.<h2 id=dependencies>Dependencies</h2><pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span style=color:#bf616a>summer-web </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>&LTversion></span><span>" }
+</span></code></pre><p>optional <strong>features</strong>:<ul><li><code>http2</code>: http2<li><code>multipart</code>: file upload<li><code>ws</code>: websocket<li><code>socket_io</code>: SocketIO support<li><code>openapi</code>: OpenAPI documentation<li><code>openapi-redoc</code>: Redoc documentation interface<li><code>openapi-scalar</code>: Scalar documentation interface<li><code>openapi-swagger</code>: Swagger documentation interface</ul><h2 id=configuration-items>Configuration items</h2><pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[web]
+</span><span style=color:#bf616a>binding </span><span>= "</span><span style=color:#a3be8c>172.20.10.4</span><span>"  </span><span style=color:#65737e># IP address of the network interface to bind, default 0.0.0.0
+</span><span style=color:#bf616a>port </span><span>= </span><span style=color:#d08770>8000              </span><span style=color:#65737e># Port number to bind, default 8080
+</span><span style=color:#bf616a>connect_info </span><span>= </span><span style=color:#d08770>false     </span><span style=color:#65737e># Whether to use client connection information, default false
+</span><span style=color:#bf616a>graceful </span><span>= </span><span style=color:#d08770>true          </span><span style=color:#65737e># Whether to enable graceful shutdown, default false
+</span><span style=color:#bf616a>global_prefix </span><span>= "</span><span style=color:#a3be8c>api</span><span>"    </span><span style=color:#65737e># Global prefix for all routes, default empty
+</span><span>
+</span><span style=color:#65737e># Web middleware configuration
+</span><span>[web.middlewares]
+</span><span style=color:#bf616a>compression </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true </span><span>}                        </span><span style=color:#65737e># Enable compression middleware
+</span><span style=color:#bf616a>catch_panic </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true </span><span>}                        </span><span style=color:#65737e># Capture panic generated by handler
+</span><span style=color:#bf616a>logger </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true</span><span>, </span><span style=color:#bf616a>level </span><span>= "</span><span style=color:#a3be8c>info</span><span>" }             </span><span style=color:#65737e># Enable log middleware
+</span><span style=color:#bf616a>limit_payload </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true</span><span>, </span><span style=color:#bf616a>body_limit </span><span>= "</span><span style=color:#a3be8c>5MB</span><span>" }  </span><span style=color:#65737e># Limit request body size
+</span><span style=color:#bf616a>timeout_request </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true</span><span>, </span><span style=color:#bf616a>timeout </span><span>= </span><span style=color:#d08770>60000 </span><span>}   </span><span style=color:#65737e># Request timeout 60s
+</span><span>
+</span><span style=color:#65737e># Cross-domain configuration
+</span><span style=color:#bf616a>cors </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true</span><span>, </span><span style=color:#bf616a>allow_origins </span><span>= [
+</span><span>    "</span><span style=color:#a3be8c>https://summer-rs.github.io</span><span>",
+</span><span>], </span><span style=color:#bf616a>allow_headers </span><span>= [
+</span><span>    "</span><span style=color:#a3be8c>Authentication</span><span>",
+</span><span>], </span><span style=color:#bf616a>allow_methods </span><span>= [
+</span><span>    "</span><span style=color:#a3be8c>GET</span><span>",
+</span><span>    "</span><span style=color:#a3be8c>POST</span><span>",
+</span><span>], </span><span style=color:#bf616a>max_age </span><span>= </span><span style=color:#d08770>60 </span><span>}
+</span><span>
+</span><span style=color:#65737e># Static resource configuration
+</span><span style=color:#bf616a>static </span><span>= { </span><span style=color:#bf616a>enable </span><span>= </span><span style=color:#d08770>true</span><span>, </span><span style=color:#bf616a>uri </span><span>= "</span><span style=color:#a3be8c>/static</span><span>", </span><span style=color:#bf616a>path </span><span>= "</span><span style=color:#a3be8c>static</span><span>", </span><span style=color:#bf616a>precompressed </span><span>= </span><span style=color:#d08770>true</span><span>, </span><span style=color:#bf616a>fallback </span><span>= "</span><span style=color:#a3be8c>index.html</span><span>" }
+</span></code></pre><blockquote><p><strong>NOTE</strong>: The above middleware configuration can integrate the middleware provided in the tower ecosystem. Of course, if you are very familiar with the tower ecosystem, you can also configure it yourself by writing code without enabling these middleware. The following are relevant document links:<ul><li><a href=https://docs.rs/tower/latest/tower/>tower</a><li><a href=https://docs.rs/tower-http/latest/tower_http/>tower-http</a></ul></blockquote><h2 id=api-interface>API interface</h2><p>App implements the <a href=https://docs.rs/summer-web/latest/summer_web/trait.WebConfigurator.html>WebConfigurator</a> feature, which can be used to specify routing configuration:<pre class=language-rust data-lang=rust data-linenos style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><table><tbody><tr><td>1<td><span style=color:#b48ead>use </span><span>summer::App;
+</span><tr><td>2<td><span style=color:#b48ead>use </span><span>summer_web::{get, get_api};
+</span><tr><td>3<td><span style=color:#b48ead>use </span><span>summer_web::{WebPlugin, WebConfigurator, Router, axum::response::IntoResponse, handler::TypeRouter};
+</span><tr><td>4<td><span style=color:#b48ead>use </span><span>summer_sqlx::SqlxPlugin;
+</span><tr><td>5<td><span>
+</span><tr><td><mark style=background-color:#65737e30>6</mark><td><mark style=background-color:#65737e30><span>#[</span><span style=color:#bf616a>tokio</span><span>::</span><span style=color:#bf616a>main</span><span>]
+</span></mark><tr><td>7<td><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>main</span><span>() {
+</span><tr><td>8<td><span>    App::new()
+</span><tr><td>9<td><span>      .</span><span style=color:#96b5b4>add_plugin</span><span>(SqlxPlugin)
+</span><tr><td><mark style=background-color:#65737e30>10</mark><td><mark style=background-color:#65737e30><span>      .</span><span style=color:#96b5b4>add_plugin</span><span>(WebPlugin)
+</span></mark><tr><td><mark style=background-color:#65737e30>11</mark><td><mark style=background-color:#65737e30><span>      .</span><span style=color:#96b5b4>add_router</span><span>(</span><span style=color:#96b5b4>router</span><span>())
+</span></mark><tr><td><mark style=background-color:#65737e30>12</mark><td><mark style=background-color:#65737e30><span>      .</span><span style=color:#96b5b4>run</span><span>()
+</span></mark><tr><td><mark style=background-color:#65737e30>13</mark><td><mark style=background-color:#65737e30><span>      .await
+</span></mark><tr><td><mark style=background-color:#65737e30>14</mark><td><mark style=background-color:#65737e30><span>}
+</span></mark><tr><td><mark style=background-color:#65737e30>15</mark><td><mark style=background-color:#65737e30><span>
+</span></mark><tr><td><mark style=background-color:#65737e30>16</mark><td><mark style=background-color:#65737e30><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>router</span><span>() -> Router {
+</span></mark><tr><td><mark style=background-color:#65737e30>17</mark><td><mark style=background-color:#65737e30><span>    Router::new().</span><span style=color:#96b5b4>typed_route</span><span>(hello_word)
+</span></mark><tr><td><mark style=background-color:#65737e30>18</mark><td><mark style=background-color:#65737e30><span>}
+</span></mark><tr><td>19<td><span>
+</span><tr><td>20<td><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/</span><span>")]
+</span><tr><td>21<td><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>hello_word</span><span>() -> impl IntoResponse {
+</span><tr><td>22<td><span>   "</span><span style=color:#a3be8c>hello word</span><span>"
+</span><tr><td>23<td><span>}
+</span><tr><td>24<td><span>
+</span><tr><td>25<td><span style=color:#65737e>/// # The API summary title must use the head-1 in Markdown format.
+</span><tr><td>26<td><span style=color:#65737e>/// description
+</span><tr><td>27<td><span style=color:#65737e>/// description support multi line
+</span><tr><td>28<td><span style=color:#65737e>/// The get_api macro automatically collects the request parameters and response schema.
+</span><tr><td>29<td><span style=color:#65737e>/// @tag api_tag
+</span><tr><td>30<td><span>#[</span><span style=color:#bf616a>get_api</span><span>("</span><span style=color:#a3be8c>/api</span><span>")]
+</span><tr><td>31<td><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>hello_api</span><span>() -> String {
+</span><tr><td>32<td><span>   "</span><span style=color:#a3be8c>hello api</span><span>".</span><span style=color:#96b5b4>to_string</span><span>()
+</span><tr><td>33<td><span>}
+</span></table></code></pre><p>You can also use the <code>auto_config</code> macro to implement automatic configuration. This process macro will automatically register the routes marked by the Procedural Macro into the app:<pre class=language-diff data-lang=diff style=color:#c0c5ce;background-color:#2b303b><code class=language-diff data-lang=diff><span style=color:#a3be8c>+#[auto_config(WebConfigurator)]
+</span><span> #[tokio::main]
+</span><span> async fn main() {
+</span><span>    App::new()
+</span><span>    .add_plugin(SqlxPlugin)
+</span><span>    .add_plugin(WebPlugin)
+</span><span style=color:#bf616a>-   .add_router(router())
+</span><span>    .run()
+</span><span>    .await
+</span><span>}
+</span><span>
+</span><span style=color:#bf616a>-fn router() -> Router {
+</span><span style=color:#bf616a>-    Router::new().typed_route(hello_word)
+</span><span style=color:#bf616a>-}
+</span></code></pre><h2 id=attribute-macro>Attribute macro</h2><p>In the example above, <code>get</code> is an attribute macro. <code>summer-web</code> provides procedural macros for eight standard HTTP methods: <code>get</code>, <code>post</code>, <code>patch</code>, <code>put</code>, <code>delete</code>, <code>head</code>, <code>trace</code>, and <code>options</code>. It also provides eight macros for generating OpenAPI documentation, such as <code>get_api</code> and <code>post_api</code>.<p>You can also use the <code>route</code> or <code>api_route</code> macros to bind multiple methods simultaneously:<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_web::route;
+</span><span style=color:#b48ead>use </span><span>summer_web::axum::response::IntoResponse;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>route</span><span>("</span><span style=color:#a3be8c>/test</span><span>", method = "</span><span style=color:#a3be8c>GET</span><span>", method = "</span><span style=color:#a3be8c>HEAD</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>example</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>hello world</span><span>"
+</span><span>}
+</span></code></pre><p>In addition, summer also supports binding multiple routes to a handler, which requires the <a href=https://docs.rs/summer-macros/latest/summer_macros/attr.routes.html><code>routes</code></a> attribute macro:<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_web::{routes, get, delete};
+</span><span style=color:#b48ead>use </span><span>summer_web::axum::response::IntoResponse;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>routes</span><span>]
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/test</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/test2</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>delete</span><span>("</span><span style=color:#a3be8c>/test</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>example</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>hello world</span><span>"
+</span><span>}
+</span></code></pre><h2 id=extract-the-component-registered-by-the-plugin>Extract the Component registered by the plugin</h2><p>In the above example, the <code>SqlxPlugin</code> plugin automatically registers a Sqlx connection pool component for us. We can use <code>Component</code> to extract this connection pool from State. <a href=https://docs.rs/summer-web/latest/summer_web/extractor/struct.Component.html><code>Component</code></a> is an axum <a href=https://docs.rs/axum/latest/axum/extract/index.html>extractor</a>.<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>anyhow::Context;
+</span><span style=color:#b48ead>use </span><span>summer_web::get;
+</span><span style=color:#b48ead>use </span><span>summer_web::{axum::response::IntoResponse, extractor::Component, error::Result};
+</span><span style=color:#b48ead>use </span><span>summer_sqlx::{ConnectPool, sqlx::{</span><span style=color:#bf616a>self</span><span>, Row}};
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/version</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>mysql_version</span><span>(Component(</span><span style=color:#bf616a>pool</span><span>): Component&LTConnectPool>) -> Result&LTString> {
+</span><span>    </span><span style=color:#b48ead>let</span><span> version = sqlx::query("</span><span style=color:#a3be8c>select version() as version</span><span>")
+</span><span>        .</span><span style=color:#96b5b4>fetch_one</span><span>(&pool)
+</span><span>        .await
+</span><span>        .</span><span style=color:#96b5b4>context</span><span>("</span><span style=color:#a3be8c>sqlx query failed</span><span>")?
+</span><span>        .</span><span style=color:#96b5b4>get</span><span>("</span><span style=color:#a3be8c>version</span><span>");
+</span><span>    Ok(version)
+</span><span>}
+</span></code></pre><p>Axum also provides other <a href=https://docs.rs/axum/latest/axum/extract/index.html>extractors</a>, which are reexported under <a href=https://docs.rs/summer-web/latest/summer_web/extractor/index.html><code>summer_web::extractor</code></a>.<h2 id=read-configuration>Read configuration</h2><p>You can use <a href=https://docs.rs/summer-web/latest/summer_web/extractor/struct.Config.html><code>Config</code></a> to extract the configuration in the toml file.<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_web::get;
+</span><span style=color:#b48ead>use </span><span>summer_web::{extractor::Config, axum::response::IntoResponse};
+</span><span style=color:#b48ead>use </span><span>summer::config::Configurable;
+</span><span style=color:#b48ead>use </span><span>serde::Deserialize;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>derive</span><span>(Debug, Configurable, Deserialize)]
+</span><span>#[</span><span style=color:#bf616a>config_prefix </span><span>= "</span><span style=color:#a3be8c>custom</span><span>"]
+</span><span style=color:#b48ead>struct </span><span>CustomConfig {
+</span><span>    </span><span style=color:#bf616a>a</span><span>: </span><span style=color:#b48ead>u32</span><span>,
+</span><span>    </span><span style=color:#bf616a>b</span><span>: </span><span style=color:#b48ead>bool</span><span>,
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/config</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>use_toml_config</span><span>(Config(</span><span style=color:#bf616a>conf</span><span>): Config&LTCustomConfig>) -> impl IntoResponse {
+</span><span>    format!("</span><span style=color:#a3be8c>a=</span><span style=color:#d08770>{}</span><span style=color:#a3be8c>, b=</span><span style=color:#d08770>{}</span><span>", conf.a, conf.b)
+</span><span>}
+</span></code></pre><p>Add the corresponding configuration to your configuration file:<pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[custom]
+</span><span style=color:#bf616a>a </span><span>= </span><span style=color:#d08770>1
+</span><span style=color:#bf616a>b </span><span>= </span><span style=color:#d08770>true
+</span></code></pre><p>Complete code reference <a href=https://github.com/summer-rs/summer-rs/tree/master/examples/web/web-example><code>web-example</code></a><h2 id=use-extractor-in-middleware>Use Extractor in Middleware</h2><p>You can also use <a href=https://docs.rs/axum/latest/axum/middleware/fn.from_fn.html>Extractor in middleware</a>, but please note that you need to follow the rules of axum.<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_web::{middlewares, axum::middleware};
+</span><span>
+</span><span style=color:#65737e>/// you can apply this middleware to your routes using the `middlewares` macro:
+</span><span>#[</span><span style=color:#bf616a>middlewares</span><span>(
+</span><span>    middleware::</span><span style=color:#bf616a>from_fn</span><span>(problem_middleware),
+</span><span>)]
+</span><span style=color:#b48ead>mod </span><span>routes {
+</span><span>    </span><span style=color:#b48ead>use </span><span>summer_web::{axum::{response::Response, middleware::Next, response::IntoResponse}, extractor::{Request, Component}};
+</span><span>    </span><span style=color:#b48ead>use </span><span>summer_sqlx::ConnectPool;
+</span><span>    </span><span style=color:#b48ead>use </span><span>summer_web::{middlewares, get, axum::middleware};
+</span><span>    </span><span style=color:#b48ead>use </span><span>std::time::Duration;
+</span><span>
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>problem_middleware</span><span>(Component(</span><span style=color:#bf616a>db</span><span>): Component&LTConnectPool>, </span><span style=color:#bf616a>request</span><span>: Request, </span><span style=color:#bf616a>next</span><span>: Next) -> Response {
+</span><span>        </span><span style=color:#65737e>// do something
+</span><span>        </span><span style=color:#b48ead>let</span><span> response = next.</span><span style=color:#96b5b4>run</span><span>(request).await;
+</span><span>
+</span><span>        response
+</span><span>    }
+</span><span>
+</span><span>    #[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/</span><span>")]
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>hello_world</span><span>() -> impl IntoResponse {
+</span><span>        "</span><span style=color:#a3be8c>hello world</span><span>"
+</span><span>    }
+</span><span>
+</span><span>}
+</span></code></pre><p>This middleware will:<ul><li>Intercept all responses from routes in the module</ul><p>Complete code reference <a href=https://github.com/summer-rs/summer-rs/tree/master/examples/web/web-middleware-example><code>web-middleware-example</code></a><p>summer-web is a thin wrapper around axum, adding some macros to simplify development. <a href=https://github.com/tokio-rs/axum/tree/main/examples>The examples of axum</a> can be run in summer-web.<h1 id=socketio-support>SocketIO support</h1><p>You can enable the <code>socket_io</code> feature of <code>summer-web</code> to use a integration with <a href=https://github.com/Totodore/socketioxide>socketioxide</a>.<p>SocketIO is a implementation of WebSocket with more definitions.<ul><li>Named events (like <code>chat message</code>, <code>user joined</code>, etc.) instead of just plain messages<li>Automatic reconnection if the connection is lost<li>Heartbeat mechanism to detect dead connections<li>Rooms / Namespaces to group clients<li>Fallbacks to other transports if WebSocket isn't available</ul><p>You can refer to the <a href=https://github.com/summer-rs/summer-rs/tree/master/examples/web/socket-io-example>socketio-example</a> for a example of using SocketIO in summer-web.<p>We can share components registered by plugins in SocketIO handlers, just like in normal HTTP handlers, for example, using the Sqlx connection pool component registered by the <code>SqlxPlugin</code> plugin.<h1 id=openapi-support>OpenAPI support</h1><p>You can enable the <code>openapi</code> feature of <code>summer-web</code> to use OpenAPI documentation generation. You can refer to the <a href=https://github.com/summer-rs/summer-rs/tree/master/examples/web/openapi-example>openapi-example</a> for more information.<p>Besides you need to enable one of the documentation interface features: <code>openapi-redoc</code>, <code>openapi-scalar</code> or <code>openapi-swagger</code> to generate the corresponding documentation interface.<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>/// Always return error  
+</span><span>/// 
+</span><span>/// This endpoint is annotated with status_codes for Errors::B and Errors::C
+</span><span>/// @tag error
+</span><span>/// @status_codes Errors::B, Errors::C, Errors::SqlxError, Errors::TeaPod
+</span><span>#[get_api("/error")]
+</span><span>async fn error() -> Result&LTJson&LTString>, Errors> {
+</span><span>    Err(Errors::B)
+</span><span>}
+</span></code></pre><p>To generate OpenAPI documentation, you can use the <code>get_api</code>, <code>post_api</code>, etc. macros to define your API endpoints. These macros will automatically collect request parameters and response schemas to generate OpenAPI documentation.<p>The comments above the API function are used to provide additional information for the OpenAPI documentation, such as tags and status codes.<p>The status_codes annotation specifies the possible error types that the API may return. This information will be included in the OpenAPI documentation, allowing users to understand the potential error responses when calling this API.<p>We can use the derive macro <code>ProblemDetails</code> to automatically implement the <code>From&LTT> for ProblemDetails</code> and <code>IntoResponse</code> traits for our custom error type.<p>In this case we are implementing <code>thiserror::Error</code> for better error handling, but it's not mandatory.<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_web::ProblemDetails;
+</span><span>use summer_web::axum::http::StatusCode;
+</span><span>
+</span><span>// Only need ProblemDetails derive - From and IntoResponse are generated automatically!
+</span><span>#[derive(thiserror::Error, Debug, ProblemDetails)]
+</span><span>pub enum CustomErrors {
+</span><span>    #[status_code(400)]
+</span><span>    #[error("A basic error occurred")]
+</span><span>    ABasicError,
+</span><span>
+</span><span>    #[status_code(500)]
+</span><span>    #[error(transparent)]
+</span><span>    SqlxError(#[from] summer_sqlx::sqlx::Error),
+</span><span>
+</span><span>    #[status_code(418)]
+</span><span>    #[error("TeaPod error occurred: {0:?}")]
+</span><span>    TeaPod(CustomErrorSchema),
+</span><span>}
+</span><span>
+</span><span>// No need to manually implement IntoResponse!
+</span><span>// You can directly return Result&LTT, CustomErrors> from your handlers
+</span><span>
+</span><span>#[derive(Debug, JsonSchema)]
+</span><span>pub struct CustomErrorSchema {
+</span><span>    pub code: u16,
+</span><span>    pub message: String,
+</span><span>}
+</span></code></pre><h2 id=simplified-error-handling-with-automatic-problem-details>Simplified Error Handling with Automatic Problem Details</h2><p>The <code>ProblemDetails</code> derive macro automatically generates both the <code>From&LTT> for ProblemDetails</code> and <code>IntoResponse</code> implementations, eliminating the need for manual mapping:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_web::ProblemDetails;
+</span><span>
+</span><span>// Only need ProblemDetails derive - everything is generated automatically!
+</span><span>#[derive(thiserror::Error, Debug, ProblemDetails)]
+</span><span>pub enum ApiErrors {
+</span><span>    // Basic usage - uses about:blank as problem type
+</span><span>    #[status_code(400)]
+</span><span>    #[error("Validation failed")]
+</span><span>    ValidationError,
+</span><span>
+</span><span>    // Custom problem type with full URI
+</span><span>    #[status_code(401)]
+</span><span>    #[problem_type("https://api.myapp.com/problems/authentication-required")]
+</span><span>    #[error("Authentication required")]
+</span><span>    AuthenticationError,
+</span><span>
+</span><span>    // Custom problem type with all fields
+</span><span>    #[status_code(404)]
+</span><span>    #[problem_type("https://api.myapp.com/problems/resource-not-found")]
+</span><span>    #[title("Resource Not Found")]
+</span><span>    #[detail("The requested resource could not be found")]
+</span><span>    #[error("Resource not found")]
+</span><span>    NotFoundError,
+</span><span>}
+</span><span>
+</span><span>// No need to implement IntoResponse - it's automatically generated!
+</span><span>// You can directly return Result&LTT, ApiErrors> from your handlers
+</span></code></pre><p>The macro automatically maps common HTTP status codes to appropriate Problem Details:<ul><li><code>400</code> → <code>ProblemDetails::validation_error()</code> (uses <code>about:blank</code>)<li><code>401</code> → <code>ProblemDetails::authentication_error()</code> (uses <code>about:blank</code>)<li><code>403</code> → <code>ProblemDetails::authorization_error()</code> (uses <code>about:blank</code>)<li><code>404</code> → <code>ProblemDetails::not_found()</code> (uses <code>about:blank</code>)<li><code>500</code> → <code>ProblemDetails::internal_server_error()</code> (uses <code>about:blank</code>)<li><code>503</code> → <code>ProblemDetails::service_unavailable()</code> (uses <code>about:blank</code>)<li>Other codes → Uses <code>about:blank</code> as problem type</ul><h2 id=advanced-problem-details-with-custom-attributes>Advanced Problem Details with Custom Attributes</h2><p>The <code>ProblemDetails</code> derive macro supports additional attributes for fine-grained control over the generated Problem Details:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_web::ProblemDetails;
+</span><span>
+</span><span>#[derive(thiserror::Error, Debug, ProblemDetails)]
+</span><span>pub enum ApiError {
+</span><span>    // Basic usage - auto-generated fields
+</span><span>    #[status_code(400)]
+</span><span>    #[error("Validation failed")]
+</span><span>    BasicValidation,
+</span><span>
+</span><span>    // Custom problem type and title
+</span><span>    #[status_code(400)]
+</span><span>    #[problem_type("https://api.myapp.com/problems/field-validation")]
+</span><span>    #[title("Field Validation Error")]
+</span><span>    #[error("Field validation failed")]
+</span><span>    FieldValidation,
+</span><span>
+</span><span>    // Full customization
+</span><span>    #[status_code(403)]
+</span><span>    #[problem_type("https://api.myapp.com/problems/insufficient-permissions")]
+</span><span>    #[title("Insufficient Permissions")]
+</span><span>    #[detail("You need admin privileges to perform this action")]
+</span><span>    #[instance("/admin/users")]
+</span><span>    #[error("Access denied")]
+</span><span>    InsufficientPermissions,
+</span><span>}
+</span></code></pre><h3 id=supported-attributes>Supported Attributes</h3><ul><li><code>#[status_code(code)]</code> - <strong>Required</strong>: HTTP status code<li><code>#[problem_type("uri")]</code> - <strong>Optional</strong>: Custom problem type URI<li><code>#[title("title")]</code> - <strong>Optional</strong>: Custom problem title<li><code>#[detail("detail")]</code> - <strong>Optional</strong>: Custom problem detail message<li><code>#[instance("uri")]</code> - <strong>Optional</strong>: Problem instance URI</ul><h3 id=title-compatibility>Title Compatibility</h3><p>The <code>title</code> field can be automatically derived from the <code>#[error("...")]</code> attribute if no explicit <code>#[title("...")]</code> is provided. This provides compatibility with <code>thiserror::Error</code> and reduces duplication:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[derive(thiserror::Error, Debug, ProblemDetails)]
+</span><span>pub enum ApiError {
+</span><span>    // Title explicitly set
+</span><span>    #[status_code(400)]
+</span><span>    #[title("Custom Validation Error")]
+</span><span>    #[error("Validation failed")]
+</span><span>    ExplicitTitle,
+</span><span>    
+</span><span>    // Title derived from error attribute
+</span><span>    #[status_code(422)]
+</span><span>    #[detail("Request data is invalid")]
+</span><span>    #[error("Validation Failed")]  // This becomes the title
+</span><span>    ImplicitTitle,
+</span><span>}
+</span></code></pre><h3 id=generated-response-examples>Generated Response Examples</h3><p><strong>BasicValidation</strong> (auto-generated):<pre class=language-json data-lang=json style=color:#c0c5ce;background-color:#2b303b><code class=language-json data-lang=json><span>{
+</span><span>  "</span><span style=color:#a3be8c>type</span><span>": "</span><span style=color:#a3be8c>about:blank/basic-validation</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>title</span><span>": "</span><span style=color:#a3be8c>Basic Validation Error</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>status</span><span>": </span><span style=color:#d08770>400</span><span>,
+</span><span>  "</span><span style=color:#a3be8c>detail</span><span>": "</span><span style=color:#a3be8c>BasicValidation occurred</span><span>"
+</span><span>}
+</span></code></pre><p><strong>InsufficientPermissions</strong> (fully customized):<pre class=language-json data-lang=json style=color:#c0c5ce;background-color:#2b303b><code class=language-json data-lang=json><span>{
+</span><span>  "</span><span style=color:#a3be8c>type</span><span>": "</span><span style=color:#a3be8c>https://api.myapp.com/problems/insufficient-permissions</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>title</span><span>": "</span><span style=color:#a3be8c>Insufficient Permissions</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>status</span><span>": </span><span style=color:#d08770>403</span><span>,
+</span><span>  "</span><span style=color:#a3be8c>detail</span><span>": "</span><span style=color:#a3be8c>You need admin privileges to perform this action</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>instance</span><span>": "</span><span style=color:#a3be8c>/admin/users</span><span>"
+</span><span>}
+</span></code></pre><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[tokio::main]
+</span><span>async fn main() {
+</span><span>    App::new()
+</span><span>        .add_plugin(WebPlugin)
+</span><span>        .run()
+</span><span>        .await;
+</span><span>}
+</span></code></pre><p>Then implement error handling:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_web::ProblemDetails;
+</span><span>
+</span><span>#[derive(thiserror::Error, Debug, ProblemDetails)]
+</span><span>pub enum CustomErrors {
+</span><span>    // Basic usage - uses about:blank as problem type
+</span><span>    #[status_code(400)]
+</span><span>    #[error("A basic error occurred")]
+</span><span>    ABasicError,
+</span><span>
+</span><span>    // Custom problem type
+</span><span>    #[status_code(500)]
+</span><span>    #[problem_type("https://api.myapp.com/problems/database-error")]
+</span><span>    #[error(transparent)]
+</span><span>    SqlxError(#[from] summer_sqlx::sqlx::Error),
+</span><span>
+</span><span>    #[status_code(418)]
+</span><span>    #[error("TeaPod error occurred: {0:?}")]
+</span><span>    TeaPod(CustomErrorSchema),
+</span><span>}
+</span><span>
+</span><span>// If you need custom logic, you can manually implement From trait
+</span><span>impl From&LTCustomErrors> for ProblemDetails {
+</span><span>    fn from(error: CustomErrors) -> Self {
+</span><span>        match error {
+</span><span>            CustomErrors::ABasicError => {
+</span><span>                ProblemDetails::validation_error("A basic validation error occurred")
+</span><span>            }
+</span><span>            CustomErrors::SqlxError(err) => {
+</span><span>                ProblemDetails::custom_problem(
+</span><span>                    "database-error",
+</span><span>                    "Database Error", 
+</span><span>                    500,
+</span><span>                ).with_detail(format!("Database operation failed: {}", err))
+</span><span>            }
+</span><span>            CustomErrors::TeaPod(schema) => {
+</span><span>                ProblemDetails::custom_problem(
+</span><span>                    "teapot-error",
+</span><span>                    "I'm a teapot",
+</span><span>                    418,
+</span><span>                ).with_detail(format!("TeaPod error: {}", schema.message))
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>// And manually implement IntoResponse
+</span><span>impl IntoResponse for CustomErrors {
+</span><span>    fn into_response(self) -> Response {
+</span><span>        let problem_details: ProblemDetails = self.into();
+</span><span>        problem_details.into_response()
+</span><span>    }
+</span><span>}
+</span></code></pre><p>Note: When using the <code>ProblemDetails</code> derive macro, both <code>From</code> and <code>IntoResponse</code> are automatically implemented, so you don't need to write this boilerplate code.<p>The Problem Details response will be formatted as:<pre class=language-json data-lang=json style=color:#c0c5ce;background-color:#2b303b><code class=language-json data-lang=json><span>{
+</span><span>  "</span><span style=color:#a3be8c>type</span><span>": "</span><span style=color:#a3be8c>https://api.myapp.com/problems/validation-error</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>title</span><span>": "</span><span style=color:#a3be8c>Validation Error</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>status</span><span>": </span><span style=color:#d08770>400</span><span>,
+</span><span>  "</span><span style=color:#a3be8c>detail</span><span>": "</span><span style=color:#a3be8c>A basic validation error occurred</span><span>"
+</span><span>}
+</span><span>```### Automatic Instance URI Capture
+</span><span>
+</span><span>Problem Details automatically captures the current request URI and includes it in the `instance` field. This feature is enabled by default and requires no additional configuration:
+</span><span>
+</span><span>```rust,ignore
+</span><span style=color:#65737e>// No middleware configuration needed - it's automatic!
+</span><span>
+</span><span>#[</span><span style=color:#2b303b;background-color:#bf616a>get_api(</span><span>"</span><span style=color:#a3be8c>/users/{id}</span><span>"</span><span style=color:#2b303b;background-color:#bf616a>)</span><span>]
+</span><span>async fn get_user(Path(id): Path&LTu</span><span style=color:#d08770>32</span><span>>) -> Result&LTJson&LTUser>, ApiError> {
+</span><span>    </span><span style=color:#2b303b;background-color:#bf616a>if</span><span> </span><span style=color:#2b303b;background-color:#bf616a>id</span><span> </span><span style=color:#2b303b;background-color:#bf616a>==</span><span> </span><span style=color:#2b303b;background-color:#bf616a>999</span><span> </span><span style=color:#2b303b;background-color:#bf616a>{</span><span>
+</span><span>        </span><span style=color:#65737e>// The instance field will automatically be set to "/users/999"
+</span><span>        </span><span style=color:#2b303b;background-color:#bf616a>return</span><span> </span><span style=color:#2b303b;background-color:#bf616a>Err(ApiError</span><span>:</span><span style=color:#2b303b;background-color:#bf616a>:NotFound);</span><span>
+</span><span>    }
+</span><span>    
+</span><span>    Ok(Json(User { </span><span style=color:#2b303b;background-color:#bf616a>id,</span><span> </span><span style=color:#2b303b;background-color:#bf616a>name</span><span>: "</span><span style=color:#a3be8c>User</span><span>"</span><span style=color:#2b303b;background-color:#bf616a>.to_string()</span><span> }))
+</span><span>}
+</span></code></pre><p>This will automatically generate responses with the request URI:<pre class=language-json data-lang=json style=color:#c0c5ce;background-color:#2b303b><code class=language-json data-lang=json><span>{
+</span><span>  "</span><span style=color:#a3be8c>type</span><span>": "</span><span style=color:#a3be8c>about:blank</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>title</span><span>": "</span><span style=color:#a3be8c>Resource Not Found</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>status</span><span>": </span><span style=color:#d08770>404</span><span>,
+</span><span>  "</span><span style=color:#a3be8c>detail</span><span>": "</span><span style=color:#a3be8c>The requested resource was not found</span><span>",
+</span><span>  "</span><span style=color:#a3be8c>instance</span><span>": "</span><span style=color:#a3be8c>/users/999</span><span>"
+</span><span>}
+</span></code></pre><div class="docs-navigation d-flex justify-content-between"><a href=https://summer-rs.github.io/docs/getting-started/component/> <div class="card my-1"><div class="card-body py-2">← Component Macro</div></div> </a><a class=ms-auto href=https://summer-rs.github.io/docs/help/auto-reload/> <div class="card my-1"><div class="card-body py-2">Auto-Reloading Development Server →</div></div> </a></div></main></div></div></div><script async crossorigin issue-term=pathname label=comment repo=summer-rs/summer-rs.github.io src=https://utteranc.es/client.js theme=github-light></script><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Released under the MIT License. Powered by <a href=https://github.com/holmofy>holmofy</a></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://www.rust-lang.org/policies/code-of-conduct>Code of Conduct</a></ul></div></div></div></footer><script defer src=https://summer-rs.github.io/js/main.js></script><script defer src=https://summer-rs.github.io/plugins/elasticlunr.min.js></script><script defer src=https://summer-rs.github.io/search_index.en.js></script><script defer src=https://summer-rs.github.io/js/search.js></script>

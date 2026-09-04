@@ -1,0 +1,400 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 rel=preload type=font/woff2><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 rel=preload type=font/woff2><link href=https://summer-rs.github.io/main.css rel=stylesheet><meta content="index, follow" name=robots><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=googlebot><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=bingbot><meta content=9BE3AFA1A1AE6AF5B38F990F208A4EE1 name=msvalidate.01><title>summer-sa-token Plugin | summer-rs</title><meta content="Automatic assembly for sa-token-rust" name=description><link href=https://summer-rs.github.io/docs/plugins/summer-sa-token/ rel=canonical><script type=application/ld+json>
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://summer-rs.github.io/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Docs",
+            "item": "https://summer-rs.github.io/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Plugins",
+            "item": "https://summer-rs.github.io/docs/plugins/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Summer Sa Token",
+            "item": "https://summer-rs.github.io/docs/plugins/summer-sa-token/"
+          },
+        
+      
+    
+  }
+</script><script>var _hmt=_hmt||[];(()=>{let c=`script`;var a=document.createElement(c);a.src=`https://hm.baidu.com/hm.js?2fd7792d4246d07ebbd9db04334ac94d`;var b=document.getElementsByTagName(c)[0];b.parentNode.insertBefore(a,b)})()</script><script>((a,b,c,d,e,f,g)=>{a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};f=b.createElement(d);f.async=1;f.src=`https://www.clarity.ms/tag/`+ e;g=b.getElementsByTagName(d)[0];g.parentNode.insertBefore(f,g)})(window,document,`clarity`,`script`,`nl0r1el6gp`)</script><meta content=#fff name=theme-color><meta content=#2b5797 name=msapplication-TileColor><link href=https://summer-rs.github.io/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://summer-rs.github.io/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://summer-rs.github.io/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link color=#5bbad5 href=https://summer-rs.github.io/safari-pinned-tab.svg rel=mask-icon><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" id=menu-btn type=checkbox><label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 me-auto" href=https://summer-rs.github.io>summer-rs</a><button aria-label="Toggle mode" class="btn btn-link order-2 order-md-4" id=mode type=button><span class=toggle-dark><svg class="feather feather-moon" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span> <span class=toggle-light><svg class="feather feather-sun" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><circle cx=12 cy=12 r=5></circle><line x1=12 x2=12 y1=1 y2=3></line><line x1=12 x2=12 y1=21 y2=23></line><line x1=4.22 x2=5.64 y1=4.22 y2=5.64></line><line x1=18.36 x2=19.78 y1=18.36 y2=19.78></line><line x1=1 x2=3 y1=12 y2=12></line><line x1=21 x2=23 y1=12 y2=12></line><line x1=4.22 x2=5.64 y1=19.78 y2=18.36></line><line x1=18.36 x2=19.78 y1=5.64 y2=4.22></line></svg></span></button><ul class="navbar-nav fork-me order-3 order-md-5"><li class="nav-item dropdown"><a class=nav-link href=#> <svg viewbox="0 0 1024 1024" fill=currentColor height=20 version=1.1 width=20 xmlns=http://www.w3.org/2000/svg><path d="M549.12 643.2l-108.373333-107.093333 1.28-1.28c74.24-82.773333 127.146667-177.92 158.293333-278.613334H725.333333V170.666667H426.666667V85.333333h-85.333334v85.333334H42.666667v84.906666h476.586666A673.834667 673.834667 0 0 1 384 484.266667a672.853333 672.853333 0 0 1-98.56-142.933334h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56L110.293333 750.293333 170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-86.826667zM789.333333 426.666667h-85.333333l-192 512h85.333333l48-128h202.666667L896 938.666667h85.333333l-192-512z m-112 298.666666L746.666667 540.373333 816 725.333333h-138.666667z"></path></svg> </a> <div class=dropdown-menu><a class=dropdown-item href=https://summer-rs.github.io/zh/docs/plugins/summer-sa-token/>中文</a></div><li class=nav-item><a class=nav-link href=https://github.com/summer-rs/summer-rs><svg class="feather feather-github" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item docs active"><a class=nav-link href=https://summer-rs.github.io/docs/getting-started/introduction/>Docs</a><li class=nav-item><a class=nav-link href=https://summer-rs.github.io/blog/>Blog</a></ul><div class="break order-6 d-md-none"></div><form class="navbar-form flex-grow-1 order-7 order-md-3"><input aria-label="Search docs..." class="form-control is-search" placeholder="Search docs..." autocomplete=off id=userinput type=search><div class="shadow bg-white rounded" id=suggestions></div></form></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav aria-label="Main navigation" class=docs-links><h3>Getting Started</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/introduction/>Introduction</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/quick-start/>Quick Start</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/di/>Dependency inject</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/config/>Load Configuration</a><li><a class=docs-link href=https://summer-rs.github.io/docs/getting-started/component/>Component Macro</a></ul><h3>Plugins</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-pubsub/>summer-pubsub Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-web/>summer-web Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-sqlx/>summer-sqlx Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-postgres/>summer-postgres Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-sea-orm/>summer-sea-orm Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-redis/>summer-redis Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-nacos/>summer-nacos Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-job/>summer-job Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-xxl-job/>summer-xxl-job Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-apalis/>summer-apalis Plugin</a><li><a class="docs-link active" href=https://summer-rs.github.io/docs/plugins/summer-sa-token/>summer-sa-token Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-stream/>summer-stream Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-mail/>summer-mail Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-resilience/>summer-resilience Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-opendal/>summer-opendal Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-logger/>logger Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-opentelemetry/>opentelemetry Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/summer-grpc/>summer-grpc Plugin</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/plugin-by-self/>Writing your own plugins</a><li><a class=docs-link href=https://summer-rs.github.io/docs/plugins/contribute-plugins/>Community contributed plugins</a></ul><h3>Help</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/docs/help/auto-reload/>Auto-Reloading Development Server</a><li><a class=docs-link href=https://summer-rs.github.io/docs/help/faq/>FAQ</a></ul></nav></div><nav aria-label="Secondary navigation" class="docs-toc d-none d-xl-block col-xl-3"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><ul><li class=ml-4><a href=#dependencies>Dependencies</a><li class=ml-4><a href=#configuration-items>Configuration items</a><li class=ml-4><a href=#quick-start>Quick Start</a><li class=ml-4><a href=#procedural-macros>Procedural Macros</a><li class=ml-4><a href=#stputil-api>StpUtil API</a><li class=ml-4><a href=#extractors>Extractors</a><li class=ml-4><a href=#component-access>Component Access</a><li class=ml-4><a href=#custom-storage>Custom Storage</a><li class=ml-4><a href=#error-handling>Error Handling</a></ul></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>summer-sa-token Plugin</h1><p class=lead>summer-sa-token is an automatic assembly for <a href=https://github.com/click33/sa-token-rust target=_blank>sa-token-rust</a><p><a href=https://crates.io/crates/summer-sa-token><img alt=crates.io src=https://img.shields.io/crates/v/summer-sa-token.svg></a> <a href=https://docs.rs/summer-sa-token><img alt=Documentation src=https://docs.rs/summer-sa-token/badge.svg></a><p><code>summer-sa-token</code> is an automatic assembly for <a href=https://github.com/click33/sa-token-rust>sa-token-rust</a>.<h2 id=dependencies>Dependencies</h2><pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span style=color:#65737e># Default: memory storage (for development)
+</span><span style=color:#bf616a>summer-sa-token </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>&LTversion></span><span>" }
+</span><span>
+</span><span style=color:#65737e># Production: reuse summer-redis connection (recommended)
+</span><span style=color:#bf616a>summer-sa-token </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>&LTversion></span><span>", </span><span style=color:#bf616a>default-features </span><span>= </span><span style=color:#d08770>false</span><span>, </span><span style=color:#bf616a>features </span><span>= ["</span><span style=color:#a3be8c>with-summer-redis</span><span>", "</span><span style=color:#a3be8c>with-web</span><span>"] }
+</span></code></pre><p>Optional <strong>features</strong>:<ul><li><code>memory</code>: In-memory storage (default, for development/testing)<li><code>with-summer-redis</code>: Use summer-redis connection pool for storage (recommended)<li><code>with-web</code>: Enable axum web integration (middleware, extractors)</ul><h2 id=configuration-items>Configuration items</h2><p>For detailed documentation and configuration, see <a href=https://github.com/click33/sa-token-rust/tree/main/docs>sa-token-rust docs</a><pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[sa-token]
+</span><span style=color:#65737e># Token name (key in header or cookie)
+</span><span style=color:#bf616a>token_name </span><span>= "</span><span style=color:#a3be8c>Authorization</span><span>"
+</span><span>
+</span><span style=color:#65737e># Token timeout in seconds, -1 means permanent
+</span><span style=color:#65737e># Default: 2592000 (30 days)
+</span><span style=color:#bf616a>timeout </span><span>= </span><span style=color:#d08770>86400
+</span><span>
+</span><span style=color:#65737e># Token active timeout in seconds, -1 means no limit
+</span><span style=color:#65737e># If no requests within this time, token becomes invalid
+</span><span style=color:#bf616a>active_timeout </span><span>= </span><span style=color:#d08770>3600
+</span><span>
+</span><span style=color:#65737e># Enable auto renew - automatically refresh token on each request
+</span><span style=color:#bf616a>auto_renew </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># Allow concurrent login for same account
+</span><span style=color:#bf616a>is_concurrent </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># Share token when multiple logins for same account
+</span><span style=color:#bf616a>is_share </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># Token style: Uuid, SimpleUuid, Random32, Random64, Random128, Jwt, Hash, Timestamp, Tik
+</span><span style=color:#bf616a>token_style </span><span>= "</span><span style=color:#a3be8c>Uuid</span><span>"
+</span><span>
+</span><span style=color:#65737e># Per-token dynamic active timeout
+</span><span style=color:#bf616a>dynamic_active_timeout </span><span>= </span><span style=color:#d08770>false
+</span><span>
+</span><span style=color:#65737e># JWT generation fallback
+</span><span style=color:#bf616a>jwt_fallback_on_error </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># Storage key prefix
+</span><span style=color:#bf616a>storage_key_prefix </span><span>= "</span><span style=color:#a3be8c>sa:</span><span>"
+</span><span>
+</span><span style=color:#65737e># Login replacement and logout behavior
+</span><span style=color:#bf616a>max_login_count </span><span>= -</span><span style=color:#d08770>1
+</span><span style=color:#bf616a>overflow_logout_mode </span><span>= "</span><span style=color:#a3be8c>Logout</span><span>"              </span><span style=color:#65737e># Logout, KickOut, Replaced
+</span><span style=color:#bf616a>replaced_login_exit_mode </span><span>= "</span><span style=color:#a3be8c>OldDevice</span><span>"       </span><span style=color:#65737e># OldDevice, NewDevice
+</span><span style=color:#bf616a>replaced_range </span><span>= "</span><span style=color:#a3be8c>CurrDeviceType</span><span>"            </span><span style=color:#65737e># CurrDeviceType, AllDeviceType
+</span><span style=color:#bf616a>right_now_create_token_session </span><span>= </span><span style=color:#d08770>false
+</span><span style=color:#bf616a>token_session_check_login </span><span>= </span><span style=color:#d08770>true
+</span><span style=color:#bf616a>logout_range </span><span>= "</span><span style=color:#a3be8c>Token</span><span>"                       </span><span style=color:#65737e># Token, Account
+</span><span style=color:#bf616a>is_logout_keep_token_session </span><span>= </span><span style=color:#d08770>false
+</span><span>
+</span><span style=color:#65737e># JWT configuration (only when token_style = "Jwt")
+</span><span style=color:#bf616a>jwt_secret_key </span><span>= "</span><span style=color:#a3be8c>your-secret-key</span><span>"
+</span><span style=color:#bf616a>jwt_algorithm </span><span>= "</span><span style=color:#a3be8c>HS256</span><span>"    </span><span style=color:#65737e># HS256, HS384, HS512
+</span><span style=color:#bf616a>jwt_issuer </span><span>= "</span><span style=color:#a3be8c>my-app</span><span>"
+</span><span style=color:#bf616a>jwt_audience </span><span>= "</span><span style=color:#a3be8c>my-users</span><span>"
+</span><span>
+</span><span style=color:#65737e># Enable nonce for replay attack prevention
+</span><span style=color:#bf616a>enable_nonce </span><span>= </span><span style=color:#d08770>false
+</span><span style=color:#bf616a>nonce_timeout </span><span>= </span><span style=color:#d08770>300
+</span><span>
+</span><span style=color:#65737e># Enable refresh token
+</span><span style=color:#bf616a>enable_refresh_token </span><span>= </span><span style=color:#d08770>false
+</span><span style=color:#bf616a>refresh_token_timeout </span><span>= </span><span style=color:#d08770>604800  </span><span style=color:#65737e># 7 days
+</span></code></pre><p>When using <code>with-summer-redis</code>, <code>storage_key_prefix</code> namespaces Sa-Token Redis keys.<h2 id=quick-start>Quick Start</h2><h3 id=1-add-plugins-to-your-application>1. Add plugins to your application</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer::{auto_config, App};
+</span><span>use summer_redis::RedisPlugin;
+</span><span>use summer_sa_token::{SaTokenPlugin, SaTokenAuthConfigurator};
+</span><span>use summer_web::{WebPlugin, WebConfigurator};
+</span><span>
+</span><span>mod config;
+</span><span>
+</span><span>#[auto_config(WebConfigurator)]
+</span><span>#[tokio::main]
+</span><span>async fn main() {
+</span><span>    App::new()
+</span><span>        .add_plugin(RedisPlugin)       // Required for with-summer-redis feature
+</span><span>        .add_plugin(SaTokenPlugin)
+</span><span>        .add_plugin(WebPlugin)
+</span><span>        .sa_token_configure(config::SaTokenConfig)  // Configure path-based auth
+</span><span>        .run()
+</span><span>        .await
+</span><span>}
+</span></code></pre><h3 id=2-configure-path-based-authentication>2. Configure path-based authentication</h3><p><code>sa_token_configure()</code> supports two configuration approaches:<h4 id=approach-1-using-satokenconfig-recommended>Approach 1: Using SaTokenConfig (Recommended)</h4><p>Create <code>src/config.rs</code>:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer::app::AppBuilder;
+</span><span>use summer_sa_token::{PathAuthBuilder, SaStorage, SaTokenConfigurator};
+</span><span>use std::sync::Arc;
+</span><span>
+</span><span>pub struct SaTokenConfig;
+</span><span>
+</span><span>impl SaTokenConfigurator for SaTokenConfig {
+</span><span>    fn configure_path_auth(&self, auth: PathAuthBuilder) -> PathAuthBuilder {
+</span><span>        auth
+</span><span>            // Paths requiring authentication
+</span><span>            .include("/user/**")
+</span><span>            .include("/admin/**")
+</span><span>            .include("/api/**")
+</span><span>            // Public paths (no auth required)
+</span><span>            .exclude("/login")
+</span><span>            .exclude("/api/health")
+</span><span>    }
+</span><span>}
+</span></code></pre><p>Then use it in <code>main.rs</code>:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>.sa_token_configure(config::SaTokenConfig)
+</span></code></pre><h4 id=approach-2-using-pathauthbuilder-directly>Approach 2: Using PathAuthBuilder directly</h4><p>You can also configure directly in <code>main.rs</code> without a separate config file:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::PathAuthBuilder;
+</span><span>
+</span><span>#[tokio::main]
+</span><span>async fn main() {
+</span><span>    App::new()
+</span><span>        .add_plugin(RedisPlugin)
+</span><span>        .add_plugin(SaTokenPlugin)
+</span><span>        .add_plugin(WebPlugin)
+</span><span>        // Approach 2a: Using builder pattern
+</span><span>        .sa_token_configure(
+</span><span>            PathAuthBuilder::new()
+</span><span>                .include("/user/**")
+</span><span>                .include("/admin/**")
+</span><span>                .include("/api/**")
+</span><span>                .exclude("/login")
+</span><span>                .exclude("/public/**")
+</span><span>                .exclude("/api/health"),
+</span><span>        )
+</span><span>        // Approach 2b: Using struct literal
+</span><span>        // .sa_token_auth(PathAuthBuilder {
+</span><span>        //     include: vec![
+</span><span>        //         "/user/**".to_string(),
+</span><span>        //         "/admin/**".to_string(),
+</span><span>        //     ],
+</span><span>        //     exclude: vec![
+</span><span>        //         "/login".to_string(),
+</span><span>        //         "/public/**".to_string(),
+</span><span>        //     ],
+</span><span>        // })
+</span><span>        .run()
+</span><span>        .await
+</span><span>}
+</span></code></pre><p><strong>Path matching rules:</strong><ul><li><code>**</code> matches any multi-level path, e.g., <code>/api/**</code> matches <code>/api/users</code>, <code>/api/users/123</code>, etc.<li><code>*</code> matches single-level path, e.g., <code>/api/*</code> only matches <code>/api/users</code>, not <code>/api/users/123</code><li>Exact match, e.g., <code>/login</code> only matches <code>/login</code></ul><h3 id=3-implement-login-endpoint>3. Implement login endpoint</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::StpUtil;
+</span><span>use summer_web::{post, axum::response::IntoResponse, extractor::Json, error::Result};
+</span><span>
+</span><span>#[post("/login")]
+</span><span>async fn login(Json(req): Json&LTLoginRequest>) -> Result&LTimpl IntoResponse> {
+</span><span>    // Validate credentials (your business logic)
+</span><span>    if req.username == "admin" && req.password == "123456" {
+</span><span>        // Login and get token
+</span><span>        let token = StpUtil::login(&req.username).await?;
+</span><span>
+</span><span>        // Optionally set roles and permissions
+</span><span>        StpUtil::set_roles(&req.username, vec!["admin".to_string()]).await?;
+</span><span>        StpUtil::set_permissions(&req.username, vec!["user:list".to_string()]).await?;
+</span><span>
+</span><span>        Ok(Json(LoginResponse {
+</span><span>            token: token.as_str().to_string(),
+</span><span>            message: "Login successful".to_string(),
+</span><span>        }))
+</span><span>    } else {
+</span><span>        Ok(Json(ErrorResponse { message: "Invalid credentials".to_string() }))
+</span><span>    }
+</span><span>}
+</span></code></pre><h3 id=4-access-protected-routes>4. Access protected routes</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::LoginIdExtractor;
+</span><span>use summer_web::{get, axum::response::IntoResponse, extractor::Json, error::Result};
+</span><span>
+</span><span>#[get("/user/info")]
+</span><span>async fn user_info(LoginIdExtractor(user_id): LoginIdExtractor) -> Result&LTimpl IntoResponse> {
+</span><span>    // user_id is automatically extracted from the token
+</span><span>    Ok(Json(serde_json::json!({
+</span><span>        "user_id": user_id,
+</span><span>        "message": format!("Hello, {}!", user_id)
+</span><span>    })))
+</span><span>}
+</span></code></pre><h2 id=procedural-macros>Procedural Macros</h2><p><code>summer-sa-token</code> provides several procedural macros for declarative security:<h3 id=sa-check-login><code>#[sa_check_login]</code></h3><p>Verify user is logged in:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[get("/api/profile")]
+</span><span>#[sa_check_login]
+</span><span>async fn get_profile(LoginIdExtractor(user_id): LoginIdExtractor) -> Result&LTimpl IntoResponse> {
+</span><span>    Ok(Json(serde_json::json!({ "user_id": user_id })))
+</span><span>}
+</span></code></pre><h3 id=sa-check-role-role><code>#[sa_check_role("role")]</code></h3><p>Verify user has specific role:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[get("/admin/dashboard")]
+</span><span>#[sa_check_role("admin")]
+</span><span>async fn admin_dashboard() -> impl IntoResponse {
+</span><span>    "Welcome to admin dashboard"
+</span><span>}
+</span></code></pre><h3 id=sa-check-roles-and-role1-role2><code>#[sa_check_roles_and("role1", "role2")]</code></h3><p>Verify user has ALL specified roles:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[get("/api/super-admin")]
+</span><span>#[sa_check_roles_and("admin", "super")]
+</span><span>async fn super_admin_only() -> impl IntoResponse {
+</span><span>    "You have both admin and super roles"
+</span><span>}
+</span></code></pre><h3 id=sa-check-roles-or-role1-role2><code>#[sa_check_roles_or("role1", "role2")]</code></h3><p>Verify user has ANY of the specified roles:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[get("/api/management")]
+</span><span>#[sa_check_roles_or("admin", "manager")]
+</span><span>async fn management_area() -> impl IntoResponse {
+</span><span>    "You have admin or manager role"
+</span><span>}
+</span></code></pre><h3 id=sa-check-permission-permission><code>#[sa_check_permission("permission")]</code></h3><p>Verify user has specific permission:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[get("/admin/users")]
+</span><span>#[sa_check_permission("user:list")]
+</span><span>async fn list_users() -> impl IntoResponse {
+</span><span>    "User list"
+</span><span>}
+</span></code></pre><h3 id=sa-check-permissions-and-perm1-perm2><code>#[sa_check_permissions_and("perm1", "perm2")]</code></h3><p>Verify user has ALL specified permissions:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[post("/api/user/batch-modify")]
+</span><span>#[sa_check_permissions_and("user:edit", "user:delete")]
+</span><span>async fn batch_modify() -> impl IntoResponse {
+</span><span>    "Batch modify successful"
+</span><span>}
+</span></code></pre><h3 id=sa-check-permissions-or-perm1-perm2><code>#[sa_check_permissions_or("perm1", "perm2")]</code></h3><p>Verify user has ANY of the specified permissions:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[post("/api/user/create-or-update")]
+</span><span>#[sa_check_permissions_or("user:add", "user:edit")]
+</span><span>async fn create_or_update() -> impl IntoResponse {
+</span><span>    "Create or update successful"
+</span><span>}
+</span></code></pre><h3 id=sa-ignore><code>#[sa_ignore]</code></h3><p>Skip authentication for specific endpoint (even if path matches include rules):<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>#[get("/api/health")]
+</span><span>#[sa_ignore]
+</span><span>async fn health_check() -> impl IntoResponse {
+</span><span>    Json(serde_json::json!({ "status": "ok" }))
+</span><span>}
+</span></code></pre><h2 id=stputil-api>StpUtil API</h2><p>The <code>StpUtil</code> struct provides static methods for token operations:<h3 id=login-logout>Login/Logout</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>// Login and get token
+</span><span>let token = StpUtil::login("user_id").await?;
+</span><span>
+</span><span>// Logout current token
+</span><span>StpUtil::logout("token").await?;
+</span><span>
+</span><span>// Logout by login ID (invalidate all tokens)
+</span><span>StpUtil::logout_by_login_id("user_id").await?;
+</span><span>
+</span><span>// Check if user is logged in
+</span><span>let is_login = StpUtil::is_login_by_login_id("user_id").await;
+</span></code></pre><h3 id=token-operations>Token Operations</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>// Get token by login ID
+</span><span>let token = StpUtil::get_token_by_login_id("user_id").await;
+</span><span>
+</span><span>// Get login ID by token
+</span><span>let login_id = StpUtil::get_login_id_by_token("token").await;
+</span></code></pre><h3 id=roles-and-permissions>Roles and Permissions</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>// Set roles
+</span><span>StpUtil::set_roles("user_id", vec!["admin".to_string(), "user".to_string()]).await?;
+</span><span>
+</span><span>// Get roles
+</span><span>let roles = StpUtil::get_roles("user_id").await;
+</span><span>
+</span><span>// Check role
+</span><span>let has_role = StpUtil::has_role("user_id", "admin").await;
+</span><span>
+</span><span>// Set permissions
+</span><span>StpUtil::set_permissions("user_id", vec!["user:list".to_string()]).await?;
+</span><span>
+</span><span>// Get permissions
+</span><span>let permissions = StpUtil::get_permissions("user_id").await;
+</span><span>
+</span><span>// Check permission
+</span><span>let has_perm = StpUtil::has_permission("user_id", "user:list").await;
+</span></code></pre><h2 id=extractors>Extractors</h2><h3 id=loginidextractor><code>LoginIdExtractor</code></h3><p>Extract current user's login ID from request:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::LoginIdExtractor;
+</span><span>
+</span><span>#[get("/user/info")]
+</span><span>async fn user_info(LoginIdExtractor(user_id): LoginIdExtractor) -> impl IntoResponse {
+</span><span>    format!("Current user: {}", user_id)
+</span><span>}
+</span></code></pre><h3 id=optionalsatokenextractor><code>OptionalSaTokenExtractor</code></h3><p>Extract token info optionally (returns None if not authenticated):<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::OptionalSaTokenExtractor;
+</span><span>
+</span><span>#[get("/public")]
+</span><span>async fn public_endpoint(token: OptionalSaTokenExtractor) -> impl IntoResponse {
+</span><span>    match token.0 {
+</span><span>        Some(info) => format!("Logged in as: {}", info.login_id),
+</span><span>        None => "Not logged in".to_string(),
+</span><span>    }
+</span><span>}
+</span></code></pre><h3 id=satokenextractor><code>SaTokenExtractor</code></h3><p>Extract full token info (fails if not authenticated):<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::SaTokenExtractor;
+</span><span>
+</span><span>#[get("/protected")]
+</span><span>async fn protected_endpoint(SaTokenExtractor(info): SaTokenExtractor) -> impl IntoResponse {
+</span><span>    format!("Token: {}, User: {}", info.token, info.login_id)
+</span><span>}
+</span></code></pre><h2 id=component-access>Component Access</h2><p>Access <code>SaTokenState</code> component for advanced operations:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_sa_token::SaTokenState;
+</span><span>use summer_web::extractor::Component;
+</span><span>
+</span><span>#[get("/api/config")]
+</span><span>async fn get_config(Component(state): Component&LTSaTokenState>) -> impl IntoResponse {
+</span><span>    let config = &state.manager.config;
+</span><span>    Json(serde_json::json!({
+</span><span>        "token_name": config.token_name,
+</span><span>        "timeout": config.timeout,
+</span><span>        "token_style": format!("{:?}", config.token_style),
+</span><span>    }))
+</span><span>}
+</span></code></pre><h2 id=custom-storage>Custom Storage</h2><p>You can implement a custom storage backend (e.g., database-based) using <code>lazy_storage&LTT>()</code>:<h3 id=step-1-define-your-storage-as-a-service>Step 1: Define your storage as a Service</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer::plugin::service::Service;
+</span><span>use summer_sa_token::SaStorage;
+</span><span>use summer_sea_orm::DbConn;
+</span><span>use sa_token_adapter::storage::{StorageResult, StorageError};
+</span><span>
+</span><span>#[derive(Clone, Service)]
+</span><span>pub struct MyDatabaseStorage {
+</span><span>    #[inject(component)]
+</span><span>    conn: DbConn,  // Auto-injected by summer framework
+</span><span>}
+</span><span>
+</span><span>#[async_trait]
+</span><span>impl SaStorage for MyDatabaseStorage {
+</span><span>    async fn get(&self, key: &str) -> StorageResult&LTOption&LTString>> {
+</span><span>        // Your database query logic
+</span><span>        todo!()
+</span><span>    }
+</span><span>
+</span><span>    async fn set(&self, key: &str, value: &str, ttl: Option&LTi64>) -> StorageResult<()> {
+</span><span>        // Your database insert/update logic
+</span><span>        todo!()
+</span><span>    }
+</span><span>
+</span><span>    async fn delete(&self, key: &str) -> StorageResult<()> {
+</span><span>        // Your database delete logic
+</span><span>        todo!()
+</span><span>    }
+</span><span>
+</span><span>    // ... implement other required methods
+</span><span>}
+</span></code></pre><h3 id=step-2-use-lazy-storage-in-your-configurator>Step 2: Use lazy_storage in your configurator</h3><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer::app::AppBuilder;
+</span><span>use summer_sa_token::{lazy_storage, PathAuthBuilder, SaStorage, SaTokenConfigurator};
+</span><span>use std::sync::Arc;
+</span><span>
+</span><span>pub struct SaTokenConfig;
+</span><span>
+</span><span>impl SaTokenConfigurator for SaTokenConfig {
+</span><span>    fn configure_path_auth(&self, auth: PathAuthBuilder) -> PathAuthBuilder {
+</span><span>        auth.include("/api/**").exclude("/login")
+</span><span>    }
+</span><span>
+</span><span>    fn configure_storage(&self, _app: &AppBuilder) -> Option&LTArc&LTdyn SaStorage>> {
+</span><span>        // Use lazy_storage to wrap your Service-based storage
+</span><span>        // Dependencies (like DbConn) are auto-injected at runtime
+</span><span>        Some(lazy_storage::&LTMyDatabaseStorage>())
+</span><span>    }
+</span><span>}
+</span></code></pre><p>The <code>lazy_storage&LTT>()</code> function:<ul><li>Wraps your <code>#[derive(Service)]</code> storage with lazy component resolution<li>Dependencies are automatically injected when the storage is first used<li>No need to manually handle <code>LazyComponent</code> - the framework handles it internally</ul><h2 id=error-handling>Error Handling</h2><p>All security macros return <code>summer_web::error::WebError</code> on failure, which can be handled by your error handling middleware:<pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer_web::error::Result;
+</span><span>
+</span><span>#[get("/admin/dashboard")]
+</span><span>#[sa_check_role("admin")]
+</span><span>async fn admin_dashboard() -> Result&LTimpl IntoResponse> {
+</span><span>    // If user doesn't have "admin" role, returns 403 Forbidden
+</span><span>    Ok(Json(serde_json::json!({ "message": "Welcome!" })))
+</span><span>}
+</span></code></pre><p>Complete code reference <a href=https://github.com/spring-rs/contrib-plugins/tree/master/summer-sa-token/examples/sa-token-example><code>sa-token-example</code></a><div class="docs-navigation d-flex justify-content-between"><a href=https://summer-rs.github.io/docs/getting-started/component/> <div class="card my-1"><div class="card-body py-2">← Component Macro</div></div> </a><a class=ms-auto href=https://summer-rs.github.io/docs/help/auto-reload/> <div class="card my-1"><div class="card-body py-2">Auto-Reloading Development Server →</div></div> </a></div></main></div></div></div><script async crossorigin issue-term=pathname label=comment repo=summer-rs/summer-rs.github.io src=https://utteranc.es/client.js theme=github-light></script><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Released under the MIT License. Powered by <a href=https://github.com/holmofy>holmofy</a></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://www.rust-lang.org/policies/code-of-conduct>Code of Conduct</a></ul></div></div></div></footer><script defer src=https://summer-rs.github.io/js/main.js></script><script defer src=https://summer-rs.github.io/plugins/elasticlunr.min.js></script><script defer src=https://summer-rs.github.io/search_index.en.js></script><script defer src=https://summer-rs.github.io/js/search.js></script>

@@ -1,0 +1,191 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 rel=preload type=font/woff2><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 rel=preload type=font/woff2><link href=https://summer-rs.github.io/main.css rel=stylesheet><meta content="index, follow" name=robots><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=googlebot><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=bingbot><meta content=9BE3AFA1A1AE6AF5B38F990F208A4EE1 name=msvalidate.01><title>从 spring-rs 迁移到 summer-rs</title><meta content="spring-rs 正式更名为 summer-rs。本文介绍更名的原因以及如何将现有项目从 spring-rs 迁移到 summer-rs。" name=description><link href=https://summer-rs.github.io/zh/blog/migrate-spring-rs-to-summer-rs/ rel=canonical><script type=application/ld+json>
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/zh/blog/migrate-spring-rs-to-summer-rs/"
+      },
+      "headline": "从 spring-rs 迁移到 summer-rs",
+      "image": ,
+      "datePublished": "2026-03-21T10:00:00+00:00",
+      "dateModified": "2026-03-21T10:00:00+00:00",
+      "author": {
+        "@type": "Organization",
+        "name": "从 spring-rs 迁移到 summer-rs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "从 spring-rs 迁移到 summer-rs",
+        
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/logo.svg"
+        }
+        
+      },
+      "description": "spring-rs 正式更名为 summer-rs。本文介绍更名的原因以及如何将现有项目从 spring-rs 迁移到 summer-rs。"
+    }
+    </script><script type=application/ld+json>
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://summer-rs.github.io/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Zh",
+            "item": "https://summer-rs.github.io/zh/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Blog",
+            "item": "https://summer-rs.github.io/zh/blog/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Migrate Spring Rs To Summer Rs",
+            "item": "https://summer-rs.github.io/zh/blog/migrate-spring-rs-to-summer-rs/"
+          },
+        
+      
+    
+  }
+</script><script>var _hmt=_hmt||[];(()=>{let c=`script`;var a=document.createElement(c);a.src=`https://hm.baidu.com/hm.js?2fd7792d4246d07ebbd9db04334ac94d`;var b=document.getElementsByTagName(c)[0];b.parentNode.insertBefore(a,b)})()</script><script>((a,b,c,d,e,f,g)=>{a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};f=b.createElement(d);f.async=1;f.src=`https://www.clarity.ms/tag/`+ e;g=b.getElementsByTagName(d)[0];g.parentNode.insertBefore(f,g)})(window,document,`clarity`,`script`,`nl0r1el6gp`)</script><meta content=#fff name=theme-color><meta content=#2b5797 name=msapplication-TileColor><link href=https://summer-rs.github.io/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://summer-rs.github.io/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://summer-rs.github.io/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link color=#5bbad5 href=https://summer-rs.github.io/safari-pinned-tab.svg rel=mask-icon><body class="blog single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" id=menu-btn type=checkbox><label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 me-auto" href=https://summer-rs.github.io/zh>summer-rs</a><button aria-label="Toggle mode" class="btn btn-link order-2 order-md-4" id=mode type=button><span class=toggle-dark><svg class="feather feather-moon" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span> <span class=toggle-light><svg class="feather feather-sun" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><circle cx=12 cy=12 r=5></circle><line x1=12 x2=12 y1=1 y2=3></line><line x1=12 x2=12 y1=21 y2=23></line><line x1=4.22 x2=5.64 y1=4.22 y2=5.64></line><line x1=18.36 x2=19.78 y1=18.36 y2=19.78></line><line x1=1 x2=3 y1=12 y2=12></line><line x1=21 x2=23 y1=12 y2=12></line><line x1=4.22 x2=5.64 y1=19.78 y2=18.36></line><line x1=18.36 x2=19.78 y1=5.64 y2=4.22></line></svg></span></button><ul class="navbar-nav fork-me order-3 order-md-5"><li class="nav-item dropdown"><a class=nav-link href=#> <svg viewbox="0 0 1024 1024" fill=currentColor height=20 version=1.1 width=20 xmlns=http://www.w3.org/2000/svg><path d="M549.12 643.2l-108.373333-107.093333 1.28-1.28c74.24-82.773333 127.146667-177.92 158.293333-278.613334H725.333333V170.666667H426.666667V85.333333h-85.333334v85.333334H42.666667v84.906666h476.586666A673.834667 673.834667 0 0 1 384 484.266667a672.853333 672.853333 0 0 1-98.56-142.933334h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56L110.293333 750.293333 170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-86.826667zM789.333333 426.666667h-85.333333l-192 512h85.333333l48-128h202.666667L896 938.666667h85.333333l-192-512z m-112 298.666666L746.666667 540.373333 816 725.333333h-138.666667z"></path></svg> </a> <div class=dropdown-menu><a class=dropdown-item href=https://summer-rs.github.io/blog/migrate-spring-rs-to-summer-rs/>English</a></div><li class=nav-item><a class=nav-link href=https://github.com/summer-rs/summer-rs><svg class="feather feather-github" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class=nav-item><a class=nav-link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>文档</a><li class="nav-item blog active"><a class=nav-link href=https://summer-rs.github.io/zh/blog/>博客</a></ul><div class="break order-6 d-md-none"></div></div></div></header><div class="wrap container" role=document><div class=content><div class="row justify-content-center"><div class="col-md-12 col-lg-10 col-xxl-8"><article><div class=blog-header><h1>从 spring-rs 迁移到 summer-rs</h1><p><small>Posted 2026-03-21 06:00:00 ‐ <strong>5 min read</strong></small><p></div><p class=lead>spring-rs 正式更名为 summer-rs。本文介绍更名的原因以及如何将现有项目从 spring-rs 迁移到 summer-rs。<h2 id=wei-shen-me-geng-ming>为什么更名？</h2><p>从 0.5.0 版本开始，<strong>spring-rs</strong> 正式更名为 <strong>summer-rs</strong>。<p>spring-rs 最初以 Java SpringBoot 为灵感命名，但随着项目的发展，我们意识到需要一个独立的品牌标识。"summer" 既保留了与 "spring" 的季节关联，又赋予了项目自己的个性——在 Rust 生态中，summer-rs 是一个独立的、充满活力的应用框架。<p>更名不涉及任何架构或功能上的 breaking change，核心 API 保持不变。你只需要做一些简单的查找替换就能完成迁移。<h2 id=qian-yi-bu-zou>迁移步骤</h2><h3 id=1-geng-xin-cargo-toml-yi-lai>1. 更新 Cargo.toml 依赖</h3><p>将所有 <code>spring-*</code> 依赖替换为 <code>summer-*</code>：<pre class=language-diff data-lang=diff style=color:#c0c5ce;background-color:#2b303b><code class=language-diff data-lang=diff><span> [dependencies]
+</span><span style=color:#bf616a>-spring = "0.4"
+</span><span style=color:#bf616a>-spring-web = "0.4"
+</span><span style=color:#bf616a>-spring-sqlx = "0.4"
+</span><span style=color:#bf616a>-spring-job = "0.4"
+</span><span style=color:#bf616a>-spring-redis = "0.4"
+</span><span style=color:#a3be8c>+summer = "0.5"
+</span><span style=color:#a3be8c>+summer-web = "0.5"
+</span><span style=color:#a3be8c>+summer-sqlx = "0.5"
+</span><span style=color:#a3be8c>+summer-job = "0.5"
+</span><span style=color:#a3be8c>+summer-redis = "0.5"
+</span></code></pre><p>完整的 crate 名称映射：<table><thead><tr><th>旧名称<th>新名称<tbody><tr><td><code>spring</code><td><code>summer</code><tr><td><code>spring-macros</code><td><code>summer-macros</code><tr><td><code>spring-web</code><td><code>summer-web</code><tr><td><code>spring-sqlx</code><td><code>summer-sqlx</code><tr><td><code>spring-postgres</code><td><code>summer-postgres</code><tr><td><code>spring-sea-orm</code><td><code>summer-sea-orm</code><tr><td><code>spring-redis</code><td><code>summer-redis</code><tr><td><code>spring-mail</code><td><code>summer-mail</code><tr><td><code>spring-job</code><td><code>summer-job</code><tr><td><code>spring-stream</code><td><code>summer-stream</code><tr><td><code>spring-opentelemetry</code><td><code>summer-opentelemetry</code><tr><td><code>spring-grpc</code><td><code>summer-grpc</code><tr><td><code>spring-opendal</code><td><code>summer-opendal</code><tr><td><code>spring-apalis</code><td><code>summer-apalis</code><tr><td><code>spring-sa-token</code><td><code>summer-sa-token</code></table><h3 id=2-geng-xin-rust-yuan-ma-zhong-de-use-yu-ju>2. 更新 Rust 源码中的 use 语句</h3><p>将所有 <code>spring</code> 开头的 import 替换为 <code>summer</code>：<pre class=language-diff data-lang=diff style=color:#c0c5ce;background-color:#2b303b><code class=language-diff data-lang=diff><span style=color:#bf616a>-use spring::{auto_config, App};
+</span><span style=color:#bf616a>-use spring_web::{get, route};
+</span><span style=color:#bf616a>-use spring_web::{
+</span><span style=color:#bf616a>-    error::Result, extractor::{Path, Component},
+</span><span style=color:#bf616a>-    WebConfigurator, WebPlugin,
+</span><span style=color:#bf616a>-};
+</span><span style=color:#bf616a>-use spring_sqlx::{sqlx, ConnectPool, SqlxPlugin};
+</span><span style=color:#a3be8c>+use summer::{auto_config, App};
+</span><span style=color:#a3be8c>+use summer_web::{get, route};
+</span><span style=color:#a3be8c>+use summer_web::{
+</span><span style=color:#a3be8c>+    error::Result, extractor::{Path, Component},
+</span><span style=color:#a3be8c>+    WebConfigurator, WebPlugin,
+</span><span style=color:#a3be8c>+};
+</span><span style=color:#a3be8c>+use summer_sqlx::{sqlx, ConnectPool, SqlxPlugin};
+</span></code></pre><p>注意 Rust 的 crate 名称在 <code>use</code> 语句中使用下划线：<code>spring_web</code> → <code>summer_web</code>。<h3 id=3-geng-xin-pei-zhi-wen-jian>3. 更新配置文件</h3><p>配置文件 <code>config/app.toml</code> 中的 schema 地址需要更新：<pre class=language-diff data-lang=diff style=color:#c0c5ce;background-color:#2b303b><code class=language-diff data-lang=diff><span style=color:#bf616a>-#:schema https://spring-rs.github.io/config-schema.json
+</span><span style=color:#a3be8c>+#:schema https://summer-rs.github.io/config-schema.json
+</span></code></pre><p>配置项本身（如 <code>[web]</code>、<code>[sqlx]</code>、<code>[redis]</code> 等）不需要修改，它们与 crate 名称无关。<h3 id=4-kuai-su-ti-huan-ming-ling>4. 快速替换命令</h3><p>在项目根目录下，可以用以下命令一键完成大部分替换：<pre class=language-bash data-lang=bash style=color:#c0c5ce;background-color:#2b303b><code class=language-bash data-lang=bash><span style=color:#65737e># 替换 Cargo.toml 中的依赖名
+</span><span style=color:#bf616a>find</span><span> .</span><span style=color:#bf616a> -name </span><span>"</span><span style=color:#a3be8c>Cargo.toml</span><span>"</span><span style=color:#bf616a> -exec</span><span> sed</span><span style=color:#bf616a> -i </span><span>'' '</span><span style=color:#a3be8c>s/spring-/summer-/g; s/spring =/summer =/g</span><span>' {} +
+</span><span>
+</span><span style=color:#65737e># 替换 Rust 源码中的 use 语句
+</span><span style=color:#bf616a>find</span><span> .</span><span style=color:#bf616a> -name </span><span>"</span><span style=color:#a3be8c>*.rs</span><span>"</span><span style=color:#bf616a> -exec</span><span> sed</span><span style=color:#bf616a> -i </span><span>'' '</span><span style=color:#a3be8c>s/spring_/summer_/g; s/use spring/use summer/g</span><span>' {} +
+</span><span>
+</span><span style=color:#65737e># 替换配置文件中的 schema 地址
+</span><span style=color:#bf616a>find</span><span> .</span><span style=color:#bf616a> -name </span><span>"</span><span style=color:#a3be8c>app.toml</span><span>"</span><span style=color:#bf616a> -exec</span><span> sed</span><span style=color:#bf616a> -i </span><span>'' '</span><span style=color:#a3be8c>s/spring-rs\.github\.io/summer-rs.github.io/g</span><span>' {} +
+</span></code></pre><p>替换完成后，运行 <code>cargo check</code> 确认编译通过。<h2 id=qian-yi-hou-de-shi-li>迁移后的示例</h2><p>迁移后的 Web 应用代码如下：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::{auto_config, App};
+</span><span style=color:#b48ead>use </span><span>summer_sqlx::{
+</span><span>    sqlx::{</span><span style=color:#bf616a>self</span><span>, Row},
+</span><span>    ConnectPool, SqlxPlugin,
+</span><span>};
+</span><span style=color:#b48ead>use </span><span>summer_web::{get, route};
+</span><span style=color:#b48ead>use </span><span>summer_web::{
+</span><span>    error::Result,
+</span><span>    extractor::{Component, Path},
+</span><span>    axum::response::IntoResponse,
+</span><span>    WebConfigurator, WebPlugin,
+</span><span>};
+</span><span style=color:#b48ead>use </span><span>anyhow::Context;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>auto_config</span><span>(WebConfigurator)]
+</span><span>#[</span><span style=color:#bf616a>tokio</span><span>::</span><span style=color:#bf616a>main</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>main</span><span>() {
+</span><span>    App::new()
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(SqlxPlugin)
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(WebPlugin)
+</span><span>        .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>        .await
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>hello_world</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>hello world</span><span>"
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>route</span><span>("</span><span style=color:#a3be8c>/hello/{name}</span><span>", method = "</span><span style=color:#a3be8c>GET</span><span>", method = "</span><span style=color:#a3be8c>POST</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>hello</span><span>(Path(</span><span style=color:#bf616a>name</span><span>): Path&LTString>) -> impl IntoResponse {
+</span><span>    format!("</span><span style=color:#a3be8c>hello </span><span style=color:#d08770>{name}</span><span>")
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/version</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>sqlx_request_handler</span><span>(Component(</span><span style=color:#bf616a>pool</span><span>): Component&LTConnectPool>) -> Result&LTString> {
+</span><span>    </span><span style=color:#b48ead>let</span><span> version = sqlx::query("</span><span style=color:#a3be8c>select version() as version</span><span>")
+</span><span>        .</span><span style=color:#96b5b4>fetch_one</span><span>(&pool)
+</span><span>        .await
+</span><span>        .</span><span style=color:#96b5b4>context</span><span>("</span><span style=color:#a3be8c>sqlx query failed</span><span>")?
+</span><span>        .</span><span style=color:#96b5b4>get</span><span>("</span><span style=color:#a3be8c>version</span><span>");
+</span><span>    Ok(version)
+</span><span>}
+</span></code></pre><p>可以看到，除了 <code>use</code> 路径从 <code>spring</code> 变成了 <code>summer</code>，其他所有代码完全一致。宏、trait、配置方式都没有变化。<h2 id=ide-zhi-chi>IDE 支持</h2><p>summer-rs 的 VSCode 扩展也已同步更新，在 <a href="https://marketplace.visualstudio.com/items?itemName=summer-rs.summer-rs">VS Code Marketplace</a> 搜索 <code>summer-rs</code> 即可安装。扩展提供了路由导航、组件视图、依赖图可视化等功能。<h2 id=zong-jie>总结</h2><p>这次更名是一次纯粹的品牌升级，不涉及 API 变更。迁移过程只需要全局替换 <code>spring</code> → <code>summer</code>，几分钟即可完成。如果遇到任何问题，欢迎在 <a href=https://github.com/summer-rs/summer-rs/issues>GitHub Issues</a> 中反馈。</article></div></div></div></div><script async crossorigin issue-term=pathname label=comment repo=summer-rs/summer-rs.github.io src=https://utteranc.es/client.js theme=github-light></script><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Released under the MIT License. Powered by <a href=https://github.com/holmofy>holmofy</a></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://www.rust-lang.org/policies/code-of-conduct>Code of Conduct</a></ul></div></div></div></footer><script defer src=https://summer-rs.github.io/js/main.js></script>

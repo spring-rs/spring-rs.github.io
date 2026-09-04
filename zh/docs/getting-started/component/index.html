@@ -1,0 +1,418 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 rel=preload type=font/woff2><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 rel=preload type=font/woff2><link href=https://summer-rs.github.io/main.css rel=stylesheet><meta content="index, follow" name=robots><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=googlebot><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=bingbot><meta content=9BE3AFA1A1AE6AF5B38F990F208A4EE1 name=msvalidate.01><title>Component 宏</title><meta content="#[component] 宏为 summer-rs 应用提供声明式组件注册，无需手动实现 Plugin trait。" name=description><link href=https://summer-rs.github.io/zh/docs/getting-started/component/ rel=canonical><script type=application/ld+json>
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://summer-rs.github.io/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Zh",
+            "item": "https://summer-rs.github.io/zh/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Docs",
+            "item": "https://summer-rs.github.io/zh/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Getting Started",
+            "item": "https://summer-rs.github.io/zh/docs/getting-started/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  5 ,
+            "name": "Component",
+            "item": "https://summer-rs.github.io/zh/docs/getting-started/component/"
+          },
+        
+      
+    
+  }
+</script><script>var _hmt=_hmt||[];(()=>{let c=`script`;var a=document.createElement(c);a.src=`https://hm.baidu.com/hm.js?2fd7792d4246d07ebbd9db04334ac94d`;var b=document.getElementsByTagName(c)[0];b.parentNode.insertBefore(a,b)})()</script><script>((a,b,c,d,e,f,g)=>{a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};f=b.createElement(d);f.async=1;f.src=`https://www.clarity.ms/tag/`+ e;g=b.getElementsByTagName(d)[0];g.parentNode.insertBefore(f,g)})(window,document,`clarity`,`script`,`nl0r1el6gp`)</script><meta content=#fff name=theme-color><meta content=#2b5797 name=msapplication-TileColor><link href=https://summer-rs.github.io/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://summer-rs.github.io/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://summer-rs.github.io/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link color=#5bbad5 href=https://summer-rs.github.io/safari-pinned-tab.svg rel=mask-icon><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" id=menu-btn type=checkbox><label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 me-auto" href=https://summer-rs.github.io/zh>summer-rs</a><button aria-label="Toggle mode" class="btn btn-link order-2 order-md-4" id=mode type=button><span class=toggle-dark><svg class="feather feather-moon" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span> <span class=toggle-light><svg class="feather feather-sun" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><circle cx=12 cy=12 r=5></circle><line x1=12 x2=12 y1=1 y2=3></line><line x1=12 x2=12 y1=21 y2=23></line><line x1=4.22 x2=5.64 y1=4.22 y2=5.64></line><line x1=18.36 x2=19.78 y1=18.36 y2=19.78></line><line x1=1 x2=3 y1=12 y2=12></line><line x1=21 x2=23 y1=12 y2=12></line><line x1=4.22 x2=5.64 y1=19.78 y2=18.36></line><line x1=18.36 x2=19.78 y1=5.64 y2=4.22></line></svg></span></button><ul class="navbar-nav fork-me order-3 order-md-5"><li class="nav-item dropdown"><a class=nav-link href=#> <svg viewbox="0 0 1024 1024" fill=currentColor height=20 version=1.1 width=20 xmlns=http://www.w3.org/2000/svg><path d="M549.12 643.2l-108.373333-107.093333 1.28-1.28c74.24-82.773333 127.146667-177.92 158.293333-278.613334H725.333333V170.666667H426.666667V85.333333h-85.333334v85.333334H42.666667v84.906666h476.586666A673.834667 673.834667 0 0 1 384 484.266667a672.853333 672.853333 0 0 1-98.56-142.933334h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56L110.293333 750.293333 170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-86.826667zM789.333333 426.666667h-85.333333l-192 512h85.333333l48-128h202.666667L896 938.666667h85.333333l-192-512z m-112 298.666666L746.666667 540.373333 816 725.333333h-138.666667z"></path></svg> </a> <div class=dropdown-menu><a class=dropdown-item href=https://summer-rs.github.io/docs/getting-started/component/>English</a></div><li class=nav-item><a class=nav-link href=https://github.com/summer-rs/summer-rs><svg class="feather feather-github" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item docs active"><a class=nav-link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>文档</a><li class=nav-item><a class=nav-link href=https://summer-rs.github.io/zh/blog/>博客</a></ul><div class="break order-6 d-md-none"></div></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav aria-label="Main navigation" class=docs-links><h3>入门指南</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>介绍</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/quick-start/>快速上手</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/di/>依赖注入</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/config/>加载配置</a><li><a class="docs-link active" href=https://summer-rs.github.io/zh/docs/getting-started/component/>Component 宏</a></ul><h3>插件</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-web/>summer-web插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sqlx/>summer-sqlx插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-postgres/>summer-postgres插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sea-orm/>summer-sea-orm插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-redis/>summer-redis插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-nacos/>summer-nacos插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-job/>summer-job插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-xxl-job/>summer-xxl-job插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-apalis/>summer-apalis插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-pubsub/>summer-pubsub插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sa-token/>summer-sa-token 插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-stream/>summer-stream插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-mail/>summer-mail插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-opendal/>summer-opendal插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-logger/>logger插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-opentelemetry/>opentelemetry插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-grpc/>summer-grpc插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/plugin-by-self/>编写自己的插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/contribute-plugins/>社区贡献的插件</a></ul><h3>帮助</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/help/auto-reload/>自动热重启</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/help/faq/>常见问题</a></ul></nav></div><nav aria-label="Secondary navigation" class="docs-toc d-none d-xl-block col-xl-3"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><li><a href=#component-hong-shi-yong-zhi-nan>Component 宏使用指南</a></li><ul><li class=ml-4><a href=#kuai-su-kai-shi>快速开始</a><li class=ml-4><a href=#gong-zuo-yuan-li>工作原理</a><li class=ml-4><a href=#can-shu-lei-xing>参数类型</a><li class=ml-4><a href=#yi-lai-jie-xi>依赖解析</a><li class=ml-4><a href=#gao-ji-yong-fa>高级用法</a><li class=ml-4><a href=#zui-jia-shi-jian>最佳实践</a><li class=ml-4><a href=#gu-zhang-pai-cha>故障排查</a><li class=ml-4><a href=#qian-yi-zhi-nan>迁移指南</a><li class=ml-4><a href=#xiang-guan-zi-yuan>相关资源</a></ul></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>Component 宏</h1><p class=lead>使用声明式宏简化组件注册<h1 id=component-hong-shi-yong-zhi-nan>Component 宏使用指南</h1><p><code>#[component]</code> 宏为 summer-rs 应用提供声明式组件注册，无需手动实现 Plugin trait。<h2 id=kuai-su-kai-shi>快速开始</h2><h3 id=1-tian-jia-yi-lai>1. 添加依赖</h3><p>在 <code>Cargo.toml</code> 中添加：<pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[dependencies]
+</span><span style=color:#bf616a>summer </span><span>= "</span><span style=color:#a3be8c>0.4</span><span>"
+</span><span style=color:#bf616a>tokio </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>1</span><span>", </span><span style=color:#bf616a>features </span><span>= ["</span><span style=color:#a3be8c>full</span><span>"] }
+</span><span style=color:#bf616a>serde </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>1</span><span>", </span><span style=color:#bf616a>features </span><span>= ["</span><span style=color:#a3be8c>derive</span><span>"] }
+</span></code></pre><h3 id=2-ding-yi-zu-jian>2. 定义组件</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>DbConnection {
+</span><span>    </span><span style=color:#bf616a>pool</span><span>: sqlx::PgPool,
+</span><span>}
+</span></code></pre><h3 id=3-chuang-jian-pei-zhi>3. 创建配置</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::config::Configurable;
+</span><span style=color:#b48ead>use </span><span>serde::Deserialize;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone, Configurable, Deserialize)]
+</span><span>#[</span><span style=color:#bf616a>config_prefix </span><span>= "</span><span style=color:#a3be8c>database</span><span>"]
+</span><span style=color:#b48ead>struct </span><span>DbConfig {
+</span><span>    </span><span style=color:#bf616a>url</span><span>: String,
+</span><span>    </span><span style=color:#bf616a>max_connections</span><span>: </span><span style=color:#b48ead>u32</span><span>,
+</span><span>}
+</span></code></pre><h3 id=4-shi-yong-component-hong>4. 使用 <code>#[component]</code> 宏</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::config::Config;
+</span><span style=color:#b48ead>use </span><span>summer::component;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    DbConnection {
+</span><span>        pool: sqlx::PgPool::connect(&config.url).await.</span><span style=color:#96b5b4>unwrap</span><span>(),
+</span><span>    }
+</span><span>}
+</span></code></pre><h3 id=5-zai-ying-yong-zhong-zhu-ce>5. 在应用中注册</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::App;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>tokio</span><span>::</span><span style=color:#bf616a>main</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>main</span><span>() {
+</span><span>    App::new()
+</span><span>        .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>        .await;
+</span><span>}
+</span></code></pre><h2 id=gong-zuo-yuan-li>工作原理</h2><p><code>#[component]</code> 宏将你的组件创建函数转换为 Plugin 实现：<h3 id=shu-ru>输入</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    DbConnection::new(&config)
+</span><span>}
+</span></code></pre><h3 id=sheng-cheng-de-dai-ma-gai-nian-xing>生成的代码（概念性）</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>struct </span><span>__CreateDbConnectionPlugin;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>async_trait</span><span>]
+</span><span style=color:#b48ead>impl </span><span>Plugin </span><span style=color:#b48ead>for </span><span>__CreateDbConnectionPlugin {
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>build</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>app</span><span>: &</span><span style=color:#b48ead>mut</span><span> AppBuilder) {
+</span><span>        </span><span style=color:#65737e>// 提取配置
+</span><span>        </span><span style=color:#b48ead>let</span><span> config = app.get_config::&LTDbConfig>()
+</span><span>            .</span><span style=color:#96b5b4>expect</span><span>("</span><span style=color:#a3be8c>Config DbConfig not found</span><span>");
+</span><span>        </span><span style=color:#b48ead>let</span><span> Config(config) = Config(config);
+</span><span>        
+</span><span>        </span><span style=color:#65737e>// 调用原始函数
+</span><span>        </span><span style=color:#b48ead>let</span><span> component = </span><span style=color:#96b5b4>create_db_connection</span><span>(Config(config));
+</span><span>        
+</span><span>        </span><span style=color:#65737e>// 注册组件
+</span><span>        app.</span><span style=color:#96b5b4>add_component</span><span>(component);
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>name</span><span>(&</span><span style=color:#bf616a>self</span><span>) -> &</span><span style=color:#b48ead>str </span><span>{
+</span><span>        "</span><span style=color:#a3be8c>__CreateDbConnectionPlugin</span><span>"
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>dependencies</span><span>(&</span><span style=color:#bf616a>self</span><span>) -> Vec<&</span><span style=color:#b48ead>str</span><span>> {
+</span><span>        vec![]  </span><span style=color:#65737e>// 无依赖
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// 通过 inventory 自动注册
+</span><span>inventory::submit! {
+</span><span>    &__CreateDbConnectionPlugin as &dyn Plugin
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// 原始函数被保留
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    DbConnection::new(&config)
+</span><span>}
+</span></code></pre><h2 id=can-shu-lei-xing>参数类型</h2><ul><li><code>Config&LTT></code> - 配置注入</ul><p>从 <code>config/app.toml</code> 注入配置：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_component</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTMyConfig>,
+</span><span>) -> MyComponent {
+</span><span>    MyComponent::new(&config)
+</span><span>}
+</span></code></pre><p><strong>要求：</strong><ul><li><code>T</code> 必须实现 <code>Configurable + Deserialize</code><li>配置必须存在于 <code>config/app.toml</code> 中，位于 <code>#[config_prefix]</code> 指定的前缀下</ul><ul><li><code>Component&LTT></code> - 组件注入</ul><p>注入另一个组件：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_service</span><span>(
+</span><span>    Component(</span><span style=color:#bf616a>db</span><span>): Component&LTDbConnection>,
+</span><span>) -> MyService {
+</span><span>    MyService::new(db)
+</span><span>}
+</span></code></pre><p><strong>要求：</strong><ul><li><code>T</code> 必须是已注册的组件<li>依赖会自动添加到插件的 <code>dependencies()</code> 列表中</ul><ul><li>多个参数</ul><p>你可以混合使用不同的参数类型：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_service</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTServiceConfig>,
+</span><span>    Component(</span><span style=color:#bf616a>db</span><span>): Component&LTDbConnection>,
+</span><span>    Component(</span><span style=color:#bf616a>cache</span><span>): Component&LTRedisClient>,
+</span><span>) -> MyService {
+</span><span>    MyService::new(&config, db, cache)
+</span><span>}
+</span></code></pre><ul><li>返回类型</ul><p><strong>简单类型</strong><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_component</span><span>() -> MyComponent {
+</span><span>    MyComponent::new()
+</span><span>}
+</span></code></pre><p><strong>要求：</strong><ul><li>必须实现 <code>Clone + Send + Sync + 'static</code></ul><p><strong>Result 类型</strong><p>用于可能失败的初始化：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_component</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTMyConfig>,
+</span><span>) -> Result&LTMyComponent, anyhow::Error> {
+</span><span>    </span><span style=color:#b48ead>let</span><span> component = MyComponent::try_new(&config)?;
+</span><span>    Ok(component)
+</span><span>}
+</span></code></pre><p><strong>注意：</strong> 如果函数返回错误，应用会 panic 并显示错误信息。<p><strong>异步函数</strong><p>用于异步初始化：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    </span><span style=color:#b48ead>let</span><span> pool = sqlx::PgPool::connect(&config.url).await.</span><span style=color:#96b5b4>unwrap</span><span>();
+</span><span>    DbConnection { pool }
+</span><span>}
+</span></code></pre><p><strong>异步 + Result</strong><p>组合使用异步和 Result：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> Result&LTDbConnection, sqlx::Error> {
+</span><span>    </span><span style=color:#b48ead>let</span><span> pool = sqlx::PgPool::connect(&config.url).await?;
+</span><span>    Ok(DbConnection { pool })
+</span><span>}
+</span></code></pre><h2 id=yi-lai-jie-xi>依赖解析</h2><ul><li>自动依赖检测</ul><p>宏会自动从 <code>Component&LTT></code> 参数检测依赖：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_repository</span><span>(
+</span><span>    Component(</span><span style=color:#bf616a>db</span><span>): Component&LTDbConnection>,  </span><span style=color:#65737e>// 依赖 DbConnection
+</span><span>) -> UserRepository {
+</span><span>    UserRepository { db }
+</span><span>}
+</span></code></pre><p>生成的 <code>dependencies()</code>：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>dependencies</span><span>(&</span><span style=color:#bf616a>self</span><span>) -> Vec<&</span><span style=color:#b48ead>str</span><span>> {
+</span><span>    vec!["</span><span style=color:#a3be8c>__CreateDbConnectionPlugin</span><span>"]
+</span><span>}
+</span></code></pre><ul><li>初始化顺序</ul><p>组件按依赖顺序初始化：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// 1. 无依赖 - 首先初始化
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db</span><span>() -> DbConnection { ... }
+</span><span>
+</span><span style=color:#65737e>// 2. 依赖 DbConnection - 第二个初始化
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_repo</span><span>(Component(</span><span style=color:#bf616a>db</span><span>): Component&LTDbConnection>) -> UserRepository { ... }
+</span><span>
+</span><span style=color:#65737e>// 3. 依赖 UserRepository - 第三个初始化
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_service</span><span>(Component(</span><span style=color:#bf616a>repo</span><span>): Component&LTUserRepository>) -> UserService { ... }
+</span></code></pre><ul><li>循环依赖</ul><p><strong>不支持</strong>循环依赖，会导致 panic：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// ❌ 这会 panic！
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_a</span><span>(Component(</span><span style=color:#bf616a>b</span><span>): Component&LTB>) -> A { ... }
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_b</span><span>(Component(</span><span style=color:#bf616a>a</span><span>): Component&LTA>) -> B { ... }
+</span></code></pre><p><strong>解决方案：</strong> 重构设计以消除循环依赖。<h2 id=gao-ji-yong-fa>高级用法</h2><ul><li>自定义插件名称</ul><p>当需要同一类型的多个组件时使用自定义名称：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>PrimaryDb(DbConnection);
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>SecondaryDb(DbConnection);
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>(name = "</span><span style=color:#a3be8c>PrimaryDatabase</span><span>")]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_primary_db</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTPrimaryDbConfig>,
+</span><span>) -> PrimaryDb {
+</span><span>    PrimaryDb(DbConnection::new(&config))
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>(name = "</span><span style=color:#a3be8c>SecondaryDatabase</span><span>")]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_secondary_db</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTSecondaryDbConfig>,
+</span><span>) -> SecondaryDb {
+</span><span>    SecondaryDb(DbConnection::new(&config))
+</span><span>}
+</span></code></pre><ul><li>显式依赖</ul><p>使用 <code>#[inject("PluginName")]</code> 指定显式依赖：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_repository</span><span>(
+</span><span>    #[inject("</span><span style=color:#bf616a>PrimaryDatabase</span><span>")] Component(</span><span style=color:#bf616a>db</span><span>): Component&LTPrimaryDb>,
+</span><span>) -> UserRepository {
+</span><span>    UserRepository::new(db.</span><span style=color:#d08770>0</span><span>)
+</span><span>}
+</span></code></pre><p>适用场景：<ul><li>依赖有自定义名称<li>想要明确指定依赖哪个插件</ul><ul><li>NewType 模式用于多实例</ul><p>当需要同一类型的多个实例时，使用 NewType 模式：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>PrimaryCache(RedisClient);
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>SecondaryCache(RedisClient);
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>(name = "</span><span style=color:#a3be8c>PrimaryCache</span><span>")]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_primary_cache</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTPrimaryCacheConfig>,
+</span><span>) -> PrimaryCache {
+</span><span>    PrimaryCache(RedisClient::new(&config))
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>(name = "</span><span style=color:#a3be8c>SecondaryCache</span><span>")]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_secondary_cache</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTSecondaryCacheConfig>,
+</span><span>) -> SecondaryCache {
+</span><span>    SecondaryCache(RedisClient::new(&config))
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_service</span><span>(
+</span><span>    Component(</span><span style=color:#bf616a>primary</span><span>): Component&LTPrimaryCache>,
+</span><span>    Component(</span><span style=color:#bf616a>secondary</span><span>): Component&LTSecondaryCache>,
+</span><span>) -> CacheService {
+</span><span>    CacheService {
+</span><span>        primary: primary.</span><span style=color:#d08770>0</span><span>,
+</span><span>        secondary: secondary.</span><span style=color:#d08770>0</span><span>,
+</span><span>    }
+</span><span>}
+</span></code></pre><ul><li>对大型组件使用 Arc</ul><p>对于大型组件，使用 <code>Arc</code> 减少克隆开销：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>std::sync::Arc;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>LargeComponent {
+</span><span>    </span><span style=color:#bf616a>data</span><span>: Arc&LTVec<</span><span style=color:#b48ead>u8</span><span>>>,  </span><span style=color:#65737e>// 共享数据
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_large_component</span><span>() -> LargeComponent {
+</span><span>    LargeComponent {
+</span><span>        data: Arc::new(vec![</span><span style=color:#d08770>0</span><span>; </span><span style=color:#d08770>1_000_000</span><span>]),
+</span><span>    }
+</span><span>}
+</span></code></pre><h2 id=zui-jia-shi-jian>最佳实践</h2><ol><li>保持组件函数简单</ol><p>组件函数应该只创建和配置组件：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// ✅ 好
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    DbConnection::new(&config)
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// ❌ 不好 - 逻辑太多
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    </span><span style=color:#b48ead>let</span><span> conn = DbConnection::new(&config);
+</span><span>    conn.</span><span style=color:#96b5b4>run_migrations</span><span>();  </span><span style=color:#65737e>// 不要在这里做
+</span><span>    conn.</span><span style=color:#96b5b4>seed_data</span><span>();       </span><span style=color:#65737e>// 不要在这里做
+</span><span>    conn
+</span><span>}
+</span></code></pre><ol start=2><li>对所有可配置值使用配置</ol><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// ✅ 好
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_service</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTServiceConfig>,
+</span><span>) -> MyService {
+</span><span>    MyService::new(&config)
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// ❌ 不好 - 硬编码值
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_service</span><span>() -> MyService {
+</span><span>    MyService::new("</span><span style=color:#a3be8c>localhost</span><span>", </span><span style=color:#d08770>8080</span><span>)
+</span><span>}
+</span></code></pre><ol start=3><li>使用明确的名称提高清晰度</ol><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// ✅ 好 - 意图清晰
+</span><span>#[</span><span style=color:#bf616a>component</span><span>(name = "</span><span style=color:#a3be8c>PrimaryDatabase</span><span>")]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_primary_db</span><span>(...) -> PrimaryDb { ... }
+</span><span>
+</span><span style=color:#65737e>// ❌ 不够清晰
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db1</span><span>(...) -> Db1 { ... }
+</span></code></pre><ol start=4><li>记录组件依赖</ol><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>/// 创建 UserService 组件。
+</span><span style=color:#65737e>///
+</span><span style=color:#65737e>/// # 依赖
+</span><span style=color:#65737e>/// - UserRepository: 用于数据访问
+</span><span style=color:#65737e>/// - RedisClient: 用于缓存
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_user_service</span><span>(
+</span><span>    Component(</span><span style=color:#bf616a>repo</span><span>): Component&LTUserRepository>,
+</span><span>    Component(</span><span style=color:#bf616a>cache</span><span>): Component&LTRedisClient>,
+</span><span>) -> UserService {
+</span><span>    UserService::new(repo, cache)
+</span><span>}
+</span></code></pre><ol start=5><li>对可能失败的初始化使用 Result</ol><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// ✅ 好 - 显式错误处理
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> Result&LTDbConnection, anyhow::Error> {
+</span><span>    DbConnection::try_new(&config)
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// ❌ 不好 - 隐藏的 panic
+</span><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    DbConnection::try_new(&config).</span><span style=color:#96b5b4>unwrap</span><span>()  </span><span style=color:#65737e>// 错误时会 panic
+</span><span>}
+</span></code></pre><h2 id=gu-zhang-pai-cha>故障排查</h2><p><strong>错误："Config X not found"</strong><p><strong>原因：</strong> <code>config/app.toml</code> 中缺少配置<p><strong>解决方案：</strong> 添加配置：<pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[your-prefix]
+</span><span style=color:#bf616a>key </span><span>= "</span><span style=color:#a3be8c>value</span><span>"
+</span></code></pre><p><strong>错误："Component X not found"</strong><p><strong>原因：</strong> 依赖的组件未注册<p><strong>解决方案：</strong> 确保依赖也使用 <code>#[component]</code> 标记，并在此组件之前注册。<p><strong>错误："Cyclic dependency detected"</strong><p><strong>原因：</strong> 两个或多个组件相互依赖<p><strong>解决方案：</strong> 重构设计以消除循环依赖。考虑：<ul><li>引入中间组件<li>使用事件/回调代替直接依赖<li>重构架构</ul><p><strong>错误："plugin was already added"</strong><p><strong>原因：</strong> 两个组件返回相同类型<p><strong>解决方案：</strong> 使用 NewType 模式或自定义名称：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone)]
+</span><span style=color:#b48ead>struct </span><span>PrimaryDb(DbConnection);
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>component</span><span>(name = "</span><span style=color:#a3be8c>PrimaryDatabase</span><span>")]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_primary_db</span><span>(...) -> PrimaryDb { ... }
+</span></code></pre><p><strong>错误："component was already added"</strong><p><strong>原因：</strong> 同一组件类型被注册两次<p><strong>解决方案：</strong> 每个组件类型只能注册一次。对多个实例使用 NewType 模式。<h2 id=qian-yi-zhi-nan>迁移指南</h2><p><strong>从手动 Plugin 迁移到 <code>#[component]</code></strong><p><strong>之前：</strong><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>struct </span><span>DbConnectionPlugin;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>async_trait</span><span>]
+</span><span style=color:#b48ead>impl </span><span>Plugin </span><span style=color:#b48ead>for </span><span>DbConnectionPlugin {
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>build</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>app</span><span>: &</span><span style=color:#b48ead>mut</span><span> AppBuilder) {
+</span><span>        </span><span style=color:#b48ead>let</span><span> config = app.get_config::&LTDbConfig>()
+</span><span>            .</span><span style=color:#96b5b4>expect</span><span>("</span><span style=color:#a3be8c>DbConfig not found</span><span>");
+</span><span>        
+</span><span>        </span><span style=color:#b48ead>let</span><span> db = DbConnection::new(&config);
+</span><span>        app.</span><span style=color:#96b5b4>add_component</span><span>(db);
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>name</span><span>(&</span><span style=color:#bf616a>self</span><span>) -> &</span><span style=color:#b48ead>str </span><span>{
+</span><span>        "</span><span style=color:#a3be8c>DbConnectionPlugin</span><span>"
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// 在 main 中
+</span><span>App::new()
+</span><span>    .</span><span style=color:#96b5b4>add_plugin</span><span>(DbConnectionPlugin)
+</span><span>    .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>    .await;
+</span></code></pre><p><strong>之后：</strong><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>component</span><span>]
+</span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_db_connection</span><span>(
+</span><span>    Config(</span><span style=color:#bf616a>config</span><span>): Config&LTDbConfig>,
+</span><span>) -> DbConnection {
+</span><span>    DbConnection::new(&config)
+</span><span>}
+</span><span>
+</span><span style=color:#65737e>// 在 main 中
+</span><span>App::new()
+</span><span>    .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>    .await;
+</span></code></pre><p><strong>迁移步骤</strong><ol><li><strong>识别组件创建逻辑</strong> 在 Plugin 的 <code>build</code> 方法中<li><strong>提取到函数中</strong> 使用适当的参数<li><strong>添加 <code>#[component]</code> 宏</strong> 到函数上<li><strong>移除 <code>add_plugin</code> 调用</strong> 组件会自动注册<li><strong>删除手动 Plugin 实现</strong><li><strong>测试</strong> 确保一切正常工作</ol><p><strong>兼容性</strong><p><code>#[component]</code> 宏与手动 Plugin 实现完全兼容。你可以混合使用两种方式：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>App::new()
+</span><span>    .</span><span style=color:#96b5b4>add_plugin</span><span>(ManualPlugin)  </span><span style=color:#65737e>// 手动插件
+</span><span>    .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>    .await;
+</span></code></pre><h2 id=xiang-guan-zi-yuan>相关资源</h2><ul><li><a href=https://summer-rs.github.io/>summer-rs 文档</a><li><a href=../summer/Plugin.zh.md>插件系统</a><li><a href=../summer/DI.zh.md>依赖注入</a><li><a href=../summer/Config.zh.md>配置系统</a><li><a href=../examples/di/component-macro-example/>示例项目</a></ul><div class="docs-navigation d-flex justify-content-between"><a class=ms-auto href=https://summer-rs.github.io/zh/docs/plugins/summer-web/> <div class="card my-1"><div class="card-body py-2">summer-web插件 →</div></div> </a></div></main></div></div></div><script async crossorigin issue-term=pathname label=comment repo=summer-rs/summer-rs.github.io src=https://utteranc.es/client.js theme=github-light></script><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Released under the MIT License. Powered by <a href=https://github.com/holmofy>holmofy</a></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://www.rust-lang.org/policies/code-of-conduct>Code of Conduct</a></ul></div></div></div></footer><script defer src=https://summer-rs.github.io/js/main.js></script>

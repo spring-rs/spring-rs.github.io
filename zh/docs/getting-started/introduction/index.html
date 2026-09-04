@@ -1,0 +1,218 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 rel=preload type=font/woff2><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 rel=preload type=font/woff2><link href=https://summer-rs.github.io/main.css rel=stylesheet><meta content="index, follow" name=robots><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=googlebot><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=bingbot><meta content=9BE3AFA1A1AE6AF5B38F990F208A4EE1 name=msvalidate.01><title>介绍</title><meta content=summer-rs是一个Rust编写的应用框架，类似于java生态的SpringBoot name=description><link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/ rel=canonical><script type=application/ld+json>
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://summer-rs.github.io/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Zh",
+            "item": "https://summer-rs.github.io/zh/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Docs",
+            "item": "https://summer-rs.github.io/zh/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Getting Started",
+            "item": "https://summer-rs.github.io/zh/docs/getting-started/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  5 ,
+            "name": "Introduction",
+            "item": "https://summer-rs.github.io/zh/docs/getting-started/introduction/"
+          },
+        
+      
+    
+  }
+</script><script>var _hmt=_hmt||[];(()=>{let c=`script`;var a=document.createElement(c);a.src=`https://hm.baidu.com/hm.js?2fd7792d4246d07ebbd9db04334ac94d`;var b=document.getElementsByTagName(c)[0];b.parentNode.insertBefore(a,b)})()</script><script>((a,b,c,d,e,f,g)=>{a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};f=b.createElement(d);f.async=1;f.src=`https://www.clarity.ms/tag/`+ e;g=b.getElementsByTagName(d)[0];g.parentNode.insertBefore(f,g)})(window,document,`clarity`,`script`,`nl0r1el6gp`)</script><meta content=#fff name=theme-color><meta content=#2b5797 name=msapplication-TileColor><link href=https://summer-rs.github.io/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://summer-rs.github.io/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://summer-rs.github.io/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link color=#5bbad5 href=https://summer-rs.github.io/safari-pinned-tab.svg rel=mask-icon><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" id=menu-btn type=checkbox><label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 me-auto" href=https://summer-rs.github.io/zh>summer-rs</a><button aria-label="Toggle mode" class="btn btn-link order-2 order-md-4" id=mode type=button><span class=toggle-dark><svg class="feather feather-moon" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span> <span class=toggle-light><svg class="feather feather-sun" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><circle cx=12 cy=12 r=5></circle><line x1=12 x2=12 y1=1 y2=3></line><line x1=12 x2=12 y1=21 y2=23></line><line x1=4.22 x2=5.64 y1=4.22 y2=5.64></line><line x1=18.36 x2=19.78 y1=18.36 y2=19.78></line><line x1=1 x2=3 y1=12 y2=12></line><line x1=21 x2=23 y1=12 y2=12></line><line x1=4.22 x2=5.64 y1=19.78 y2=18.36></line><line x1=18.36 x2=19.78 y1=5.64 y2=4.22></line></svg></span></button><ul class="navbar-nav fork-me order-3 order-md-5"><li class="nav-item dropdown"><a class=nav-link href=#> <svg viewbox="0 0 1024 1024" fill=currentColor height=20 version=1.1 width=20 xmlns=http://www.w3.org/2000/svg><path d="M549.12 643.2l-108.373333-107.093333 1.28-1.28c74.24-82.773333 127.146667-177.92 158.293333-278.613334H725.333333V170.666667H426.666667V85.333333h-85.333334v85.333334H42.666667v84.906666h476.586666A673.834667 673.834667 0 0 1 384 484.266667a672.853333 672.853333 0 0 1-98.56-142.933334h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56L110.293333 750.293333 170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-86.826667zM789.333333 426.666667h-85.333333l-192 512h85.333333l48-128h202.666667L896 938.666667h85.333333l-192-512z m-112 298.666666L746.666667 540.373333 816 725.333333h-138.666667z"></path></svg> </a> <div class=dropdown-menu><a class=dropdown-item href=https://summer-rs.github.io/docs/getting-started/introduction/>English</a></div><li class=nav-item><a class=nav-link href=https://github.com/summer-rs/summer-rs><svg class="feather feather-github" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item docs active"><a class=nav-link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>文档</a><li class=nav-item><a class=nav-link href=https://summer-rs.github.io/zh/blog/>博客</a></ul><div class="break order-6 d-md-none"></div></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav aria-label="Main navigation" class=docs-links><h3>入门指南</h3><ul class=list-unstyled><li><a class="docs-link active" href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>介绍</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/quick-start/>快速上手</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/di/>依赖注入</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/config/>加载配置</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/component/>Component 宏</a></ul><h3>插件</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-web/>summer-web插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sqlx/>summer-sqlx插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-postgres/>summer-postgres插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sea-orm/>summer-sea-orm插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-redis/>summer-redis插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-nacos/>summer-nacos插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-job/>summer-job插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-xxl-job/>summer-xxl-job插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-apalis/>summer-apalis插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-pubsub/>summer-pubsub插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sa-token/>summer-sa-token 插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-stream/>summer-stream插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-mail/>summer-mail插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-opendal/>summer-opendal插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-logger/>logger插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-opentelemetry/>opentelemetry插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-grpc/>summer-grpc插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/plugin-by-self/>编写自己的插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/contribute-plugins/>社区贡献的插件</a></ul><h3>帮助</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/help/auto-reload/>自动热重启</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/help/faq/>常见问题</a></ul></nav></div><nav aria-label="Secondary navigation" class="docs-toc d-none d-xl-block col-xl-3"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><ul><li class=ml-4><a href=#te-dian>特点</a><li class=ml-4><a href=#jian-dan-de-li-zi>简单的例子</a><li class=ml-4><a href=#componenthong>component宏</a><li class=ml-4><a href=#zhi-chi-de-cha-jian>支持的插件</a><li class=ml-4><a href=#sheng-tai>生态</a><li class=ml-4><a href=#xiang-mu-shi-li>项目示例</a><li class=ml-4><a href=#qing-zuo-zhe-he-bei-cha>请作者喝杯茶</a><li class=ml-4><a href=#jiao-liu-qun>交流群</a><li class=ml-4><a href=#gong-xian>贡献</a><li class=ml-4><a href=#bang-zhu>帮助</a></ul></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>介绍</h1><div align=center><img alt=Logo src=https://raw.githubusercontent.com/summer-rs/summer-rs/refs/heads/master/docs/static/logo-rust.svg width=200><h3>summer-rs是Rust编写的应用框架，类似于java生态的SpringBoot</h3><p><a href=https://summer-rs.github.io/docs/getting-started/introduction/>English</a> ｜ 中文<p><a href=https://crates.io/crates/summer><img alt=crates.io src=https://img.shields.io/crates/v/summer.svg></a> <a href=https://docs.rs/summer><img alt=Documentation src=https://docs.rs/summer/badge.svg></a> <img alt=Documentation src=https://img.shields.io/crates/l/summer></div><p><b>summer-rs</b>是一个Rust编写的应用框架，强调约定大于配置，类似于java生态的SpringBoot。<b>summer-rs</b>提供了易于扩展的插件系统，用于整合Rust社区的优秀项目，例如axum、sqlx、sea-orm等。<p>相比于java生态的SpringBoot，summer-rs有更高的性能和更低的内存占用，让你彻底摆脱臃肿的JVM，轻装上阵。<h2 id=te-dian>特点</h2><ul><li>⚡️ 高性能: 得益于出色的Rust语言，<b>summer-rs</b>拥有与c/c++媲美的极致性能<li>🛡️ 高安全性: 相比C/C++，<b>summer-rs</b>使用的Rust语言提供了内存安全和线程安全的能力<li>🔨 轻量级: <b>summer-rs</b>的核心代码不超过5000行，打包的release版二进制文件也非常小巧<li>🔧 容易使用: <b>summer-rs</b>提供了清晰明了的API和可选的过程宏来简化开发<li>🔌 高可扩展性: <b>summer-rs</b>采用高扩展性的插件模式，用户可以自定义插件扩展程序功能<li>⚙️ 高可配置性: <b>summer-rs</b>用toml配置应用和插件，提升应用灵活性</ul><h2 id=jian-dan-de-li-zi>简单的例子</h2><p><strong>web</strong><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use summer::{auto_config, App};
+</span><span>use summer_sqlx::{
+</span><span>    sqlx::{self, Row},
+</span><span>    ConnectPool, SqlxPlugin
+</span><span>};
+</span><span>use summer_web::{get, route};
+</span><span>use summer_web::{
+</span><span>    error::Result, extractor::{Path, Component}, handler::TypeRouter, axum::response::IntoResponse, Router, 
+</span><span>    WebConfigurator, WebPlugin,
+</span><span>};
+</span><span>
+</span><span>#[auto_config(WebConfigurator)]
+</span><span>#[tokio::main]
+</span><span>async fn main() {
+</span><span>    App::new()
+</span><span>        .add_plugin(SqlxPlugin)
+</span><span>        .add_plugin(WebPlugin)
+</span><span>        .run()
+</span><span>        .await
+</span><span>}
+</span><span>
+</span><span>#[get("/")]
+</span><span>async fn hello_world() -> impl IntoResponse {
+</span><span>    "hello world"
+</span><span>}
+</span><span>
+</span><span>#[route("/hello/{name}", method = "GET", method = "POST")]
+</span><span>async fn hello(Path(name): Path&LTString>) -> impl IntoResponse {
+</span><span>    format!("hello {name}")
+</span><span>}
+</span><span>
+</span><span>#[get("/version")]
+</span><span>async fn sqlx_request_handler(Component(pool): Component&LTConnectPool>) -> Result&LTString> {
+</span><span>    let version = sqlx::query("select version() as version")
+</span><span>        .fetch_one(&pool)
+</span><span>        .await
+</span><span>        .context("sqlx query failed")?
+</span><span>        .get("version");
+</span><span>    Ok(version)
+</span><span>}
+</span></code></pre><p><strong>任务调度</strong><pre class=language-ignore data-lang=ignore style=color:#c0c5ce;background-color:#2b303b><code class=language-ignore data-lang=ignore><span>use anyhow::Context;
+</span><span>use summer::{auto_config, App};
+</span><span>use summer_job::{cron, fix_delay, fix_rate};
+</span><span>use summer_job::{extractor::Component, JobConfigurator, JobPlugin};
+</span><span>use summer_sqlx::{
+</span><span>    sqlx::{self, Row},
+</span><span>    ConnectPool, SqlxPlugin,
+</span><span>};
+</span><span>use std::time::{Duration, SystemTime};
+</span><span>
+</span><span>#[auto_config(JobConfigurator)]
+</span><span>#[tokio::main]
+</span><span>async fn main() {
+</span><span>    App::new()
+</span><span>        .add_plugin(JobPlugin)
+</span><span>        .add_plugin(SqlxPlugin)
+</span><span>        .run()
+</span><span>        .await;
+</span><span>
+</span><span>    tokio::time::sleep(Duration::from_secs(100)).await;
+</span><span>}
+</span><span>
+</span><span>#[cron("1/10 * * * * *")]
+</span><span>async fn cron_job(Component(db): Component&LTConnectPool>) {
+</span><span>    let time: String = sqlx::query("select TO_CHAR(now(),'YYYY-MM-DD HH24:MI:SS') as time")
+</span><span>        .fetch_one(&db)
+</span><span>        .await
+</span><span>        .context("query failed")
+</span><span>        .unwrap()
+</span><span>        .get("time");
+</span><span>    println!("cron scheduled: {:?}", time)
+</span><span>}
+</span><span>
+</span><span>#[fix_delay(5)]
+</span><span>async fn fix_delay_job() {
+</span><span>    let now = SystemTime::now();
+</span><span>    let datetime: sqlx::types::chrono::DateTime&LTsqlx::types::chrono::Local> = now.into();
+</span><span>    let formatted_time = datetime.format("%Y-%m-%d %H:%M:%S");
+</span><span>    println!("fix delay scheduled: {}", formatted_time)
+</span><span>}
+</span><span>
+</span><span>#[fix_rate(5)]
+</span><span>async fn fix_rate_job() {
+</span><span>    tokio::time::sleep(Duration::from_secs(10)).await;
+</span><span>    let now = SystemTime::now();
+</span><span>    let datetime: sqlx::types::chrono::DateTime&LTsqlx::types::chrono::Local> = now.into();
+</span><span>    let formatted_time = datetime.format("%Y-%m-%d %H:%M:%S");
+</span><span>    println!("fix rate scheduled: {}", formatted_time)
+</span><span>}
+</span></code></pre><h2 id=componenthong>component宏</h2><p>在 <code>Cargo.toml</code> 中添加依赖：<pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[dependencies]
+</span><span style=color:#bf616a>summer </span><span>= "</span><span style=color:#a3be8c>0.4</span><span>"
+</span><span style=color:#bf616a>tokio </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>1</span><span>", </span><span style=color:#bf616a>features </span><span>= ["</span><span style=color:#a3be8c>full</span><span>"] }
+</span></code></pre><p><strong>使用 <code>#[component]</code> 宏简化组件注册：</strong><pre class=language-no_run data-lang=no_run style=color:#c0c5ce;background-color:#2b303b><code class=language-no_run data-lang=no_run><span>use summer::component;
+</span><span>use summer::config::Configurable;
+</span><span>use summer::extractor::Config;
+</span><span>use summer::plugin::ComponentRegistry;
+</span><span>use summer::App;
+</span><span>use serde::Deserialize;
+</span><span>
+</span><span>// 定义配置
+</span><span>#[derive(Clone, Configurable, Deserialize)]
+</span><span>#[config_prefix = "app"]
+</span><span>struct AppConfig {
+</span><span>    name: String,
+</span><span>}
+</span><span>
+</span><span>// 定义组件
+</span><span>#[derive(Clone)]
+</span><span>struct AppService {
+</span><span>    config: AppConfig,
+</span><span>}
+</span><span>
+</span><span>// 使用 #[component] 宏自动注册
+</span><span>#[component]
+</span><span>fn app_service(Config(config): Config&LTAppConfig>) -> AppService {
+</span><span>    AppService { config }
+</span><span>}
+</span><span>
+</span><span>#[tokio::main]
+</span><span>async fn main() {
+</span><span>    // 组件会自动注册
+</span><span>    let app = App::new().build().await.unwrap();
+</span><span>    
+</span><span>    // 获取已注册的组件
+</span><span>    let service = app.get_component::&LTAppService>().unwrap();
+</span><span>    println!("应用名称: {}", service.config.name);
+</span><span>}
+</span></code></pre><p><code>#[component]</code> 宏消除了样板代码 - 无需手动实现 Plugin trait！<a href=https://summer-rs.github.io/zh/docs/getting-started/component/>了解更多 →</a><h2 id=zhi-chi-de-cha-jian>支持的插件</h2><table><thead><tr><th>插件<th>Crate<th>集成组件<th>说明<tbody><tr><td><code>summer-web</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-web/><img alt=summer-web src=https://img.shields.io/crates/v/summer-web.svg></a><td><a href=https://github.com/tokio-rs/axum><code>axum</code></a><td>Web 框架，基于 axum<tr><td><code>summer-sqlx</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-sqlx/><img alt=summer-sqlx src=https://img.shields.io/crates/v/summer-sqlx.svg></a><td><a href=https://github.com/launchbadge/sqlx><code>sqlx</code></a><td>异步 SQL 访问<tr><td><code>summer-postgres</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-postgres/><img alt=summer-postgres src=https://img.shields.io/crates/v/summer-postgres.svg></a><td><a href=https://github.com/sfackler/rust-postgres><code>rust-postgres</code></a><td>PostgreSQL 客户端集成<tr><td><code>summer-sea-orm</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-sea-orm/><img alt=summer-sea-orm src=https://img.shields.io/crates/v/summer-sea-orm.svg></a><td><a href=https://www.sea-ql.org/SeaORM/><code>sea-orm</code></a><td>ORM 支持<tr><td><code>summer-redis</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-redis/><img alt=summer-redis src=https://img.shields.io/crates/v/summer-redis.svg></a><td><a href=https://github.com/redis-rs/redis-rs><code>redis</code></a><td>Redis 集成<tr><td><code>summer-mail</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-mail/><img alt=summer-mail src=https://img.shields.io/crates/v/summer-mail.svg></a><td><a href=https://github.com/lettre/lettre><code>lettre</code></a><td>邮件发送<tr><td><code>summer-job</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-job/><img alt=summer-job src=https://img.shields.io/crates/v/summer-job.svg></a><td><a href=https://github.com/mvniekerk/tokio-cron-scheduler><code>tokio-cron-scheduler</code></a><td>定时任务 / Cron<tr><td><code>summer-xxl-job</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-xxl-job/><img alt=summer-xxl-job src=https://img.shields.io/crates/v/summer-xxl-job.svg></a><td><a href=https://crates.io/crates/xxljob-sdk-rs><code>xxljob-sdk-rs</code></a><td>xxl-job / <a href=https://github.com/ratch-job/ratch-job>ratch-job</a> 分布式任务执行器<tr><td><code>summer-stream</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-stream/><img alt=summer-stream src=https://img.shields.io/crates/v/summer-stream.svg></a><td><a href=https://github.com/SeaQL/sea-streamer><code>sea-streamer</code></a><td>消息流处理（Redis Stream / Kafka）<tr><td><code>summer-opentelemetry</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-opentelemetry/><img alt=summer-opentelemetry src=https://img.shields.io/crates/v/summer-opentelemetry.svg></a><td><a href=https://github.com/open-telemetry/opentelemetry-rust><code>opentelemetry</code></a><td>日志 / 指标 / 链路追踪<tr><td><code>summer-grpc</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-grpc/><img alt=summer-grpc src=https://img.shields.io/crates/v/summer-grpc.svg></a><td><a href=https://github.com/hyperium/tonic><code>tonic</code></a><td>gRPC 服务与调用<tr><td><code>summer-nacos</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-nacos/><img alt=summer-nacos src=https://img.shields.io/crates/v/summer-nacos.svg></a><td><a href=https://crates.io/crates/nacos-sdk><code>nacos-sdk</code></a><td>Nacos / r-nacos 配置中心与服务发现<tr><td><code>summer-opendal</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-opendal/><img alt=summer-opendal src=https://img.shields.io/crates/v/summer-opendal.svg></a><td><a href=https://github.com/apache/opendal><code>opendal</code></a><td>统一对象存储 / 数据访问<tr><td><code>summer-apalis</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-apalis/><img alt=summer-apalis src=https://img.shields.io/crates/v/summer-apalis.svg></a><td><a href=https://github.com/apalis-dev/apalis><code>apalis</code></a><td>高性能后台任务处理框架<tr><td><code>summer-sa-token</code><td><a href=https://summer-rs.github.io/docs/plugins/summer-sa-token/><img alt=summer-sa-token src=https://img.shields.io/crates/v/summer-sa-token.svg></a><td><a href=https://github.com/click33/sa-token-rust><code>sa-token-rust</code></a><td>Sa-Token 权限认证框架</table><h2 id=sheng-tai>生态</h2><ul><li><img alt=summer-sqlx-migration-plugin src=https://img.shields.io/crates/v/summer-sqlx-migration-plugin.svg> <a href=https://github.com/Phosphorus-M/summer-sqlx-migration-plugin><code>summer-sqlx-migration-plugin</code></a><li><a href="https://marketplace.visualstudio.com/items?itemName=summer-rs.summer-rs"><img alt=Version src=https://img.shields.io/open-vsx/v/summer-rs/summer-rs></a><a href=https://github.com/summer-rs/summer-lsp><code>summer-lsp</code></a> - VSCode插件 / 其他兼容LSP协议编辑器<li><a href=https://plugins.jetbrains.com/plugin/30040-summer-rs><img alt="JetBrains Plugin" src=https://img.shields.io/badge/JetBrains-Plugin-orange></a> <a href=https://github.com/ouywm/intellij-summer-rs><code>intellij-summer-rs</code></a> - RustRover / IntelliJ IDEA 插件支持</ul><p><a href=https://crates.io/crates/summer/reverse_dependencies>更多>></a></p><img alt="star history" src="https://api.star-history.com/svg?repos=summer-rs/summer-rs&type=Timeline" style=width:100%><h2 id=xiang-mu-shi-li>项目示例</h2><ul><li><a href=https://github.com/ralinejs/raline>Raline</a><li><a href=https://github.com/AutoWDS/autowds-backend>AutoWDS</a></ul><h2 id=qing-zuo-zhe-he-bei-cha>请作者喝杯茶</h2><table><tr><td><img alt=微信 height=400 src=https://github.com/user-attachments/assets/fe69c992-2da3-409e-9f61-507be436baeb><td><img alt=支付宝 height=400 src=https://github.com/user-attachments/assets/25668103-f41e-482f-925f-0007c40a917d></table><h2 id=jiao-liu-qun>交流群</h2><table><tr><td><img alt=QQ交流群 height=400 src=https://github.com/user-attachments/assets/f9f2abcb-8d91-4aa1-a8f6-93e789339e45><td><img alt=微信交流群 height=400 src=https://github.com/user-attachments/assets/b2685a59-ebe3-44c6-9bba-ed4cc317f008></table><h2 id=gong-xian>贡献</h2><p>也欢迎社区的大牛贡献自己的插件。 <a href=https://github.com/summer-rs/summer-rs>Contributing →</a><h2 id=bang-zhu>帮助</h2><p>点击这里可以查看<code>summer-rs</code>使用过程中遇到的常见问题 <a href=https://summer-rs.github.io/zh/docs/help/faq/>Help →</a><div class="docs-navigation d-flex justify-content-between"><a class=ms-auto href=https://summer-rs.github.io/zh/docs/plugins/summer-web/> <div class="card my-1"><div class="card-body py-2">summer-web插件 →</div></div> </a></div></main></div></div></div><script async crossorigin issue-term=pathname label=comment repo=summer-rs/summer-rs.github.io src=https://utteranc.es/client.js theme=github-light></script><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Released under the MIT License. Powered by <a href=https://github.com/holmofy>holmofy</a></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://www.rust-lang.org/policies/code-of-conduct>Code of Conduct</a></ul></div></div></div></footer><script defer src=https://summer-rs.github.io/js/main.js></script>

@@ -1,0 +1,417 @@
+<!doctype html><html lang=en-US><head><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-regular.woff2 rel=preload type=font/woff2><link as=font crossorigin href=https://summer-rs.github.io/fonts/vendor/jost/jost-v4-latin-700.woff2 rel=preload type=font/woff2><link href=https://summer-rs.github.io/main.css rel=stylesheet><meta content="index, follow" name=robots><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=googlebot><meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name=bingbot><meta content=9BE3AFA1A1AE6AF5B38F990F208A4EE1 name=msvalidate.01><title>summer-sa-token 插件</title><meta content="sa-token-rust 的自动装配" name=description><link href=https://summer-rs.github.io/zh/docs/plugins/summer-sa-token/ rel=canonical><script type=application/ld+json>
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    
+      
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          {
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Home",
+            "item": "https://summer-rs.github.io/"
+          },
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  2 ,
+            "name": "Zh",
+            "item": "https://summer-rs.github.io/zh/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  3 ,
+            "name": "Docs",
+            "item": "https://summer-rs.github.io/zh/docs/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  4 ,
+            "name": "Plugins",
+            "item": "https://summer-rs.github.io/zh/docs/plugins/"
+          },
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
+          
+          {
+            "@type": "ListItem",
+            "position":  5 ,
+            "name": "Summer Sa Token",
+            "item": "https://summer-rs.github.io/zh/docs/plugins/summer-sa-token/"
+          },
+        
+      
+    
+  }
+</script><script>var _hmt=_hmt||[];(()=>{let c=`script`;var a=document.createElement(c);a.src=`https://hm.baidu.com/hm.js?2fd7792d4246d07ebbd9db04334ac94d`;var b=document.getElementsByTagName(c)[0];b.parentNode.insertBefore(a,b)})()</script><script>((a,b,c,d,e,f,g)=>{a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};f=b.createElement(d);f.async=1;f.src=`https://www.clarity.ms/tag/`+ e;g=b.getElementsByTagName(d)[0];g.parentNode.insertBefore(f,g)})(window,document,`clarity`,`script`,`nl0r1el6gp`)</script><meta content=#fff name=theme-color><meta content=#2b5797 name=msapplication-TileColor><link href=https://summer-rs.github.io/apple-touch-icon.png rel=apple-touch-icon sizes=180x180><link href=https://summer-rs.github.io/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=https://summer-rs.github.io/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link color=#5bbad5 href=https://summer-rs.github.io/safari-pinned-tab.svg rel=mask-icon><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" id=menu-btn type=checkbox><label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 me-auto" href=https://summer-rs.github.io/zh>summer-rs</a><button aria-label="Toggle mode" class="btn btn-link order-2 order-md-4" id=mode type=button><span class=toggle-dark><svg class="feather feather-moon" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span> <span class=toggle-light><svg class="feather feather-sun" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><circle cx=12 cy=12 r=5></circle><line x1=12 x2=12 y1=1 y2=3></line><line x1=12 x2=12 y1=21 y2=23></line><line x1=4.22 x2=5.64 y1=4.22 y2=5.64></line><line x1=18.36 x2=19.78 y1=18.36 y2=19.78></line><line x1=1 x2=3 y1=12 y2=12></line><line x1=21 x2=23 y1=12 y2=12></line><line x1=4.22 x2=5.64 y1=19.78 y2=18.36></line><line x1=18.36 x2=19.78 y1=5.64 y2=4.22></line></svg></span></button><ul class="navbar-nav fork-me order-3 order-md-5"><li class="nav-item dropdown"><a class=nav-link href=#> <svg viewbox="0 0 1024 1024" fill=currentColor height=20 version=1.1 width=20 xmlns=http://www.w3.org/2000/svg><path d="M549.12 643.2l-108.373333-107.093333 1.28-1.28c74.24-82.773333 127.146667-177.92 158.293333-278.613334H725.333333V170.666667H426.666667V85.333333h-85.333334v85.333334H42.666667v84.906666h476.586666A673.834667 673.834667 0 0 1 384 484.266667a672.853333 672.853333 0 0 1-98.56-142.933334h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56L110.293333 750.293333 170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-86.826667zM789.333333 426.666667h-85.333333l-192 512h85.333333l48-128h202.666667L896 938.666667h85.333333l-192-512z m-112 298.666666L746.666667 540.373333 816 725.333333h-138.666667z"></path></svg> </a> <div class=dropdown-menu><a class=dropdown-item href=https://summer-rs.github.io/docs/plugins/summer-sa-token/>English</a></div><li class=nav-item><a class=nav-link href=https://github.com/summer-rs/summer-rs><svg class="feather feather-github" viewbox="0 0 24 24" fill=none height=20 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 width=20 xmlns=http://www.w3.org/2000/svg><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><span class="ms-2 visually-hidden">GitHub</span></a></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav me-auto order-5 order-md-2"><li class="nav-item docs active"><a class=nav-link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>文档</a><li class=nav-item><a class=nav-link href=https://summer-rs.github.io/zh/blog/>博客</a></ul><div class="break order-6 d-md-none"></div></div></div></header><div class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav aria-label="Main navigation" class=docs-links><h3>入门指南</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/introduction/>介绍</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/quick-start/>快速上手</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/di/>依赖注入</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/config/>加载配置</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/getting-started/component/>Component 宏</a></ul><h3>插件</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-web/>summer-web插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sqlx/>summer-sqlx插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-postgres/>summer-postgres插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-sea-orm/>summer-sea-orm插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-redis/>summer-redis插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-nacos/>summer-nacos插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-job/>summer-job插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-xxl-job/>summer-xxl-job插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-apalis/>summer-apalis插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-pubsub/>summer-pubsub插件</a><li><a class="docs-link active" href=https://summer-rs.github.io/zh/docs/plugins/summer-sa-token/>summer-sa-token 插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-stream/>summer-stream插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-mail/>summer-mail插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-opendal/>summer-opendal插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-logger/>logger插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-opentelemetry/>opentelemetry插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/summer-grpc/>summer-grpc插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/plugin-by-self/>编写自己的插件</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/plugins/contribute-plugins/>社区贡献的插件</a></ul><h3>帮助</h3><ul class=list-unstyled><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/help/auto-reload/>自动热重启</a><li><a class=docs-link href=https://summer-rs.github.io/zh/docs/help/faq/>常见问题</a></ul></nav></div><nav aria-label="Secondary navigation" class="docs-toc d-none d-xl-block col-xl-3"><div class=page-links><h3>On this page</h3><nav id=TableOfContents><ul><ul><li class=ml-4><a href=#yi-lai>依赖</a><li class=ml-4><a href=#pei-zhi-xiang>配置项</a><li class=ml-4><a href=#kuai-su-kai-shi>快速开始</a><li class=ml-4><a href=#guo-cheng-hong>过程宏</a><li class=ml-4><a href=#stputil-api>StpUtil API</a><li class=ml-4><a href=#ti-qu-qi>提取器</a><li class=ml-4><a href=#zu-jian-fang-wen>组件访问</a><li class=ml-4><a href=#zi-ding-yi-cun-chu>自定义存储</a><li class=ml-4><a href=#cuo-wu-chu-li>错误处理</a></ul></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9"><h1>summer-sa-token 插件</h1><p class=lead>summer-sa-token 是针对[sa-token-rust](https://github.com/click33/sa-token-rust)的自动装配<p><a href=https://crates.io/crates/summer-sa-token><img alt=crates.io src=https://img.shields.io/crates/v/summer-sa-token.svg></a> <a href=https://docs.rs/summer-sa-token><img alt=Documentation src=https://docs.rs/summer-sa-token/badge.svg></a><p><code>summer-sa-token</code> 是针对<a href=https://github.com/click33/sa-token-rust>sa-token-rust</a>的自动装配。sa-token-rust 。<h2 id=yi-lai>依赖</h2><pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span style=color:#65737e># 默认：内存存储（用于开发）
+</span><span style=color:#bf616a>summer-sa-token </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>&LTversion></span><span>" }
+</span><span style=color:#65737e># 生产环境：复用 summer-redis 连接（推荐）
+</span><span style=color:#bf616a>summer-sa-token </span><span>= { </span><span style=color:#bf616a>version </span><span>= "</span><span style=color:#a3be8c>&LTversion></span><span>", </span><span style=color:#bf616a>default-features </span><span>= </span><span style=color:#d08770>false</span><span>, </span><span style=color:#bf616a>features </span><span>= ["</span><span style=color:#a3be8c>with-summer-redis</span><span>", "</span><span style=color:#a3be8c>with-web</span><span>"] }
+</span></code></pre><p>可选 <strong>features</strong>：<ul><li><code>memory</code>：内存存储（默认，用于开发/测试）<li><code>with-summer-redis</code>：使用 summer-redis 连接池存储（推荐）<li><code>with-web</code>：启用 axum web 集成（中间件、提取器）</ul><h2 id=pei-zhi-xiang>配置项</h2><p>具体文档、配置可以查看 <a href=https://github.com/click33/sa-token-rust/tree/main/docs>sa-token-rust docs</a><pre class=language-toml data-lang=toml style=color:#c0c5ce;background-color:#2b303b><code class=language-toml data-lang=toml><span>[sa-token]
+</span><span style=color:#65737e># Token 名称（header 或 cookie 中的键名）
+</span><span style=color:#bf616a>token_name </span><span>= "</span><span style=color:#a3be8c>Authorization</span><span>"
+</span><span>
+</span><span style=color:#65737e># Token 有效期（秒），-1 表示永久有效
+</span><span style=color:#65737e># 默认：2592000（30 天）
+</span><span style=color:#bf616a>timeout </span><span>= </span><span style=color:#d08770>86400
+</span><span>
+</span><span style=color:#65737e># Token 最低活跃频率（秒），-1 表示不限制
+</span><span style=color:#65737e># 如果在此时间内没有请求，Token 将失效
+</span><span style=color:#bf616a>active_timeout </span><span>= </span><span style=color:#d08770>3600
+</span><span>
+</span><span style=color:#65737e># 是否开启自动续签 - 每次请求自动刷新 Token
+</span><span style=color:#bf616a>auto_renew </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># 是否允许同一账号并发登录
+</span><span style=color:#bf616a>is_concurrent </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># 在多人登录同一账号时，是否共享一个 Token
+</span><span style=color:#bf616a>is_share </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># Token 风格：Uuid, SimpleUuid, Random32, Random64, Random128, Jwt, Hash, Timestamp, Tik
+</span><span style=color:#bf616a>token_style </span><span>= "</span><span style=color:#a3be8c>Uuid</span><span>"
+</span><span>
+</span><span style=color:#65737e># 是否启用 per-token 动态 active_timeout
+</span><span style=color:#bf616a>dynamic_active_timeout </span><span>= </span><span style=color:#d08770>false
+</span><span>
+</span><span style=color:#65737e># JWT 生成失败时是否回退为 UUID
+</span><span style=color:#bf616a>jwt_fallback_on_error </span><span>= </span><span style=color:#d08770>true
+</span><span>
+</span><span style=color:#65737e># 存储 key 前缀
+</span><span style=color:#bf616a>storage_key_prefix </span><span>= "</span><span style=color:#a3be8c>sa:</span><span>"
+</span><span>
+</span><span style=color:#65737e># 登录替换与退出行为
+</span><span style=color:#bf616a>max_login_count </span><span>= -</span><span style=color:#d08770>1
+</span><span style=color:#bf616a>overflow_logout_mode </span><span>= "</span><span style=color:#a3be8c>Logout</span><span>"              </span><span style=color:#65737e># Logout, KickOut, Replaced
+</span><span style=color:#bf616a>replaced_login_exit_mode </span><span>= "</span><span style=color:#a3be8c>OldDevice</span><span>"       </span><span style=color:#65737e># OldDevice, NewDevice
+</span><span style=color:#bf616a>replaced_range </span><span>= "</span><span style=color:#a3be8c>CurrDeviceType</span><span>"            </span><span style=color:#65737e># CurrDeviceType, AllDeviceType
+</span><span style=color:#bf616a>right_now_create_token_session </span><span>= </span><span style=color:#d08770>false
+</span><span style=color:#bf616a>token_session_check_login </span><span>= </span><span style=color:#d08770>true
+</span><span style=color:#bf616a>logout_range </span><span>= "</span><span style=color:#a3be8c>Token</span><span>"                       </span><span style=color:#65737e># Token, Account
+</span><span style=color:#bf616a>is_logout_keep_token_session </span><span>= </span><span style=color:#d08770>false
+</span><span>
+</span><span style=color:#65737e># JWT 配置（仅当 token_style = "Jwt" 时需要）
+</span><span style=color:#bf616a>jwt_secret_key </span><span>= "</span><span style=color:#a3be8c>your-secret-key</span><span>"
+</span><span style=color:#bf616a>jwt_algorithm </span><span>= "</span><span style=color:#a3be8c>HS256</span><span>"    </span><span style=color:#65737e># HS256, HS384, HS512
+</span><span style=color:#bf616a>jwt_issuer </span><span>= "</span><span style=color:#a3be8c>my-app</span><span>"
+</span><span style=color:#bf616a>jwt_audience </span><span>= "</span><span style=color:#a3be8c>my-users</span><span>"
+</span><span>
+</span><span style=color:#65737e># 是否启用防重放攻击（nonce 机制）
+</span><span style=color:#bf616a>enable_nonce </span><span>= </span><span style=color:#d08770>false
+</span><span style=color:#bf616a>nonce_timeout </span><span>= </span><span style=color:#d08770>300
+</span><span>
+</span><span style=color:#65737e># 是否启用 Refresh Token
+</span><span style=color:#bf616a>enable_refresh_token </span><span>= </span><span style=color:#d08770>false
+</span><span style=color:#bf616a>refresh_token_timeout </span><span>= </span><span style=color:#d08770>604800  </span><span style=color:#65737e># 7 天
+</span></code></pre><p>当使用 <code>with-summer-redis</code> 时，可以通过 <code>storage_key_prefix</code> 为 Sa-Token Redis key 增加统一命名空间。<h2 id=kuai-su-kai-shi>快速开始</h2><h3 id=1-tian-jia-cha-jian-dao-ying-yong>1. 添加插件到应用</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::{auto_config, App};
+</span><span style=color:#b48ead>use </span><span>summer_redis::RedisPlugin;
+</span><span style=color:#b48ead>use </span><span>summer_sa_token::{SaTokenPlugin, SaTokenAuthConfigurator};
+</span><span style=color:#b48ead>use </span><span>summer_web::{WebPlugin, WebConfigurator};
+</span><span>
+</span><span style=color:#b48ead>mod </span><span>config;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>auto_config</span><span>(WebConfigurator)]
+</span><span>#[</span><span style=color:#bf616a>tokio</span><span>::</span><span style=color:#bf616a>main</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>main</span><span>() {
+</span><span>    App::new()
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(RedisPlugin)       </span><span style=color:#65737e>// with-summer-redis feature 需要
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(SaTokenPlugin)
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(WebPlugin)
+</span><span>        .</span><span style=color:#96b5b4>sa_token_configure</span><span>(config::SaTokenConfig)  </span><span style=color:#65737e>// 配置路径认证
+</span><span>        .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>        .await
+</span><span>}
+</span></code></pre><h3 id=2-pei-zhi-lu-jing-ren-zheng>2. 配置路径认证</h3><p><code>sa_token_configure()</code> 支持两种配置方式：<h4 id=fang-shi-yi-shi-yong-satokenconfig-tui-jian>方式一：使用 SaTokenConfig（推荐）</h4><p>创建 <code>src/config.rs</code>：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::app::AppBuilder;
+</span><span style=color:#b48ead>use </span><span>summer_sa_token::{PathAuthBuilder, SaStorage, SaTokenConfigurator};
+</span><span style=color:#b48ead>use </span><span>std::sync::Arc;
+</span><span>
+</span><span style=color:#b48ead>pub struct </span><span>SaTokenConfig;
+</span><span>
+</span><span style=color:#b48ead>impl </span><span>SaTokenConfigurator </span><span style=color:#b48ead>for </span><span>SaTokenConfig {
+</span><span>    </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>configure_path_auth</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>auth</span><span>: PathAuthBuilder) -> PathAuthBuilder {
+</span><span>        auth
+</span><span>            </span><span style=color:#65737e>// 需要认证的路径
+</span><span>            .</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/user/**</span><span>")
+</span><span>            .</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/admin/**</span><span>")
+</span><span>            .</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/api/**</span><span>")
+</span><span>            </span><span style=color:#65737e>// 公开路径（无需认证）
+</span><span>            .</span><span style=color:#96b5b4>exclude</span><span>("</span><span style=color:#a3be8c>/login</span><span>")
+</span><span>            .</span><span style=color:#96b5b4>exclude</span><span>("</span><span style=color:#a3be8c>/api/health</span><span>")
+</span><span>    }
+</span><span>}
+</span></code></pre><p>然后在 <code>main.rs</code> 中使用：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>.</span><span style=color:#96b5b4>sa_token_configure</span><span>(config::SaTokenConfig)
+</span></code></pre><h4 id=fang-shi-er-zhi-jie-shi-yong-pathauthbuilder>方式二：直接使用 PathAuthBuilder</h4><p>你也可以直接在 <code>main.rs</code> 中配置，无需单独的配置文件：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::PathAuthBuilder;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>tokio</span><span>::</span><span style=color:#bf616a>main</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>main</span><span>() {
+</span><span>    App::new()
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(RedisPlugin)
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(SaTokenPlugin)
+</span><span>        .</span><span style=color:#96b5b4>add_plugin</span><span>(WebPlugin)
+</span><span>        </span><span style=color:#65737e>// 方式 2a：使用构建器模式
+</span><span>        .</span><span style=color:#96b5b4>sa_token_configure</span><span>(
+</span><span>            PathAuthBuilder::new()
+</span><span>                .</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/user/**</span><span>")
+</span><span>                .</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/admin/**</span><span>")
+</span><span>                .</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/api/**</span><span>")
+</span><span>                .</span><span style=color:#96b5b4>exclude</span><span>("</span><span style=color:#a3be8c>/login</span><span>")
+</span><span>                .</span><span style=color:#96b5b4>exclude</span><span>("</span><span style=color:#a3be8c>/public/**</span><span>")
+</span><span>                .</span><span style=color:#96b5b4>exclude</span><span>("</span><span style=color:#a3be8c>/api/health</span><span>"),
+</span><span>        )
+</span><span>        </span><span style=color:#65737e>// 方式 2b：使用结构体字面量
+</span><span>        </span><span style=color:#65737e>// .sa_token_auth(PathAuthBuilder {
+</span><span>        </span><span style=color:#65737e>//     include: vec![
+</span><span>        </span><span style=color:#65737e>//         "/user/**".to_string(),
+</span><span>        </span><span style=color:#65737e>//         "/admin/**".to_string(),
+</span><span>        </span><span style=color:#65737e>//     ],
+</span><span>        </span><span style=color:#65737e>//     exclude: vec![
+</span><span>        </span><span style=color:#65737e>//         "/login".to_string(),
+</span><span>        </span><span style=color:#65737e>//         "/public/**".to_string(),
+</span><span>        </span><span style=color:#65737e>//     ],
+</span><span>        </span><span style=color:#65737e>// })
+</span><span>        .</span><span style=color:#96b5b4>run</span><span>()
+</span><span>        .await
+</span><span>}
+</span></code></pre><p><strong>路径匹配规则：</strong><ul><li><code>**</code> 匹配任意多级路径，如 <code>/api/**</code> 匹配 <code>/api/users</code>、<code>/api/users/123</code> 等<li><code>*</code> 匹配单级路径，如 <code>/api/*</code> 只匹配 <code>/api/users</code>，不匹配 <code>/api/users/123</code><li>精确匹配，如 <code>/login</code> 只匹配 <code>/login</code></ul><h3 id=3-shi-xian-deng-lu-jie-kou>3. 实现登录接口</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::StpUtil;
+</span><span style=color:#b48ead>use </span><span>summer_web::{post, axum::response::IntoResponse, extractor::Json, error::Result};
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>post</span><span>("</span><span style=color:#a3be8c>/login</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>login</span><span>(Json(</span><span style=color:#bf616a>req</span><span>): Json&LTLoginRequest>) -> Result&LTimpl IntoResponse> {
+</span><span>    </span><span style=color:#65737e>// 验证凭证（你的业务逻辑）
+</span><span>    </span><span style=color:#b48ead>if</span><span> req.username == "</span><span style=color:#a3be8c>admin</span><span>" && req.password == "</span><span style=color:#a3be8c>123456</span><span>" {
+</span><span>        </span><span style=color:#65737e>// 登录并获取 Token
+</span><span>        </span><span style=color:#b48ead>let</span><span> token = StpUtil::login(&req.username).await?;
+</span><span>
+</span><span>        </span><span style=color:#65737e>// 可选：设置角色和权限
+</span><span>        StpUtil::set_roles(&req.username, vec!["</span><span style=color:#a3be8c>admin</span><span>".</span><span style=color:#96b5b4>to_string</span><span>()]).await?;
+</span><span>        StpUtil::set_permissions(&req.username, vec!["</span><span style=color:#a3be8c>user:list</span><span>".</span><span style=color:#96b5b4>to_string</span><span>()]).await?;
+</span><span>
+</span><span>        Ok(Json(LoginResponse {
+</span><span>            token: token.</span><span style=color:#96b5b4>as_str</span><span>().</span><span style=color:#96b5b4>to_string</span><span>(),
+</span><span>            message: "</span><span style=color:#a3be8c>登录成功</span><span>".</span><span style=color:#96b5b4>to_string</span><span>(),
+</span><span>        }))
+</span><span>    } </span><span style=color:#b48ead>else </span><span>{
+</span><span>        Ok(Json(ErrorResponse { message: "</span><span style=color:#a3be8c>凭证无效</span><span>".</span><span style=color:#96b5b4>to_string</span><span>() }))
+</span><span>    }
+</span><span>}
+</span></code></pre><h3 id=4-fang-wen-shou-bao-hu-de-lu-you>4. 访问受保护的路由</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::LoginIdExtractor;
+</span><span style=color:#b48ead>use </span><span>summer_web::{get, axum::response::IntoResponse, extractor::Json, error::Result};
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/user/info</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>user_info</span><span>(LoginIdExtractor(</span><span style=color:#bf616a>user_id</span><span>): LoginIdExtractor) -> Result&LTimpl IntoResponse> {
+</span><span>    </span><span style=color:#65737e>// user_id 自动从 Token 中提取
+</span><span>    Ok(Json(serde_json::json!({
+</span><span>        "</span><span style=color:#a3be8c>user_id</span><span>": user_id,
+</span><span>        "</span><span style=color:#a3be8c>message</span><span>": format!("</span><span style=color:#a3be8c>你好，</span><span style=color:#d08770>{}</span><span style=color:#a3be8c>！</span><span>", user_id)
+</span><span>    })))
+</span><span>}
+</span></code></pre><h2 id=guo-cheng-hong>过程宏</h2><p><code>summer-sa-token</code> 提供了多个用于声明式安全的过程宏：<h3 id=sa-check-login><code>#[sa_check_login]</code></h3><p>验证用户已登录：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/api/profile</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_login</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>get_profile</span><span>(LoginIdExtractor(</span><span style=color:#bf616a>user_id</span><span>): LoginIdExtractor) -> Result&LTimpl IntoResponse> {
+</span><span>    Ok(Json(serde_json::json!({ "</span><span style=color:#a3be8c>user_id</span><span>": user_id })))
+</span><span>}
+</span></code></pre><h3 id=sa-check-role-role><code>#[sa_check_role("role")]</code></h3><p>验证用户拥有指定角色：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/admin/dashboard</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_role</span><span>("</span><span style=color:#a3be8c>admin</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>admin_dashboard</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>欢迎来到管理后台</span><span>"
+</span><span>}
+</span></code></pre><h3 id=sa-check-roles-and-role1-role2><code>#[sa_check_roles_and("role1", "role2")]</code></h3><p>验证用户拥有<strong>所有</strong>指定角色：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/api/super-admin</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_roles_and</span><span>("</span><span style=color:#a3be8c>admin</span><span>", "</span><span style=color:#a3be8c>super</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>super_admin_only</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>你同时拥有 admin 和 super 角色</span><span>"
+</span><span>}
+</span></code></pre><h3 id=sa-check-roles-or-role1-role2><code>#[sa_check_roles_or("role1", "role2")]</code></h3><p>验证用户拥有<strong>任意一个</strong>指定角色：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/api/management</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_roles_or</span><span>("</span><span style=color:#a3be8c>admin</span><span>", "</span><span style=color:#a3be8c>manager</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>management_area</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>你拥有 admin 或 manager 角色</span><span>"
+</span><span>}
+</span></code></pre><h3 id=sa-check-permission-permission><code>#[sa_check_permission("permission")]</code></h3><p>验证用户拥有指定权限：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/admin/users</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_permission</span><span>("</span><span style=color:#a3be8c>user:list</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>list_users</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>用户列表</span><span>"
+</span><span>}
+</span></code></pre><h3 id=sa-check-permissions-and-perm1-perm2><code>#[sa_check_permissions_and("perm1", "perm2")]</code></h3><p>验证用户拥有<strong>所有</strong>指定权限：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>post</span><span>("</span><span style=color:#a3be8c>/api/user/batch-modify</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_permissions_and</span><span>("</span><span style=color:#a3be8c>user:edit</span><span>", "</span><span style=color:#a3be8c>user:delete</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>batch_modify</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>批量修改成功</span><span>"
+</span><span>}
+</span></code></pre><h3 id=sa-check-permissions-or-perm1-perm2><code>#[sa_check_permissions_or("perm1", "perm2")]</code></h3><p>验证用户拥有<strong>任意一个</strong>指定权限：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>post</span><span>("</span><span style=color:#a3be8c>/api/user/create-or-update</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_permissions_or</span><span>("</span><span style=color:#a3be8c>user:add</span><span>", "</span><span style=color:#a3be8c>user:edit</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>create_or_update</span><span>() -> impl IntoResponse {
+</span><span>    "</span><span style=color:#a3be8c>创建或更新成功</span><span>"
+</span><span>}
+</span></code></pre><h3 id=sa-ignore><code>#[sa_ignore]</code></h3><p>跳过特定端点的认证（即使路径匹配 include 规则）：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/api/health</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_ignore</span><span>]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>health_check</span><span>() -> impl IntoResponse {
+</span><span>    Json(serde_json::json!({ "</span><span style=color:#a3be8c>status</span><span>": "</span><span style=color:#a3be8c>ok</span><span>" }))
+</span><span>}
+</span></code></pre><h2 id=stputil-api>StpUtil API</h2><p><code>StpUtil</code> 结构体提供了 Token 操作的静态方法：<h3 id=deng-lu-deng-chu>登录/登出</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// 登录并获取 Token
+</span><span style=color:#b48ead>let</span><span> token = StpUtil::login("</span><span style=color:#a3be8c>user_id</span><span>").await?;
+</span><span>
+</span><span style=color:#65737e>// 登出当前 Token
+</span><span>StpUtil::logout("</span><span style=color:#a3be8c>token</span><span>").await?;
+</span><span>
+</span><span style=color:#65737e>// 通过登录 ID 登出（使所有 Token 失效）
+</span><span>StpUtil::logout_by_login_id("</span><span style=color:#a3be8c>user_id</span><span>").await?;
+</span><span>
+</span><span style=color:#65737e>// 检查用户是否已登录
+</span><span style=color:#b48ead>let</span><span> is_login = StpUtil::is_login_by_login_id("</span><span style=color:#a3be8c>user_id</span><span>").await;
+</span></code></pre><h3 id=token-cao-zuo>Token 操作</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// 通过登录 ID 获取 Token
+</span><span style=color:#b48ead>let</span><span> token = StpUtil::get_token_by_login_id("</span><span style=color:#a3be8c>user_id</span><span>").await;
+</span><span>
+</span><span style=color:#65737e>// 通过 Token 获取登录 ID
+</span><span style=color:#b48ead>let</span><span> login_id = StpUtil::get_login_id_by_token("</span><span style=color:#a3be8c>token</span><span>").await;
+</span></code></pre><h3 id=jiao-se-he-quan-xian>角色和权限</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#65737e>// 设置角色
+</span><span>StpUtil::set_roles("</span><span style=color:#a3be8c>user_id</span><span>", vec!["</span><span style=color:#a3be8c>admin</span><span>".</span><span style=color:#96b5b4>to_string</span><span>(), "</span><span style=color:#a3be8c>user</span><span>".</span><span style=color:#96b5b4>to_string</span><span>()]).await?;
+</span><span>
+</span><span style=color:#65737e>// 获取角色
+</span><span style=color:#b48ead>let</span><span> roles = StpUtil::get_roles("</span><span style=color:#a3be8c>user_id</span><span>").await;
+</span><span>
+</span><span style=color:#65737e>// 检查角色
+</span><span style=color:#b48ead>let</span><span> has_role = StpUtil::has_role("</span><span style=color:#a3be8c>user_id</span><span>", "</span><span style=color:#a3be8c>admin</span><span>").await;
+</span><span>
+</span><span style=color:#65737e>// 设置权限
+</span><span>StpUtil::set_permissions("</span><span style=color:#a3be8c>user_id</span><span>", vec!["</span><span style=color:#a3be8c>user:list</span><span>".</span><span style=color:#96b5b4>to_string</span><span>()]).await?;
+</span><span>
+</span><span style=color:#65737e>// 获取权限
+</span><span style=color:#b48ead>let</span><span> permissions = StpUtil::get_permissions("</span><span style=color:#a3be8c>user_id</span><span>").await;
+</span><span>
+</span><span style=color:#65737e>// 检查权限
+</span><span style=color:#b48ead>let</span><span> has_perm = StpUtil::has_permission("</span><span style=color:#a3be8c>user_id</span><span>", "</span><span style=color:#a3be8c>user:list</span><span>").await;
+</span></code></pre><h2 id=ti-qu-qi>提取器</h2><h3 id=loginidextractor><code>LoginIdExtractor</code></h3><p>从请求中提取当前用户的登录 ID：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::LoginIdExtractor;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/user/info</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>user_info</span><span>(LoginIdExtractor(</span><span style=color:#bf616a>user_id</span><span>): LoginIdExtractor) -> impl IntoResponse {
+</span><span>    format!("</span><span style=color:#a3be8c>当前用户：</span><span style=color:#d08770>{}</span><span>", user_id)
+</span><span>}
+</span></code></pre><h3 id=optionalsatokenextractor><code>OptionalSaTokenExtractor</code></h3><p>可选地提取 Token 信息（未认证时返回 None）：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::OptionalSaTokenExtractor;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/public</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>public_endpoint</span><span>(</span><span style=color:#bf616a>token</span><span>: OptionalSaTokenExtractor) -> impl IntoResponse {
+</span><span>    </span><span style=color:#b48ead>match</span><span> token.</span><span style=color:#d08770>0 </span><span>{
+</span><span>        Some(info) => format!("</span><span style=color:#a3be8c>已登录：</span><span style=color:#d08770>{}</span><span>", info.login_id),
+</span><span>        None => "</span><span style=color:#a3be8c>未登录</span><span>".</span><span style=color:#96b5b4>to_string</span><span>(),
+</span><span>    }
+</span><span>}
+</span></code></pre><h3 id=satokenextractor><code>SaTokenExtractor</code></h3><p>提取完整的 Token 信息（未认证时失败）：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::SaTokenExtractor;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/protected</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>protected_endpoint</span><span>(SaTokenExtractor(</span><span style=color:#bf616a>info</span><span>): SaTokenExtractor) -> impl IntoResponse {
+</span><span>    format!("</span><span style=color:#a3be8c>Token：</span><span style=color:#d08770>{}</span><span style=color:#a3be8c>，用户：</span><span style=color:#d08770>{}</span><span>", info.token, info.login_id)
+</span><span>}
+</span></code></pre><h2 id=zu-jian-fang-wen>组件访问</h2><p>访问 <code>SaTokenState</code> 组件进行高级操作：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_sa_token::SaTokenState;
+</span><span style=color:#b48ead>use </span><span>summer_web::extractor::Component;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/api/config</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>get_config</span><span>(Component(</span><span style=color:#bf616a>state</span><span>): Component&LTSaTokenState>) -> impl IntoResponse {
+</span><span>    </span><span style=color:#b48ead>let</span><span> config = &state.manager.config;
+</span><span>    Json(serde_json::json!({
+</span><span>        "</span><span style=color:#a3be8c>token_name</span><span>": config.token_name,
+</span><span>        "</span><span style=color:#a3be8c>timeout</span><span>": config.timeout,
+</span><span>        "</span><span style=color:#a3be8c>token_style</span><span>": format!("</span><span style=color:#d08770>{:?}</span><span>", config.token_style),
+</span><span>    }))
+</span><span>}
+</span></code></pre><h2 id=zi-ding-yi-cun-chu>自定义存储</h2><p>你可以使用 <code>lazy_storage&LTT>()</code> 实现自定义存储后端（如基于数据库）：<h3 id=bu-zou-1-jiang-ni-de-cun-chu-ding-yi-wei-service>步骤 1：将你的存储定义为 Service</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::plugin::service::Service;
+</span><span style=color:#b48ead>use </span><span>summer_sa_token::SaStorage;
+</span><span style=color:#b48ead>use </span><span>summer_sea_orm::DbConn;
+</span><span style=color:#b48ead>use </span><span>sa_token_adapter::storage::{StorageResult, StorageError};
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>derive</span><span>(Clone, Service)]
+</span><span style=color:#b48ead>pub struct </span><span>MyDatabaseStorage {
+</span><span>    #[</span><span style=color:#bf616a>inject</span><span>(component)]
+</span><span>    </span><span style=color:#bf616a>conn</span><span>: DbConn,  </span><span style=color:#65737e>// 由 summer 框架自动注入
+</span><span>}
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>async_trait</span><span>]
+</span><span style=color:#b48ead>impl </span><span>SaStorage </span><span style=color:#b48ead>for </span><span>MyDatabaseStorage {
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>get</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>key</span><span>: &</span><span style=color:#b48ead>str</span><span>) -> StorageResult&LTOption&LTString>> {
+</span><span>        </span><span style=color:#65737e>// 你的数据库查询逻辑
+</span><span>        todo!()
+</span><span>    }
+</span><span>
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>set</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>key</span><span>: &</span><span style=color:#b48ead>str</span><span>, </span><span style=color:#bf616a>value</span><span>: &</span><span style=color:#b48ead>str</span><span>, </span><span style=color:#bf616a>ttl</span><span>: Option<</span><span style=color:#b48ead>i64</span><span>>) -> StorageResult<()> {
+</span><span>        </span><span style=color:#65737e>// 你的数据库插入/更新逻辑
+</span><span>        todo!()
+</span><span>    }
+</span><span>
+</span><span>    async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>delete</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>key</span><span>: &</span><span style=color:#b48ead>str</span><span>) -> StorageResult<()> {
+</span><span>        </span><span style=color:#65737e>// 你的数据库删除逻辑
+</span><span>        todo!()
+</span><span>    }
+</span><span>
+</span><span>    </span><span style=color:#65737e>// ... 实现其他必需的方法
+</span><span>}
+</span></code></pre><h3 id=bu-zou-2-zai-pei-zhi-qi-zhong-shi-yong-lazy-storage>步骤 2：在配置器中使用 lazy_storage</h3><pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer::app::AppBuilder;
+</span><span style=color:#b48ead>use </span><span>summer_sa_token::{lazy_storage, PathAuthBuilder, SaStorage, SaTokenConfigurator};
+</span><span style=color:#b48ead>use </span><span>std::sync::Arc;
+</span><span>
+</span><span style=color:#b48ead>pub struct </span><span>SaTokenConfig;
+</span><span>
+</span><span style=color:#b48ead>impl </span><span>SaTokenConfigurator </span><span style=color:#b48ead>for </span><span>SaTokenConfig {
+</span><span>    </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>configure_path_auth</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>auth</span><span>: PathAuthBuilder) -> PathAuthBuilder {
+</span><span>        auth.</span><span style=color:#96b5b4>include</span><span>("</span><span style=color:#a3be8c>/api/**</span><span>").</span><span style=color:#96b5b4>exclude</span><span>("</span><span style=color:#a3be8c>/login</span><span>")
+</span><span>    }
+</span><span>
+</span><span>    </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>configure_storage</span><span>(&</span><span style=color:#bf616a>self</span><span>, </span><span style=color:#bf616a>_app</span><span>: &AppBuilder) -> Option&LTArc&LTdyn SaStorage>> {
+</span><span>        </span><span style=color:#65737e>// 使用 lazy_storage 包装你基于 Service 的存储
+</span><span>        </span><span style=color:#65737e>// 依赖项（如 DbConn）会在运行时自动注入
+</span><span>        Some(lazy_storage::&LTMyDatabaseStorage>())
+</span><span>    }
+</span><span>}
+</span></code></pre><p><code>lazy_storage&LTT>()</code> 函数：<ul><li>使用懒加载组件解析包装你的 <code>#[derive(Service)]</code> 存储<li>依赖项在首次使用存储时自动注入<li>无需手动处理 <code>LazyComponent</code> - 框架会在内部处理</ul><h2 id=cuo-wu-chu-li>错误处理</h2><p>所有安全宏在失败时返回 <code>summer_web::error::WebError</code>，可以由你的错误处理中间件处理：<pre class=language-rust data-lang=rust style=color:#c0c5ce;background-color:#2b303b><code class=language-rust data-lang=rust><span style=color:#b48ead>use </span><span>summer_web::error::Result;
+</span><span>
+</span><span>#[</span><span style=color:#bf616a>get</span><span>("</span><span style=color:#a3be8c>/admin/dashboard</span><span>")]
+</span><span>#[</span><span style=color:#bf616a>sa_check_role</span><span>("</span><span style=color:#a3be8c>admin</span><span>")]
+</span><span>async </span><span style=color:#b48ead>fn </span><span style=color:#8fa1b3>admin_dashboard</span><span>() -> Result&LTimpl IntoResponse> {
+</span><span>    </span><span style=color:#65737e>// 如果用户没有 "admin" 角色，返回 403 Forbidden
+</span><span>    Ok(Json(serde_json::json!({ "</span><span style=color:#a3be8c>message</span><span>": "</span><span style=color:#a3be8c>欢迎！</span><span>" })))
+</span><span>}
+</span></code></pre><p>完整代码参考 <a href=https://github.com/spring-rs/contrib-plugins/tree/master/summer-sa-token/examples/sa-token-example><code>sa-token-example</code></a><div class="docs-navigation d-flex justify-content-between"><a href=https://summer-rs.github.io/zh/docs/getting-started/component/> <div class="card my-1"><div class="card-body py-2">← Component 宏</div></div> </a><a class=ms-auto href=https://summer-rs.github.io/zh/docs/help/auto-reload/> <div class="card my-1"><div class="card-body py-2">自动热重启 →</div></div> </a></div></main></div></div></div><script async crossorigin issue-term=pathname label=comment repo=summer-rs/summer-rs.github.io src=https://utteranc.es/client.js theme=github-light></script><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Released under the MIT License. Powered by <a href=https://github.com/holmofy>holmofy</a></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-end"><ul class=list-inline><li class=list-inline-item><a href=https://www.rust-lang.org/policies/code-of-conduct>Code of Conduct</a></ul></div></div></div></footer><script defer src=https://summer-rs.github.io/js/main.js></script>
